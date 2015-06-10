@@ -7,6 +7,8 @@
  */
 Ext.define('KRF_DEV.view.main.Main', {
     extend: 'Ext.container.Container',
+    
+    // Controller, Model 등
     requires: [
         'KRF_DEV.view.main.MainController',
         'KRF_DEV.view.main.MainModel'
@@ -15,6 +17,7 @@ Ext.define('KRF_DEV.view.main.Main', {
     xtype: 'app-main',
     
     controller: 'main',
+    
     viewModel: {
         type: 'main'
     },
@@ -24,18 +27,13 @@ Ext.define('KRF_DEV.view.main.Main', {
     },
 
     items: [{
-        xtype: 'panel',
-        bind: {
-            title: '{name}'
-        },
+    	xtype: 'app-default-north',
+    	region: 'north',
+    	id: 'north_container'
+    }, {
+        xtype: 'app-default-west',
         region: 'west',
-        html: '<ul><li>Test This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
-        width: 250,
-        split: true,
-        tbar: [{
-            text: 'Button',
-            handler: 'onClickButton'
-        }]
+        id: 'west_container'
     },{
         region: 'center',
         xtype: 'tabpanel',

@@ -11009,17 +11009,6 @@ the height of a multi-line element */
   .x-panel-header-title-default > .x-title-text-default {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default > .x-title-text-default:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #9bc5e4; }
-    /* line 385, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default > .x-title-text-default.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-default > .x-title-icon-wrap-default.x-title-icon-top {
     height: 22px;
@@ -11343,17 +11332,6 @@ the height of a multi-line element */
   .x-panel-header-title-default-framed > .x-title-text-default-framed {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default-framed > .x-title-text-default-framed:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #9bc5e4; }
-    /* line 385, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default-framed > .x-title-text-default-framed.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-default-framed > .x-title-icon-wrap-default-framed.x-title-icon-top {
     height: 22px;
@@ -21383,17 +21361,6 @@ div.x-border-layout-ct {
   .x-window-header-title-default > .x-title-text-default {
     padding: 0;
     text-transform: none; }
-    /* line 303, ../../../ext-theme-neutral/sass/src/window/Window.scss */
-    .x-window-header-title-default > .x-title-text-default:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #9bc5e4; }
-    /* line 314, ../../../ext-theme-neutral/sass/src/window/Window.scss */
-    .x-window-header-title-default > .x-title-text-default.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 341, ../../../ext-theme-neutral/sass/src/window/Window.scss */
   .x-window-header-title-default > .x-title-icon-wrap-default.x-title-icon-top {
     height: 22px;
@@ -26700,17 +26667,6 @@ a.x-color-picker-item:hover {
   .x-panel-header-title-light > .x-title-text-light {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-light > .x-title-text-light:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #999999; }
-    /* line 385, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-light > .x-title-text-light.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-light > .x-title-icon-wrap-light.x-title-icon-top {
     height: 22px;
@@ -26883,6 +26839,66 @@ a.x-color-picker-item:hover {
 
 /* line 20, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
 .x-panel-light-outer-border-rl {
+  border-right-color: white !important;
+  border-right-width: 1px !important;
+  border-left-color: white !important;
+  border-left-width: 1px !important; }
+
+/* line 26, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-rb {
+  border-right-color: white !important;
+  border-right-width: 1px !important;
+  border-bottom-color: white !important;
+  border-bottom-width: 1px !important; }
+
+/* line 32, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-rbl {
+  border-right-color: white !important;
+  border-right-width: 1px !important;
+  border-bottom-color: white !important;
+  border-bottom-width: 1px !important;
+  border-left-color: white !important;
+  border-left-width: 1px !important; }
+
+/* line 40, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-t {
+  border-top-color: white !important;
+  border-top-width: 1px !important; }
+
+/* line 44, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-tl {
+  border-top-color: white !important;
+  border-top-width: 1px !important;
+  border-left-color: white !important;
+  border-left-width: 1px !important; }
+
+/* line 50, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-tb {
+  border-top-color: white !important;
+  border-top-width: 1px !important;
+  border-bottom-color: white !important;
+  border-bottom-width: 1px !important; }
+
+/* line 56, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-tbl {
+  border-top-color: white !important;
+  border-top-width: 1px !important;
+  border-bottom-color: white !important;
+  border-bottom-width: 1px !important;
+  border-left-color: white !important;
+  border-left-width: 1px !important; }
+
+/* line 64, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-tr {
+  border-top-color: white !important;
+  border-top-width: 1px !important;
+  border-right-color: white !important;
+  border-right-width: 1px !important; }
+
+/* line 70, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-trl {
+  border-top-color: white !important;
+  border-top-width: 1px !important;
   border-right-color: white !important;
   border-right-width: 1px !important;
   border-left-color: white !important;

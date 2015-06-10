@@ -35,23 +35,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     },
     ".sencha/app/development.properties": {
@@ -60,23 +60,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     },
     ".sencha/app/native.properties": {
@@ -85,23 +85,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     },
     ".sencha/app/package.properties": {
@@ -110,23 +110,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     },
     ".sencha/app/production.properties": {
@@ -135,23 +135,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     },
     ".sencha/app/sencha.cfg": {
@@ -160,23 +160,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     },
     ".sencha/app/testing.properties": {
@@ -185,23 +185,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     },
     "index.html": {
@@ -210,23 +210,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     },
     "sass/config.rb": {
@@ -235,23 +235,23 @@
       "parameters": {
         "appControllers": "",
         "appModels": "",
-        "appName": "KRF_DEV",
+        "appName": "Sgis",
         "appStores": "",
         "appViews": "",
         "controllerFileName": "Main",
         "controllerName": "Main",
-        "controllerNamespace": "KRF_DEV.controller",
+        "controllerNamespace": "Sgis.controller",
         "frameworkName": "ext",
         "frameworkPath": "ext",
-        "modelNamespace": "KRF_DEV.model",
-        "name": "KRF_DEV",
+        "modelNamespace": "Sgis.model",
+        "name": "Sgis",
         "packagesRelPath": "ext/packages",
         "senchadir": ".sencha",
         "themeName": "default",
-        "uniqueId": "07788f86-124b-4be8-9676-c49f2b506e69",
+        "uniqueId": "c6102498-587c-47e9-a193-3e41337a0aa2",
         "viewFileName": "Main",
         "viewName": "Main",
-        "viewNamespace": "KRF_DEV.view"
+        "viewNamespace": "Sgis.view"
       }
     }
   }

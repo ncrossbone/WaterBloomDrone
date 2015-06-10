@@ -30,10 +30,10 @@
     "framework": "ext",
 
     /**
-     * The name of the theme for this application.
+     * The name of the theme for this application. "krf-custom-theme"
      */
     
-    "theme": "ext-theme-neptune",
+    "theme": "ext-theme-classic",
     
     /**
      * The list of required packages (with optional versions; default is "latest").
@@ -325,5 +325,5 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "07788f86-124b-4be8-9676-c49f2b506e69"
+    "id": "c6102498-587c-47e9-a193-3e41337a0aa2"
 }

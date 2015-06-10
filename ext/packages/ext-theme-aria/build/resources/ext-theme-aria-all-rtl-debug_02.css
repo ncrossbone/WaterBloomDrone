@@ -1,26 +1,3 @@
-/* line 151, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
-.x-breadcrumb-default-vertical-scroller .x-box-scroller-body-vertical {
-  margin-top: 24px; }
-
-/* line 156, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
-.x-box-scroller-breadcrumb-default {
-  cursor: pointer;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-  opacity: 0.6; }
-  /* line 165, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
-  .x-box-scroller-breadcrumb-default.x-box-scroller-hover {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-    opacity: 0.8; }
-  /* line 171, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
-  .x-box-scroller-breadcrumb-default.x-box-scroller-pressed {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
-    opacity: 1; }
-  /* line 177, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
-  .x-box-scroller-breadcrumb-default.x-box-scroller-disabled {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
-    opacity: 0.25;
-    cursor: default; }
-  /* line 188, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
   .x-box-scroller-breadcrumb-default.x-box-scroller-left, .x-box-scroller-breadcrumb-default.x-box-scroller-right {
     width: 16px;
     height: 16px;
@@ -257,17 +234,6 @@ tr.x-grid-subtable-row {
   .x-panel-header-title-light > .x-title-text-light {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-light > .x-title-text-light:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #b1b1b2; }
-    /* line 385, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-light > .x-title-text-light.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-light > .x-title-icon-wrap-light.x-title-icon-top {
     height: 22px;
@@ -592,17 +558,6 @@ tr.x-grid-subtable-row {
   .x-panel-header-title-light-framed > .x-title-text-light-framed {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-light-framed > .x-title-text-light-framed:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #b1b1b2; }
-    /* line 385, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-light-framed > .x-title-text-light-framed.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed.x-title-icon-top {
     height: 22px;

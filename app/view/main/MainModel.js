@@ -7,7 +7,9 @@ Ext.define('KRF_DEV.view.main.MainModel', {
     alias: 'viewmodel.main',
 
     data: {
-        name: 'KRF_DEV'
+        name: 'KRF Portal',
+        app_title: 'KRF 물환경정보시스템',
+        nier_logo: './resources/images/nier_logo.png'
     }
 
     //TODO - add data, formulas and/or methods to support your view

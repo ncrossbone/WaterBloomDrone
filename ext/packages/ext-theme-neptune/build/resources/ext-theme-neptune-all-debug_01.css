@@ -10717,13 +10717,6 @@ the height of a multi-line element */
   .x-panel-header-title-default > .x-title-text-default {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default > .x-title-text-default:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #72b2e0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-default > .x-title-icon-wrap-default.x-title-icon-top {
     height: 22px;
@@ -10999,13 +10992,6 @@ the height of a multi-line element */
   .x-panel-header-title-default-framed > .x-title-text-default-framed {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default-framed > .x-title-text-default-framed:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #72b2e0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-default-framed > .x-title-icon-wrap-default-framed.x-title-icon-top {
     height: 22px;
@@ -21035,13 +21021,6 @@ div.x-border-layout-ct {
   .x-window-header-title-default > .x-title-text-default {
     padding: 0;
     text-transform: none; }
-    /* line 303, ../../../ext-theme-neutral/sass/src/window/Window.scss */
-    .x-window-header-title-default > .x-title-text-default:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #87bde4; }
   /* line 341, ../../../ext-theme-neutral/sass/src/window/Window.scss */
   .x-window-header-title-default > .x-title-icon-wrap-default.x-title-icon-top {
     height: 22px;
@@ -26205,13 +26184,6 @@ a.x-color-picker-item:hover {
   .x-panel-header-title-light > .x-title-text-light {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-light > .x-title-text-light:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #aeb5ba; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-light > .x-title-icon-wrap-light.x-title-icon-top {
     height: 22px;
@@ -26488,13 +26460,6 @@ a.x-color-picker-item:hover {
   .x-panel-header-title-light-framed > .x-title-text-light-framed {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-light-framed > .x-title-text-light-framed:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #aeb5ba; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed.x-title-icon-top {
     height: 22px;
@@ -27340,3 +27305,30 @@ a.x-color-picker-item:hover {
 /* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
 .x-panel-header-light-framed-collapsed-right-bc {
   height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-tl,
+.x-panel-header-light-framed-collapsed-right-bl,
+.x-panel-header-light-framed-collapsed-right-tr,
+.x-panel-header-light-framed-collapsed-right-br,
+.x-panel-header-light-framed-collapsed-right-tc,
+.x-panel-header-light-framed-collapsed-right-bc,
+.x-panel-header-light-framed-collapsed-right-ml,
+.x-panel-header-light-framed-collapsed-right-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-right-corners.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-ml,
+.x-panel-header-light-framed-collapsed-right-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-right-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-mc {
+  padding: 5px 5px 5px 5px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-collapsed-right:before {
+  display: none;
+  content: "x-slicer:frame:5px 5px 5px 5px, corners:url(images/panel-header/panel-header-light-framed-collapsed-right-corners.gif), sides:url(images/panel-header/panel-header-light-framed-collapsed-right-sides.gif)" !important; }

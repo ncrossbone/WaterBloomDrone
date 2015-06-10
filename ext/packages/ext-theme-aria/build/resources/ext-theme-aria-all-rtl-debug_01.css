@@ -11095,17 +11095,6 @@ the height of a multi-line element */
   .x-panel-header-title-default > .x-title-text-default {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default > .x-title-text-default:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #888d99; }
-    /* line 385, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default > .x-title-text-default.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-default > .x-title-icon-wrap-default.x-title-icon-top {
     height: 22px;
@@ -11429,17 +11418,6 @@ the height of a multi-line element */
   .x-panel-header-title-default-framed > .x-title-text-default-framed {
     text-transform: none;
     padding: 0; }
-    /* line 374, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default-framed > .x-title-text-default-framed:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #888d99; }
-    /* line 385, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
-    .x-panel-header-title-default-framed > .x-title-text-default-framed.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
   .x-panel-header-title-default-framed > .x-title-icon-wrap-default-framed.x-title-icon-top {
     height: 22px;
@@ -21820,17 +21798,6 @@ div.x-border-layout-ct {
   .x-window-header-title-default > .x-title-text-default {
     padding: 0;
     text-transform: none; }
-    /* line 303, ../../../ext-theme-neutral/sass/src/window/Window.scss */
-    .x-window-header-title-default > .x-title-text-default:after {
-      content: 'Ext JS Trial';
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #9ca0a9; }
-    /* line 314, ../../../ext-theme-neutral/sass/src/window/Window.scss */
-    .x-window-header-title-default > .x-title-text-default.x-rtl:after {
-      right: auto;
-      left: 0; }
   /* line 341, ../../../ext-theme-neutral/sass/src/window/Window.scss */
   .x-window-header-title-default > .x-title-icon-wrap-default.x-title-icon-top {
     height: 22px;
@@ -27034,3 +27001,26 @@ a.x-color-picker-item:hover {
 /* line 145, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
 .x-breadcrumb-default-scroller .x-box-scroller-body-horizontal {
   margin-left: 24px; }
+
+/* line 151, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+.x-breadcrumb-default-vertical-scroller .x-box-scroller-body-vertical {
+  margin-top: 24px; }
+
+/* line 156, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+.x-box-scroller-breadcrumb-default {
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6; }
+  /* line 165, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x-box-scroller-breadcrumb-default.x-box-scroller-hover {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    opacity: 0.8; }
+  /* line 171, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x-box-scroller-breadcrumb-default.x-box-scroller-pressed {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1; }
+  /* line 177, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x-box-scroller-breadcrumb-default.x-box-scroller-disabled {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    opacity: 0.25;
+    cursor: default; }
