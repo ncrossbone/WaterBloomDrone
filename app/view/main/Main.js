@@ -1,22 +1,19 @@
-/**
- * This class is the main view for the application. It is specified in app.js as the
- * "autoCreateViewport" property. That setting automatically applies the "viewport"
- * plugin to promote that instance of this class to the body element.
- *
- * TODO - Replace this content of this view to suite the needs of your application.
- */
 Ext.define('KRF_DEV.view.main.Main', {
     extend: 'Ext.container.Container',
     
-    // Controller, Model 등
     requires: [
-        'KRF_DEV.view.main.MainController',
-        'KRF_DEV.view.main.MainModel'
+		'KRF_DEV.view.main.MainModel',
+		'KRF_DEV.view.north.North',
+		'KRF_DEV.view.west.West',
+		'KRF_DEV.view.west.WestTabLayer',
+		'KEF_DEV.view.center.Center',
+        'KRF_DEV.view.common.Window',
+        'KRF_DEV.view.common.Grid',
+        'KRF_DEV.view.common.MapToolbar',
+        'KRF_DEV.view.map.CoreMap'
     ],
 
     xtype: 'app-main',
-    
-    controller: 'main',
     
     viewModel: {
         type: 'main'
@@ -29,17 +26,16 @@ Ext.define('KRF_DEV.view.main.Main', {
     items: [{
     	xtype: 'app-default-north',
     	region: 'north',
-    	id: 'north_container'
+    	id: 'north_container',
+    	weight: 10
     }, {
         xtype: 'app-default-west',
         region: 'west',
-        id: 'west_container'
-    },{
-        region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Tab 1',
-            html: '<h2>Content appropriate for the current navigation.</h2>'
-        }]
+        id: 'west_container',
+        weight: 10
+    }, {
+    	xtype: 'app-default-center',
+    	region: 'center',
+    	id: 'center_container'
     }]
 });

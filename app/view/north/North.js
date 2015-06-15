@@ -26,7 +26,7 @@ Ext.define('KRF_DEV.view.north.North', {
 		width: 180,
 		padding: '5 10 5 10',
 		bind: {
-			src: '{nier_logo}' // 좌측 상단 logo bind, MainModel data에 정의된놈 갔다쓰기 bind{...}
+			src: '{nier_logo}'
 		}
 	}, {
 		xtype: 'container',
@@ -36,18 +36,12 @@ Ext.define('KRF_DEV.view.north.North', {
 		}
 	}, {
 		xtype: 'container',
-		//layout: 'fit',
-		//layout: 'card',
 		layout: {
 			type: 'hbox',
-			align: 'middle', // hbox일때 vertical "begin", "middle", "end", "stretch", "stretchmax"
-			pack: 'end' // hbox일때 horizontal "start", "center", "end"
+			align: 'middle',
+			pack: 'end'
 		},
 		flex: 1,
-		defaults: {
-			//border: 0,
-			//style: 'background-color:white;background-image:none;'
-		},		
 		items: [{
 			xtype: 'button',
 			text: '지리정보',

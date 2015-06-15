@@ -8,7 +8,7 @@ Ext.define('KRF_DEV.view.north.NorthController', {
 
     alias: 'controller.north',
 
-    onButtonClick: function (button, e, f) {
+    onButtonClick: function (button, e) {
     	if(button.params.msgBox == 'alert')
     		Ext.Msg.alert(button.params.title, button.params.contents);
     	else if(button.params.msgBox == 'confirm')
@@ -17,7 +17,7 @@ Ext.define('KRF_DEV.view.north.NorthController', {
     onConfirm: function (choice){
     	console.log(choice);
     	if (choice === 'yes') {
-            //console.log('yes');
+            console.log(choice);
         }
     }
 });
