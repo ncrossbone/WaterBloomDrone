@@ -8,7 +8,8 @@ Ext.application({
 
     extend: 'KRF_DEV.Application',
     
-    autoCreateViewport: 'KRF_DEV.view.main.Main'
+    //autoCreateViewport: 'KRF_DEV.view.main.Main'
+    autoCreateViewport: 'KRF_DEV.view.main.waterbloom.Main'
 	
     //-------------------------------------------------------------------------
     // Most customizations should be made to KRF_DEV.Application. If you need to

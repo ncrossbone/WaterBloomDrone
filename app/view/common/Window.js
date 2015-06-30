@@ -25,10 +25,10 @@ function AddTab(parent, params){
 	if(ctl == null || ctl == undefined){
 		parent.add({
 			xtype: params.xtype,
-			store: params.store,
+			//store: params.store,
 			title: params.title,
 			id: params.id,
-			columns: params.columns,
+			//columns: params.columns,
 			height: params.height
 		});
 		
@@ -131,10 +131,10 @@ function CreateWindow(params){
 			header: false,
 			items: [{
 				xtype: params.xtype,
-				store: params.store,
+				//store: params.store,
 				title: params.title,
 				id: params.id,
-				columns: params.columns,
+				//columns: params.columns,
 				height: params.height
 			}]
 		}]

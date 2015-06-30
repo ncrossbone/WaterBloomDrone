@@ -19,7 +19,7 @@ Ext.define('KRF_DEV.view.common.MapToolbarController', {
 		
 		var deferred = me.map.setExtent(me.initialExtent, true);
 		deferred.then(function(value){
-			me.map.setLevel(1+6);
+			me.map.setLevel(1+9);
 		},function(error){
 		});
 	},

@@ -1,4 +1,4 @@
-Ext.define('KRF_DEV.view.map.DynamicLayerAdmin', {
+Ext.define('KRF_DEV.view.map.waterbloom.DynamicLayerAdmin', {
 	map:null, 
 	layer:null,
 	dynamicLayer1:null,
@@ -14,14 +14,6 @@ Ext.define('KRF_DEV.view.map.DynamicLayerAdmin', {
 		me.layer.visible = true;
 		me.map.addLayer(me.layer);
 		
-		/*
-		dynamicLayer2 = new esri.layers.ArcGISDynamicMapServiceLayer(KRF_DEV.app.arcServiceUrl + "/rest/services/Layer2/MapServer");
-		me.layer = dynamicLayer2;
-		me.layer.id = "DynamicLayer2"; // view.west.WestTabLayer의 각 탭 페이지 id와 일치시키자..
-		me.layer.visible = true;
-		me.map.addLayer(me.layer);
-		*/
-		
 		KRF_DEV.getApplication().addListener('dynamicLayerOnOff', me.dynamicLayerOnOffHandler, me); // 레이어 on/off 핸들러 추가
     },
     
@@ -33,7 +25,7 @@ Ext.define('KRF_DEV.view.map.DynamicLayerAdmin', {
     	//console.info(KRF_DEV.getApplication().coreMap.map);
     	
     	var activeLayer = me.map.getLayer(tabID);
-    	
+    	//console.info(activeLayer);
     	if(selectInfo.length==0){
     		activeLayer.setVisibleLayers([]);
     		return;

@@ -1,135 +1,68 @@
 [{
-	"id" : "p1",
-    "text": "수문지질도", 
+	"id" : "p11",
+    "text": "하천",
     "expanded": true,
     "checked": false,
     "children": [{
-		"id" : "1",
-        "text": "지질단면선",
+		"id" : "58",
+        "text": "국가하천",
         "leaf": true,
         "checked": false
     },{
-		"id" : "2",
-        "text": "수문지질경계",
+		"id" : "59",
+        "text": "지방하천",
         "leaf": true,
         "checked": false
     },{
-		"id" : "3",
-        "text": "대수층",
+		"id" : "60",
+        "text": "녹조영상",
+        "leaf": true,
+        "checked": true
+    }]
+},{
+	"id" : "p12",
+    "text": "수질영향권역",
+    "expanded": true,
+    "checked": false,
+    "children": [{
+		"id" : "49",
+        "text": "대권역",
         "leaf": true,
         "checked": false
     },{
-		"id" : "4",
-        "text": "지하수등수위선",
+		"id" : "50",
+        "text": "중권역_2013",
         "leaf": true,
         "checked": false
     },{
-		"id" : "5",
-        "text": "지하수유동체계규모",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "6",
-        "text": "유역경계",
+		"id" : "51",
+        "text": "소권역",
         "leaf": true,
         "checked": false
     }]
 },{
-	"id" : "p2",
-    "text": "지하수오염취약성도",
+	"id" : "p13",
+    "text": "행정구역(법정동)",
     "expanded": true,
     "checked": false,
     "children": [{
-		"id" : "8",
-        "text": "토양도",
+		"id" : "53",
+        "text": "법정동_시도",
         "leaf": true,
         "checked": false
     },{
-		"id" : "9",
-        "text": "잠재오염원",
+		"id" : "54",
+        "text": "법정동_시군구",
         "leaf": true,
         "checked": false
     },{
-		"id" : "10",
-        "text": "오염취약성",
-        "leaf": true,
-        "checked": false
-    }]
-},{
-	"id" : "p3",
-    "text": "토양특성",
-    "expanded": true,
-    "checked": false,
-    "children": [{
-		"id" : "12",
-        "text": "배수등급",
+		"id" : "55",
+        "text": "법정동_읍면동",
         "leaf": true,
         "checked": false
     },{
-		"id" : "13",
-        "text": "표토의침식등급",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "14",
-        "text": "경사",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "15",
-        "text": "심토의자갈함량",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "16",
-        "text": "심토의토성",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "17",
-        "text": "산림입지토양도",
-        "leaf": true,
-        "checked": false
-    }]
-},{
-	"id" : "p4",
-    "text": "배경도",
-    "expanded": true,
-    "checked": false,
-    "children": [{
-		"id" : "19",
-        "text": "행정경계도",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "20",
-        "text": "음영기복도",
-        "leaf": true,
-        "checked": false
-    }]
-},{
-	"id" : "p5",
-    "text": "공통",
-    "expanded": true,
-    "checked": false,
-    "children": [{
-		"id" : "22",
-        "text": "시도",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "23",
-        "text": "시군구",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "24",
-        "text": "동",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "25",
-        "text": "위성영상",
+		"id" : "56",
+        "text": "법정동_동리",
         "leaf": true,
         "checked": false
     }]

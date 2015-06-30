@@ -178,6 +178,10 @@ Ext.define('KRF_DEV.view.common.MapToolbar', {
 
 Ext.EventManager.onWindowResize(function(w, h){
     var ctl = Ext.getCmp('cmm-maptoolbar');
+    
+    if(ctl == undefined)
+    	return;
+    
     ctl.setX(Ext.getBody().getViewSize().width - toolbarBody.width - toolbarShow.width - 10, false);
     ctl.setY(60, false);
 });

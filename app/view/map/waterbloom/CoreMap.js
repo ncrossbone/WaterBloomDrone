@@ -1,19 +1,41 @@
-Ext.define('KRF_DEV.view.map.CoreMap', {
+// khLee Extent 조회
+function showExtent(extent) {
+	var s = "";
+	s = "XMin: "+ extent.xmin.toFixed(2) + " "
+	   +"YMin: " + extent.ymin.toFixed(2) + " "
+	   +"XMax: " + extent.xmax.toFixed(2) + " "
+	   +"YMax: " + extent.ymax.toFixed(2);
+	//alert(s);
+	/* 아래 두가지 중 한가지 택 일*/
+	//var me = KRF_DEV.getApplication().coreMap;
+	var me = Ext.getCmp('_mapDiv_');
+	
+	if((extent.xmin < me.initialExtent.xmin - 1000 && extent.ymin < me.initialExtent.ymin - 1000) || (extent.xmax > me.initialExtent.xmax + 1000 && extent.ymax > me.initialExtent.ymax + 1000)){
+		var deferred = me.map.setExtent(me.initialExtent, true);
+		deferred.then(function(value){
+			me.map.setLevel(1+9);
+		},function(error){
+		});
+		//return;
+	}
+	//return;
+}
+
+Ext.define('KRF_DEV.view.map.waterbloom.CoreMap', {
 	extend: 'Ext.Component',
 	
-	xtype: 'app-map-coreMap',
+	xtype: 'app-map-waterbloom-coreMap',
 	
 	id: '_mapDiv_',
 	
 	requires: [
-		'KRF_DEV.view.map.DynamicLayerAdmin'
+		'KRF_DEV.view.map.waterbloom.DynamicLayerAdmin'
 	],
 	
 	map:null,
 	dynamicLayerAdmin:null,
 	fullExtent:null,
 	initialExtent:null,
-	layerInfo: null,
 	
 	initComponent: function() {
 		this.on('render', this.mapRendered, this);
@@ -30,7 +52,7 @@ Ext.define('KRF_DEV.view.map.CoreMap', {
     	 		logo:false,
     	 		slider: true,
     	 		showAttribution: false,
-    	 		sliderPosition: "bottom-right",
+    	 		sliderPosition: "top-right",
     	 		sliderStyle: "large",
     	 		zoom: 5,
     	 		autoResize: true
@@ -38,18 +60,30 @@ Ext.define('KRF_DEV.view.map.CoreMap', {
             
         	//me.map.resize();
         	me.baseMapInit();
-        	me.map.setLevel(1+6);
+        	me.map.setLevel(1+9);
         	window.clearInterval(timerId);
-        	me.dynamicLayerAdmin = Ext.create('KRF_DEV.view.map.DynamicLayerAdmin', me.map);
+        	me.dynamicLayerAdmin = Ext.create('KRF_DEV.view.map.waterbloom.DynamicLayerAdmin', me.map);
         	
-        	//me.geometryService = new esri.tasks.GeometryService(KRF_DEV.app.arcServiceUrl + "/rest/services/Utilities/Geometry/GeometryServer");
-        	me.searchLayerAdmin = Ext.create('KRF_DEV.view.map.SearchLayerAdmin', me.map, me.geometryService);
-        	
-        	//dojo.require("esri.dijit.Scalebar");
-        	//var scalebar = new esri.dijit.Scalebar({map:me.map, attachTo:"top-right"});
+        	require(["esri/dijit/Scalebar"], function(Scalebar){
+        		var scalebar = new Scalebar({
+            		map: me.map,
+            		// "dual" displays both miles and kilmometers
+                    // "english" is the default, which displays miles
+                    // use "metric" for kilometers
+            		scalebarUnit: "metric"
+            	});
+        		
+        		// khLee Extent 확인
+        		//dojo.connect(me.map, "onExtentChange", showExtent);
+        	});
         	
         	// 전역 변수 설정 KRF_DEV.getApplication().coreMap
         	KRF_DEV.getApplication().coreMap = me;
+        	
+        	// 레이어 키기 (녹조영상)
+        	var activeLayer = me.map.getLayer("DynamicLayer1");
+        	activeLayer.setVisibleLayers([60]); // 녹조영상(60)
+        	
 		}, 1);
     },
     
@@ -96,12 +130,22 @@ Ext.define('KRF_DEV.view.map.CoreMap', {
 		        	  wkid: 102100
 		          }
 		      });
-		      
+		      /*
 		      me.initialExtent = this.initialExtent = new esri.geometry.Extent({
 		    	  xmin: 12728905.446270483,
 		    	  ymin: 3409091.461517964,
 		    	  xmax: 15766818.698435722,
 		    	  ymax: 5441704.9176768325,
+		          spatialReference: {
+		        	  wkid: 102100
+		          }
+		      });
+		      */
+		      me.initialExtent = this.initialExtent = new esri.geometry.Extent({
+		    	  xmin: 14195961.33,
+		    	  ymin: 4205183.11,
+		    	  xmax: 14442852.93,
+		    	  ymax: 4347203.11,
 		          spatialReference: {
 		        	  wkid: 102100
 		          }

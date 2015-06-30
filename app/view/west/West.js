@@ -31,7 +31,7 @@ Ext.define('KRF_DEV.view.west.West', {
     	}, {
     		text: '위치검색'
     	}, {
-    		text: '레이어'
+    		text: '검색조건'
     	}]
     },
 
@@ -43,41 +43,8 @@ Ext.define('KRF_DEV.view.west.West', {
     items: [{
         title: '주제도',
         collapsible: true,
-        layout: {
-        	type: 'accordion',
-        	fill: true,
-        	titleCollapse: true,
-        	multi: false,
-        	animate: true
-        },
         items: [{
-        	title: '하천망분석도',
-        	html: '하천망 분석도 Contents',
-        	collapsed: true
-        }, {
-        	title: '측정지점',
-        	html: '측정지점 Contents',
-        	collapsed: true
-        }, {
-        	title: '환경기초시설',
-        	html: '환경기초시설 Contents',
-        	collapsed: true
-        }, {
-        	title: '주제도',
-        	html: '주제도 Contents',
-        	collapsed: true
-        }, {
-        	title: '유역도',
-        	html: '유역도 Contents',
-        	collapsed: true
-        }, {
-        	title: '행정구역도',
-        	html: '행정구역도 Contents',
-        	collapsed: true
-        }, {
-        	title: '하천도',
-        	html: '하천도 Contents',
-        	collapsed: true
+        	xtype: 'app-westTabLayer'
         }]
     }, {
         title: '위치검색',
@@ -85,35 +52,9 @@ Ext.define('KRF_DEV.view.west.West', {
         	xtype: 'button',
 			text: '그리드 탭',
 			params: {
-				xtype: 'app-common-grid',
+				xtype: 'app-common-grid_test',
 				id: 'grid-tab-1',
 				title: '위젯그리드탭테스트',
-				store: 'KRF_DEV.store.dev_test.GridStoreTest',
-				columns: [{ text      : 'Name2',  dataIndex : 'name', filter: {type: 'string', itemDefaults: {emptyText: 'Search for...'}} },
-				          { text      : 'Email', dataIndex : 'email', flex : 1 },
-				          { text      : 'Phone', dataIndex : 'phone' },
-				          {
-				        	  text     : 'Progress',
-					          xtype    : 'widgetcolumn',
-					          width    : 120,
-					          dataIndex: 'progress',
-					          widget: {
-					              xtype: 'progressbarwidget',
-					              textTpl: [
-					                  '{percent:number("0")}% done'
-					              ]
-					          }
-				          },
-				          {
-				              text: 'Line',
-				              width: 100,
-				              dataIndex: 'chartvalues',
-				              xtype: 'widgetcolumn',
-				              widget: {
-				                  xtype: 'sparklineline',
-				                  tipTpl: 'Value: {y:number("0.00")}'
-				              }
-				          }],
 				height: '100%'
 			},
 			handler: 'onClickButton'
@@ -124,14 +65,45 @@ Ext.define('KRF_DEV.view.west.West', {
 			handler: 'onClickButton'
         }, {
         	xtype: 'button',
-			text: '그리드 탭',
-			params: {xtype: 'app-common-grid', id: 'grid-tab-2', title: '그리드2테스트'},
+			text: '차트 탭',
+			params: {
+				xtype: 'app-common-grid',
+				id: 'chart-tab-1',
+				title: '차트테스트'
+			},
 			handler: 'onClickButton'
         }]
     }, {
-        title: '레이어',
+        title: '검색조건',
+        collapsible: true,
+        layout: {
+        	type: 'accordion',
+        	fill: true,
+        	titleCollapse: true,
+        	multi: false,
+        	animate: true
+        },
         items: [{
-        	xtype: 'app-westTabLayer'
+        	title: '영향권역',
+        	html: '영향권역 Contents',
+        	collapsed: true
+        }, {
+        	title: '권역검색결과',
+        	html: '권역검색결과 Contents',
+        	collapsed: true
+        }, {
+        	title: '사용자검색',
+        	html: '사용자검색 Contents',
+        	collapsed: true
+        }, {
+        	title: '검색결과리스트',
+        	html: '검색결과리스트 Contents',
+        	collapsed: true
+        }, {
+        	title: '행정구역검색',
+        	//html: '행정구역검색 Contents',
+        	xtype: 'app-westTabSearch_ADM',
+        	collapsed: true
         }]
     }]
 });
