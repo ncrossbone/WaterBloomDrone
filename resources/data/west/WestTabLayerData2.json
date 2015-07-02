@@ -1,69 +1,51 @@
 [{
-	"id" : "p11",
-    "text": "하천",
+	"id" : "0",
+    "text": "낙동강 대교",
     "expanded": true,
     "checked": false,
-    "children": [{
-		"id" : "58",
-        "text": "국가하천",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "59",
-        "text": "지방하천",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "60",
-        "text": "녹조영상",
-        "leaf": true,
-        "checked": true
-    }]
+    "leaf": true
 },{
-	"id" : "p12",
-    "text": "수질영향권역",
+	"id" : "1",
+    "text": "측정지점",
     "expanded": true,
     "checked": false,
-    "children": [{
-		"id" : "49",
-        "text": "대권역",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "50",
-        "text": "중권역_2013",
-        "leaf": true,
-        "checked": false
-    },{
-		"id" : "51",
-        "text": "소권역",
-        "leaf": true,
-        "checked": false
-    }]
+    "leaf": true
 },{
-	"id" : "p13",
+	"id" : "2",
+    "text": "보대표지점",
+    "expanded": true,
+    "checked": false,
+    "leaf": true
+},{
+	"id" : "3",
     "text": "행정구역(법정동)",
     "expanded": true,
     "checked": false,
     "children": [{
-		"id" : "53",
+		"id" : "4",
         "text": "법정동_시도",
         "leaf": true,
         "checked": false
     },{
-		"id" : "54",
+		"id" : "5",
         "text": "법정동_시군구",
         "leaf": true,
         "checked": false
     },{
-		"id" : "55",
+		"id" : "6",
         "text": "법정동_읍면동",
         "leaf": true,
         "checked": false
     },{
-		"id" : "56",
+		"id" : "7",
         "text": "법정동_동리",
         "leaf": true,
         "checked": false
     }]
+},{
+	"id" : "8",
+    "text": "녹조영상",
+    "expanded": true,
+    "checked": false,
+    "leaf": true
 }]

@@ -13,7 +13,7 @@ Ext.define('KRF_DEV.view.center.waterbloom.SelectDateController', {
 		
 		var deferred = me.map.setExtent(me.initialExtent, true);
 		deferred.then(function(value){
-			me.map.setLevel(1+9);
+			me.map.setLevel(9);
 		},function(error){
 		});
 	}

@@ -23,15 +23,11 @@ Ext.define('KRF_DEV.view.main.waterbloom.Main', {
         type: 'border'
     },
 
-    items: [{
-    	xtype: 'app-default-waterbloom-north',
-    	region: 'north',
-    	id: 'north_container'
-    }, {
+    items: [/*{
         xtype: 'app-default-waterbloom-west',
         region: 'west',
         id: 'west_container'
-    }, {
+    }, */{
     	xtype: 'app-default-waterbloom-center',
     	region: 'center',
     	id: 'center_container',
@@ -42,6 +38,11 @@ Ext.define('KRF_DEV.view.main.waterbloom.Main', {
     	this.callParent();
     	//console.info(this.items);
     	Ext.create('KRF_DEV.view.center.waterbloom.SelectDate', {renderTo: Ext.getBody()});
-    	//Ext.create('KRF_DEV.view.common.MapToolbar');
+    	Ext.create('KRF_DEV.view.center.waterbloom.LayerButton', {renderTo: Ext.getBody()});
+    	Ext.create('KRF_DEV.view.center.waterbloom.PopupManual', {renderTo: Ext.getBody()});
+    },
+    
+    afterrender: function(){
+    	alert("dd");
     }
 });

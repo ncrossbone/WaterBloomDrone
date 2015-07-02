@@ -8,15 +8,21 @@ Ext.define('KRF_DEV.view.map.waterbloom.DynamicLayerAdmin', {
         var me = this;
         me.map = map;
         
-        dynamicLayer1 = new esri.layers.ArcGISDynamicMapServiceLayer(KRF_DEV.app.arcServiceUrl + "/rest/services/reach/MapServer");
+        dynamicLayer1 = new esri.layers.ArcGISDynamicMapServiceLayer(KRF_DEV.app.arcServiceUrl + "/rest/services/drone/MapServer");
         me.layer = dynamicLayer1;
 		me.layer.id = "DynamicLayer1"; // view.west.WestTabLayer의 각 탭 페이지 id와 일치시키자..
 		me.layer.visible = true;
 		me.map.addLayer(me.layer);
 		
-		KRF_DEV.getApplication().addListener('dynamicLayerOnOff', me.dynamicLayerOnOffHandler, me); // 레이어 on/off 핸들러 추가
+		me.layer.setVisibility(true);
+		me.layer.setVisibleLayers([2, 8]);
+		btn1Visible = true;
+		btn4Visible = true;
+		
+		//KRF_DEV.getApplication().addListener('dynamicLayerOnOff', me.dynamicLayerOnOffHandler, me); // 레이어 on/off 핸들러 추가
     },
     
+    /*
     // 레이어 on/off 핸들러 정의
     dynamicLayerOnOffHandler: function(selectInfo, tabID){
     	//var me = this; // 핸들러 추가 시 보낸 파라메터값으로 사용가능
@@ -30,7 +36,9 @@ Ext.define('KRF_DEV.view.map.waterbloom.DynamicLayerAdmin', {
     		activeLayer.setVisibleLayers([]);
     		return;
     	}
+    	
     	var layers = [];
+    	
     	Ext.each(selectInfo, function(selectObj, index, eObjs) {
     		if(!isNaN(selectObj.data.id)){
     			layers.push(selectObj.data.id);
@@ -40,4 +48,5 @@ Ext.define('KRF_DEV.view.map.waterbloom.DynamicLayerAdmin', {
 			}
 		});
     }
+    */
 });

@@ -1,24 +1,34 @@
 // khLee Extent 조회
 function showExtent(extent) {
+	//extent.xmin.toFixed(2)
 	var s = "";
-	s = "XMin: "+ extent.xmin.toFixed(2) + " "
-	   +"YMin: " + extent.ymin.toFixed(2) + " "
-	   +"XMax: " + extent.xmax.toFixed(2) + " "
-	   +"YMax: " + extent.ymax.toFixed(2);
-	//alert(s);
+	s = "XMin: "+ extent.xmin + " "
+	   +"YMin: " + extent.ymin + " "
+	   +"XMax: " + extent.xmax + " "
+	   +"YMax: " + extent.ymax;
+	
+	alert(s);
+	//return;
 	/* 아래 두가지 중 한가지 택 일*/
 	//var me = KRF_DEV.getApplication().coreMap;
 	var me = Ext.getCmp('_mapDiv_');
 	
-	if((extent.xmin < me.initialExtent.xmin - 1000 && extent.ymin < me.initialExtent.ymin - 1000) || (extent.xmax > me.initialExtent.xmax + 1000 && extent.ymax > me.initialExtent.ymax + 1000)){
-		var deferred = me.map.setExtent(me.initialExtent, true);
+	if(extent.xmin < me.initialExtent.xmin){
+		alert("a");
+		var deferred = me.map.setExtent(me.preExtent, true);
 		deferred.then(function(value){
-			me.map.setLevel(1+9);
+			//me.map.setLevel(10);
 		},function(error){
+			alert(error);
 		});
-		//return;
 	}
-	//return;
+	else{
+		alert("b");
+		me.preExtent.xmin = extent.xmin;
+		me.preExtent.ymin = extent.ymin;
+		me.preExtent.xmax = extent.xmax;
+		me.preExtent.ymax = extent.ymax;
+	}
 }
 
 Ext.define('KRF_DEV.view.map.waterbloom.CoreMap', {
@@ -36,6 +46,7 @@ Ext.define('KRF_DEV.view.map.waterbloom.CoreMap', {
 	dynamicLayerAdmin:null,
 	fullExtent:null,
 	initialExtent:null,
+	preExtent: null,
 	
 	initComponent: function() {
 		this.on('render', this.mapRendered, this);
@@ -60,7 +71,7 @@ Ext.define('KRF_DEV.view.map.waterbloom.CoreMap', {
             
         	//me.map.resize();
         	me.baseMapInit();
-        	me.map.setLevel(1+9);
+        	me.map.setLevel(9);
         	window.clearInterval(timerId);
         	me.dynamicLayerAdmin = Ext.create('KRF_DEV.view.map.waterbloom.DynamicLayerAdmin', me.map);
         	
@@ -73,7 +84,7 @@ Ext.define('KRF_DEV.view.map.waterbloom.CoreMap', {
             		scalebarUnit: "metric"
             	});
         		
-        		// khLee Extent 확인
+        		// khLee Extent Change Event
         		//dojo.connect(me.map, "onExtentChange", showExtent);
         	});
         	
@@ -81,8 +92,9 @@ Ext.define('KRF_DEV.view.map.waterbloom.CoreMap', {
         	KRF_DEV.getApplication().coreMap = me;
         	
         	// 레이어 키기 (녹조영상)
-        	var activeLayer = me.map.getLayer("DynamicLayer1");
-        	activeLayer.setVisibleLayers([60]); // 녹조영상(60)
+        	//var activeLayer = me.map.getLayer("DynamicLayer1");
+        	//activeLayer.setVisibility(false);
+        	//activeLayer.setVisibleLayers([8]); // 녹조영상(60)
         	
 		}, 1);
     },
@@ -141,11 +153,22 @@ Ext.define('KRF_DEV.view.map.waterbloom.CoreMap', {
 		          }
 		      });
 		      */
+		      
+		      this.preExtent = new esri.geometry.Extent({
+		    	  xmin: 14163475.591159808,
+		    	  ymin: 4161461.1324308785,
+		    	  xmax: 14356096.90243836,
+		    	  ymax: 4381905.522005221,
+		          spatialReference: {
+		        	  wkid: 102100
+		          }
+		      });
+		      
 		      me.initialExtent = this.initialExtent = new esri.geometry.Extent({
-		    	  xmin: 14195961.33,
-		    	  ymin: 4205183.11,
-		    	  xmax: 14442852.93,
-		    	  ymax: 4347203.11,
+		    	  xmin: 14163475.591159808,
+		    	  ymin: 4161461.1324308785,
+		    	  xmax: 14356096.90243836,
+		    	  ymax: 4381905.522005221,
 		          spatialReference: {
 		        	  wkid: 102100
 		          }

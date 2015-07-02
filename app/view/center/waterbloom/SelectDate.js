@@ -22,7 +22,7 @@ Ext.define('KRF_DEV.view.center.waterbloom.SelectDate', {
 	items: [{
 		xtype: 'image',
 		//text: '테스트',
-		src: '/resources/images/button/refresh.jpg',
+		src: './resources/images/button/reset.png',
 		style: 'cursor:pointer;',
 		listeners: {
 	        el: {
@@ -32,18 +32,20 @@ Ext.define('KRF_DEV.view.center.waterbloom.SelectDate', {
 		width: 20,
 		height: 20
 	}, {
-		xtype: 'datefield',
+		xtype: 'combo',
 		//padding: 5,
 		//fieldLabel: '촬영일  ',
 		//labelWidth: 50,
 		value: '2015-06-23',
+		//displayField: 'name',
+		//valueField: 'id',
 		format: 'Y-m-d',
 		width: 128
 	}],
 	
 	initComponent: function(){
-		this.x = Ext.getBody().getViewSize().width - 130 - 50;
-		this.y = 100;
+		this.x = Ext.getBody().getViewSize().width - 130 - 20;
+		this.y = 0;
 		this.callParent();
 	}
 	
@@ -55,6 +57,6 @@ Ext.EventManager.onWindowResize(function(w, h){
     if(ctl == undefined)
     	return;
 
-    ctl.setX(Ext.getBody().getViewSize().width - 130 - 50, false);
-    ctl.setY(100, false);
+    ctl.setX(Ext.getBody().getViewSize().width - 130 - 20, false);
+    ctl.setY(0, false);
 });
