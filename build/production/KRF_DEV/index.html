@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <title>KRF_DEV</title>
+    
+	<link rel="stylesheet" href="http://js.arcgis.com/3.13/esri/css/esri.css">
+	<link rel="stylesheet" href="http://js.arcgis.com/3.13/dijit/themes/claro/claro.css">
+    
+    <script type="text/javascript" src="http://js.arcgis.com/3.13/"></script>
 
     <!-- The line below must be kept intact for Sencha Cmd to build your application -->
     <script type="text/javascript">var Ext=Ext||{};Ext.manifest=Ext.manifest||"app.json";Ext=Ext||{};
@@ -37,7 +42,23 @@ d.init();return d}(function(){});Ext.globalEval=Ext.globalEval||(this.execScript
 Ext.Microloader=Ext.Microloader||function(){var j=Ext.Boot,k=[],r=!1,h={detectPlatformTags:function(){Ext.beforeLoad&&Ext.beforeLoad(Ext.platformTags)},initPlatformTags:function(){h.detectPlatformTags()},init:function(){h.initPlatformTags();var f=Ext._beforereadyhandler;Ext._beforereadyhandler=function(){Ext.Boot!==j&&(Ext.apply(Ext.Boot,j),Ext.Boot=j);f&&f()}},run:function(){h.init();var f=Ext.manifest;if("string"===typeof f){var k=f.indexOf(".json")===f.length-5?f:f+".json";j.fetch(k,function(j){f=
 Ext.manifest=JSON.parse(j.content);h.load(f)})}else h.load(f)},load:function(f){var k=f.loadOrder,v=k?j.createLoadOrderMap(k):null,u=[],q=f.js||[],s=f.css||[],n,p=function(){r=!0;h.notify()};k&&(f.loadOrderMap=v);for(var d=s.concat(q),s=d.length,q=0;q<s;q++)f=d[q],n=!0,f.platform&&!j.filterPlatform(f.platform)&&(n=!1),n&&u.push(f.path);j.load({url:u,loadOrder:k,loadOrderMap:v,sequential:!0,success:p,failure:p})},onMicroloaderReady:function(f){r?f():k.push(f)},notify:function(){for(var f;f=k.shift();)f()}};
 return h}();Ext.manifest=Ext.manifest||"bootstrap";Ext.Microloader.run();</script>
+    <style type="text/css">
+.x-btn-icon .refreshbutton {
+    background-image: url(/resources/images/button/refresh1.jpeg) !important;
+    height:32px; width:32px;
+}
+</style>
+    
+    <style>
+      .esriLargeSliderVertical {
+        height: 300px;
+      }
+      .esriLargeSliderTR {
+        right: 10px;
+        top: 30px;
+      }
+    </style>
 
 </head>
-<body></body>
+<body class="claro"></body>
 </html>
