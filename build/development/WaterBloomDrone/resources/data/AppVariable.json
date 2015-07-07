@@ -1,0 +1,13 @@
+[{
+	"MapserviceUrl1" : "http://cetech.iptime.org:6080/arcgis/rest/services/drone/MapServer",
+	"MapserviceUrl2" : "http://cetech.iptime.org:6080/arcgis/rest/services/drone/MapServer",
+	"MapserviceUrl3" : "http://fireftp.iptime.org:6080/arcgis/rest/services/drone/MapServer",
+}, {
+	"layerId" : "8",
+	"layerName" : "녹조영상_150623",
+	"layerDate" : "2015-06-23"
+}, {
+	"layerId" : "9",
+	"layerName" : "녹조영상_150630",
+	"layerDate" : "2015-06-30"
+}]
