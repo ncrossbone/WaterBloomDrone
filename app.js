@@ -4,15 +4,14 @@
  * Sencha Cmd when upgrading.
  */
 Ext.application({
-    name: 'KRF_DEV',
+    name: 'WaterBloomDrone',
 
-    extend: 'KRF_DEV.Application',
+    extend: 'WaterBloomDrone.Application',
     
-    //autoCreateViewport: 'KRF_DEV.view.main.Main'
-    autoCreateViewport: 'KRF_DEV.view.main.waterbloom.Main'
+    autoCreateViewport: 'WaterBloomDrone.view.main.Main'
 	
     //-------------------------------------------------------------------------
-    // Most customizations should be made to KRF_DEV.Application. If you need to
+    // Most customizations should be made to WaterBloomDrone.Application. If you need to
     // customize this file, doing so below this section reduces the likelihood
     // of merge conflicts when upgrading to new versions of Sencha Cmd.
     //-------------------------------------------------------------------------

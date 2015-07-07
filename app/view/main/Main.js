@@ -1,41 +1,38 @@
-Ext.define('KRF_DEV.view.main.Main', {
+Ext.define('WaterBloomDrone.view.main.Main', {
     extend: 'Ext.container.Container',
     
     requires: [
-		'KRF_DEV.view.main.MainModel',
-		'KRF_DEV.view.north.North',
-		'KRF_DEV.view.west.West',
-		'KRF_DEV.view.west.WestTabLayer',
-		'KEF_DEV.view.center.Center',
-        'KRF_DEV.view.common.Window',
-        'KRF_DEV.view.common.Grid',
-        'KRF_DEV.view.common.MapToolbar',
-        'KRF_DEV.view.map.CoreMap'
+        'WaterBloomDrone.view.center.Center',
+        'WaterBloomDrone.view.map.CoreMap',
+		'WaterBloomDrone.view.center.SelectDate',
+		'WaterBloomDrone.view.center.SelectDateController',
+		'WaterBloomDrone.view.center.LayerButtonHeader',
+		'WaterBloomDrone.view.center.LayerButton',
+		'WaterBloomDrone.view.center.PopupManual'
     ],
 
     xtype: 'app-main',
-    
-    viewModel: {
-        type: 'main'
-    },
 
     layout: {
         type: 'border'
     },
 
     items: [{
-    	xtype: 'app-default-north',
-    	region: 'north',
-    	id: 'north_container',
-    	weight: 10
-    }, {
-        xtype: 'app-default-west',
-        region: 'west',
-        id: 'west_container',
-        weight: 10
-    }, {
     	xtype: 'app-default-center',
     	region: 'center',
-    	id: 'center_container'
-    }]
+    	id: 'app_container'
+    }],
+    
+    initComponent: function(){
+    	
+    	Ext.create('WaterBloomDrone.view.center.SelectDate', {renderTo: Ext.getBody()});
+    	Ext.create('WaterBloomDrone.view.center.LayerButtonHeader', {renderTo: Ext.getBody()});
+    	Ext.create('WaterBloomDrone.view.center.LayerButton', {renderTo: Ext.getBody()});
+    	Ext.create('WaterBloomDrone.view.center.PopupManual', {renderTo: Ext.getBody()});
+    	
+    	//mapServiceUrl = "http://fireftp.iptime.org:6080/arcgis/rest/services/drone/MapServer";
+    	//console.info(store);
+    	
+    	this.callParent();
+    }
 });

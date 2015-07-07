@@ -1,4 +1,4 @@
-Ext.define('KEF_DEV.view.center.Center', {
+Ext.define('WaterBloomDrone.view.center.Center', {
 	
 	extend: 'Ext.container.Container',
 	
@@ -8,11 +8,6 @@ Ext.define('KEF_DEV.view.center.Center', {
 		xtype: 'app-map-coreMap',
 		width: '100%',
 		height: '100%'
-	}],
-	
-	initComponent: function(){
-		Ext.create('KRF_DEV.view.common.MapToolbar');
-		this.callParent();
-	}
+	}]
 	
 });

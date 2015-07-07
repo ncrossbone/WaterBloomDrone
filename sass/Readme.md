@@ -16,19 +16,19 @@ mixins, etc.).
 
 This folder contains Sass files defining CSS rules corresponding to classes
 included in the application's JavaScript code build. By default, files in this 
-folder are mapped to the application's root namespace, 'KRF_DEV'. This is set in
+folder are mapped to the application's root namespace, 'WaterBloomDrone'. This is set in
 `"app.json"`:
 
     "sass": {
-        "namespace": "KRF_DEV"
+        "namespace": "WaterBloomDrone"
     }
 
 ### ./sass/var
 
 This folder contains Sass files defining Sass variables corresponding to classes
 included in the application's JavaScript code build. By default, files in this 
-folder are mapped to the application's root namespace, 'KRF_DEV' in the same way
-as `"KRF_DEV/sass/src"`.
+folder are mapped to the application's root namespace, 'WaterBloomDrone' in the same way
+as `"WaterBloomDrone/sass/src"`.
 
 ## Slicing
 

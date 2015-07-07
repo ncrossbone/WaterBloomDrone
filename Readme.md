@@ -1,4 +1,4 @@
-# KRF_DEV
+# WaterBloomDrone
 
 This folder is primarily a container for the top-level pieces of the application.
 While you can remove some files and folders that this application does not use,
@@ -32,21 +32,21 @@ process.
 
 # Other Folders
 
-## KRF_DEV/app
+## WaterBloomDrone/app
 
 This folder contains the JavaScript files for the application.
 
-## KRF_DEV/resources
+## WaterBloomDrone/resources
 
 This folder contains static resources (typically an `"images"` folder as well).
 
-## KRF_DEV/overrides
+## WaterBloomDrone/overrides
 
 This folder contains override classes. All overrides in this folder will be 
 automatically included in application builds if the target class of the override
 is loaded.
 
-## KRF_DEV/sass
+## WaterBloomDrone/sass
 
-This folder contains the styling for the application's views. See KRF_DEV/sass/Readme.md
+This folder contains the styling for the application's views. See WaterBloomDrone/sass/Readme.md
 for details.

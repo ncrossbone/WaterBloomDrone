@@ -2,7 +2,7 @@
     /**
      * The application's namespace.
      */
-    "name": "KRF_DEV",
+    "name": "WaterBloomDrone",
     
     /**
      * The version of the application.
@@ -53,13 +53,13 @@
     "sass": {
         /**
          * The root namespace to use when mapping *.scss files to classes in the
-         * sass/src and sass/var directories. For example, "KRF_DEV.view.Foo" would
-         * map to "sass/src/view/Foo.scss". If we changed this to "KRF_DEV.view" then
+         * sass/src and sass/var directories. For example, "WaterBloomDrone.view.Foo" would
+         * map to "sass/src/view/Foo.scss". If we changed this to "WaterBloomDrone.view" then
          * it would map to "sass/src/Foo.scss". To style classes outside the app's
          * root namespace, change this to "". Doing so would change the mapping of
-         * "KRF_DEV.view.Foo" to "sass/src/KRF_DEV/view/Foo.scss".
+         * "WaterBloomDrone.view.Foo" to "sass/src/WaterBloomDrone/view/Foo.scss".
          */
-        "namespace": "KRF_DEV"
+        "namespace": "WaterBloomDrone"
     },
 
     /**
