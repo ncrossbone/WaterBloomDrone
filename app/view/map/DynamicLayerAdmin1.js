@@ -1,4 +1,4 @@
-Ext.define('WaterBloomDrone.view.map.DynamicLayerAdmin', {
+Ext.define('WaterBloomDrone.view.map.DynamicLayerAdmin1', {
 	map:null, 
 	layer:null,
 	dynamicLayer1:null,
@@ -12,7 +12,7 @@ Ext.define('WaterBloomDrone.view.map.DynamicLayerAdmin', {
         var store = Ext.create('WaterBloomDrone.store.AppVariable');
     	store.load(function(){
     		
-    		var visibleLayers = [2];
+    		var visibleLayers = [4];
     		
     		this.each(function(record, cnt, totCnt){
     			//console.info(totCnt);
@@ -26,7 +26,7 @@ Ext.define('WaterBloomDrone.view.map.DynamicLayerAdmin', {
     			else{
     				var layerDate = record.get('layerDate');
     				var layerId = record.get('layerId');
-    				var ctlDate = Ext.getCmp('cboDate').value;
+    				var ctlDate = Ext.getCmp('cboDate1').value;
     				//console.info(layerDate);
     				if(layerDate == ctlDate)
     					visibleLayers.push(layerId);
@@ -35,6 +35,7 @@ Ext.define('WaterBloomDrone.view.map.DynamicLayerAdmin', {
     			if(totCnt == cnt + 1){
     				//console.info(visibleLayers);
 	    			me.layer.setVisibility(true);
+    				//me.layer.setVisibility(false);
 	    			me.layer.setVisibleLayers(visibleLayers);
 	    			btn1Visible = true;
 	    			btn4Visible = true;

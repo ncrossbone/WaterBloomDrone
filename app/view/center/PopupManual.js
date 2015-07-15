@@ -23,7 +23,15 @@ Ext.define('WaterBloomDrone.view.center.PopupManual', {
 		src: './resources/images/button/Untitled-4.png',
 		style: 'border:0px;',
 		height: 549,
-		width: 285
+		width: 285,
+		listeners: {
+	        el: {
+	        	click: function(){
+	            	var ctl = Ext.getCmp('PopupManualPanel');
+	            	ctl.hide();
+	            }
+	        }
+	    }
 	}, {
 		xtype: 'image',
 		src: './resources/images/button/close.png',

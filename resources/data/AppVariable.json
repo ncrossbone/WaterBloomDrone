@@ -1,13 +1,21 @@
 [{
-	"MapserviceUrl1" : "http://cetech.iptime.org:6080/arcgis/rest/services/drone/MapServer",
+	"MapserviceUrl1" : "http://112.217.167.123:6080/arcgis/rest/services/drone/MapServer",
 	"MapserviceUrl2" : "http://cetech.iptime.org:6080/arcgis/rest/services/drone/MapServer",
 	"MapserviceUrl3" : "http://fireftp.iptime.org:6080/arcgis/rest/services/drone/MapServer",
+	"MapserviceUrl3" : "http://112.217.167.123:6080/arcgis/rest/services/drone/MapServer"
 }, {
-	"layerId" : "8",
-	"layerName" : "녹조영상_150623",
+	"layerId" : "10",
+	"layerArea": "낙동강",
+	"layerName" : "항공영상_150623_낙동강",
 	"layerDate" : "2015-06-23"
 }, {
-	"layerId" : "9",
-	"layerName" : "녹조영상_150630",
-	"layerDate" : "2015-06-30"
+	"layerId" : "11",
+	"layerArea": "북한강",
+	"layerName" : "항공영상_150703_북한강",
+	"layerDate" : "2015-07-03"
+}, {
+	"layerId" : "12",
+	"layerArea": "낙동강",
+	"layerName" : "항공영상_150704_낙동강",
+	"layerDate" : "2015-07-04"
 }]

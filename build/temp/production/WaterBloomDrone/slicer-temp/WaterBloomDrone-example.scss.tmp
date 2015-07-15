@@ -900,13 +900,23 @@ $include-ext-window-window: true;
 $include-waterbloomdrone-application: true;
 $include-waterbloomdrone-store-appvariable: true;
 $include-waterbloomdrone-view-center-center: true;
+$include-waterbloomdrone-view-center-datecombotab1: true;
+$include-waterbloomdrone-view-center-datecombotab1controller: true;
+$include-waterbloomdrone-view-center-datecombotab2: true;
+$include-waterbloomdrone-view-center-datecombotab2controller: true;
 $include-waterbloomdrone-view-center-layerbutton: true;
 $include-waterbloomdrone-view-center-layerbuttonheader: true;
+$include-waterbloomdrone-view-center-layertoolbar: true;
+$include-waterbloomdrone-view-center-layertoolbarcontroller: true;
 $include-waterbloomdrone-view-center-popupmanual: true;
-$include-waterbloomdrone-view-center-selectdate: true;
+$include-waterbloomdrone-view-main-login: true;
+$include-waterbloomdrone-view-main-loginback: true;
 $include-waterbloomdrone-view-main-main: true;
-$include-waterbloomdrone-view-map-coremap: true;
-$include-waterbloomdrone-view-map-dynamiclayeradmin: true;
+$include-waterbloomdrone-view-map-coremaptab1: true;
+$include-waterbloomdrone-view-map-coremaptab2: true;
+$include-waterbloomdrone-view-map-dynamiclayeradmin1: true;
+$include-waterbloomdrone-view-map-dynamiclayeradmin2: true;
+$include-waterbloomdrone-view-north-north: true;
 /* including package ext-theme-base */
 @import '../../../../../ext/packages/ext-theme-base/sass/etc/all';
 /* including package ext-theme-neutral */

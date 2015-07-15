@@ -907,6 +907,8 @@ $include-waterbloomdrone-view-center-popupmanual: true;
 $include-waterbloomdrone-view-center-selectdate: true;
 $include-waterbloomdrone-view-center-selectdatecontroller: true;
 $include-waterbloomdrone-view-main-main: true;
+$include-waterbloomdrone-view-main-main_bak: true;
+$include-waterbloomdrone-view-main-login: true;
 $include-waterbloomdrone-view-map-coremap: true;
 $include-waterbloomdrone-view-map-dynamiclayeradmin: true;
 /* including package ext-theme-base */

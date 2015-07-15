@@ -1,146 +1,12 @@
-var isResize = false;
-
-Ext.on('resize', function(w, h){
-	isResize = true;
-	SetInitialExtent();
-});
-
-function SetInitialExtent(){
-	/* 아래 두가지 중 한가지 택 일*/
-	//var me = WaterBloomDrone.getApplication().coreMap;
-	var me = Ext.getCmp('_mapDiv_');
-	//console.log(Ext.getBody().getViewSize().height);
-    me.bodyHeight = Ext.getBody().getViewSize().height;
-    me.bodyWidth = Ext.getBody().getViewSize().height;
-    
-    var varXmin, varXmax, varYmin, varYmax;
-    
-    if(me.bodyHeight > 860){
-    	varXmin = 14233033.286899231;
-    	varYmin = 4211145.200816164;
-    	varXmax = 14329343.94253859;
-    	varYmax = 4342616.889466718;
-    	
-    	varYmin = varYmin + ((152.87405657 / 2) * (me.bodyHeight - 860));
-    	varYmax = varYmax + ((152.87405657 / 2) * (me.bodyHeight - 860));
-    	
-  		me.level = 10;
-    }
-    else{
-    	varXmin = 14163475.591159808;
-    	varYmin = 4187602.5961043965;
-    	varXmax = 14356096.90243836;
-    	varYmax = 4355764.058331704;
-    	
-    	varYmin = varYmin + ((152.87405657 / 2) * (me.bodyHeight - 550));
-    	varYmax = varYmax + ((152.87405657 / 2) * (me.bodyHeight - 550));
-    	
-  		me.level = 9;
-    }
-    
-    varYmin = varYmin - ((152.87405657 / 2) * (me.bodyHeight - 550));
-	varYmax = varYmax + ((152.87405657 / 2) * (me.bodyHeight - 550));
-    
-    var s = "";
-	s = "XMin: "+ varXmin + " "
-	   +"YMin: " + varYmin + " "
-	   +"XMax: " + varXmax + " "
-	   +"YMax: " + varYmax;
-	
-	//console.info("win resize : " + s);
-	//return;
-    
-	if(me.initialExtent == null){
-	    me.initialExtent = this.initialExtent = new esri.geometry.Extent({
-	  	  xmin: varXmin,
-	  	  ymin: varYmin,
-	  	  xmax: varXmax,
-	  	  ymax: varYmax,
-	        spatialReference: {
-	      	  wkid: 102100
-	        }
-	    });
-	}
-	else{
-		me.initialExtent.ymin = varYmin;
-		me.initialExtent.ymax = varYmax;
-	}
-    
-	console.info(me.initialExtent.getCenter());
-    
-    me.map.setExtent(me.initialExtent, true);
-    me.map.setLevel(me.level);
-}
-
-// khLee Extent 조회
-function showExtent(extent) {
-	//console.log("extent");
-	//extent.xmin.toFixed(2)
-	var s = "";
-	s = "XMin: "+ extent.xmin + " "
-	   +"YMin: " + extent.ymin + " "
-	   +"XMax: " + extent.xmax + " "
-	   +"YMax: " + extent.ymax;
-	
-	//alert(s);
-	//return;
-	/* 아래 두가지 중 한가지 택 일*/
-	//var me = WaterBloomDrone.getApplication().coreMap;
-	var me = Ext.getCmp('_mapDiv_');
-	
-	var xmin = me.initialExtent.xmin;
-	var xmax = me.initialExtent.xmax;
-	var ymin = me.initialExtent.ymin;
-	var ymax = me.initialExtent.ymax;
-	
-	var bodyWidth = Ext.getBody().getViewSize().width;
-	var bodyHeight = Ext.getBody().getViewSize().height;
-	
-	console.log("width : " + bodyWidth + ", height : " + bodyHeight);
-	
-	if(bodyWidth > 630 || bodyHeight > 550){
-		//xmin = me.maxExtent.xmin;
-		//xmax = me.maxExtent.xmax;
-		//xmax = (Ext.getBody().getViewSize().width - 630) * 305.74811314;
-		//ymin = me.maxExtent.ymin;
-		//ymax = me.maxExtent.ymax;
-	}
-	/*
-	console.log("xmin : " + me.maxExtent.xmin + ", xmax : " + me.maxExtent.xmax);
-	console.log("ymin : " + me.maxExtent.ymin + ", ymax : " + me.maxExtent.ymax);
-	console.log("currExtent : " + s);
-	console.log("varXmax : " + xmax);
-	*/
-	//console.log(me.map.getLevel());
-	isResize = false;
-	return;
-	if(extent.xmin < xmin || extent.xmax > xmax || extent.ymin > ymin || extent.ymax < ymax){
-		alert("영역을 벗어났습니다.");
-		var deferred = me.map.setExtent(me.preExtent, true);
-		deferred.then(function(value){
-			//me.map.setLevel(10);
-		},function(error){
-			alert(error);
-		});
-	}
-	else{
-		//alert("b");
-		me.preExtent.xmin = extent.xmin;
-		me.preExtent.ymin = extent.ymin;
-		me.preExtent.xmax = extent.xmax;
-		me.preExtent.ymax = extent.ymax;
-	}
-}
-
-Ext.define('WaterBloomDrone.view.map.CoreMap', {
+Ext.define('WaterBloomDrone.view.map.CoreMapTab1', {
 	extend: 'Ext.Component',
 	
-	xtype: 'app-map-coreMap',
+	xtype: 'app-map-coreMap-tab1',
 	
-	id: '_mapDiv_',
+	id: '_mapDiv_1',
 	
 	requires: [
-		'WaterBloomDrone.view.map.DynamicLayerAdmin'
+		'WaterBloomDrone.view.map.DynamicLayerAdmin1'
 	],
 	
 	map:null,
@@ -160,23 +26,25 @@ Ext.define('WaterBloomDrone.view.map.CoreMap', {
         var me = this;
         
         var timerId = window.setInterval(function(){
-        	me.map = new esri.Map('_mapDiv_', {
-    	     	isDoubleClickZoom:false,
-    	     	isPan:false,
-    	 		logo:false,
-    	 		slider: true,
-    	 		showAttribution: false,
-    	 		sliderPosition: "top-right",
-    	 		sliderStyle: "large",
-    	 		zoom: 5,
-    	 		autoResize: true
-    		});
-            
+        	
+        	require(["esri/map"], function(Map){
+        		me.map = new Map('_mapDiv_1', {
+        	     	isDoubleClickZoom:false,
+        	     	isPan:false,
+        	 		logo:false,
+        	 		slider: true,
+        	 		showAttribution: false,
+        	 		sliderPosition: "top-right",
+        	 		sliderStyle: "large",
+        	 		zoom: 5,
+        	 		autoResize: true
+        		});
+        	});
         	//me.map.resize();
         	me.baseMapInit();
         	//me.map.setLevel(me.level);
         	window.clearInterval(timerId);
-        	me.dynamicLayerAdmin = Ext.create('WaterBloomDrone.view.map.DynamicLayerAdmin', me.map);
+        	me.dynamicLayerAdmin = Ext.create('WaterBloomDrone.view.map.DynamicLayerAdmin1', me.map);
         	
         	require(["esri/dijit/Scalebar"], function(Scalebar){
         		var scalebar = new Scalebar({
@@ -188,11 +56,11 @@ Ext.define('WaterBloomDrone.view.map.CoreMap', {
             	});
         		
         		// khLee Extent Change Event
-        		dojo.connect(me.map, "onExtentChange", showExtent);
+        		dojo.connect(me.map, "onExtentChange", Ext.setExtent);
         	});
         	
         	// 전역 변수 설정 WaterBloomDrone.getApplication().coreMap
-        	WaterBloomDrone.getApplication().coreMap = me;
+        	WaterBloomDrone.getApplication().coreMap1 = me;
         	
 		}, 1);
     },
@@ -241,6 +109,7 @@ Ext.define('WaterBloomDrone.view.map.CoreMap', {
 		          }
 		      });
 		      
+		      /*
 		      me.preExtent = this.preExtent = new esri.geometry.Extent({
 		    	  xmin: 14163475.591159808,
 		    	  ymin: 4187602.5961043965,
@@ -250,6 +119,7 @@ Ext.define('WaterBloomDrone.view.map.CoreMap', {
 		        	  wkid: 102100
 		          }
 		      });
+		      */
 		      
 		      me.maxExtent = this.maxExtent = new esri.geometry.Extent({
 		    	  xmin: 13966268.058184147,
@@ -283,7 +153,7 @@ Ext.define('WaterBloomDrone.view.map.CoreMap', {
 		      });
 		      */
 		      
-		      SetInitialExtent();
+		      Ext.SetInitialExtent("_mapDiv_1");
 		      
 		      this.loaded = true;
 		      this.onLoad(this);

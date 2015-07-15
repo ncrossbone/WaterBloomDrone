@@ -5,7 +5,7 @@ Ext.define('WaterBloomDrone.store.AppVariable', {
 	autoLoad: true,
 	
 	fields: [{
-		name: 'MapserviceUrl'
+		name: 'MapserviceUrl1'
 	}],
 
 	proxy: {

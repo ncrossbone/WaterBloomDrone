@@ -2,36 +2,52 @@ Ext.define('WaterBloomDrone.view.main.Main', {
     extend: 'Ext.container.Container',
     
     requires: [
-        'WaterBloomDrone.view.center.Center',
-        'WaterBloomDrone.view.map.CoreMap',
-		'WaterBloomDrone.view.center.SelectDate',
-		'WaterBloomDrone.view.center.SelectDateController',
-		'WaterBloomDrone.view.center.LayerButtonHeader',
-		'WaterBloomDrone.view.center.LayerButton',
-		'WaterBloomDrone.view.center.PopupManual'
+        'WaterBloomDrone.view.north.North',
+        'WaterBloomDrone.view.center.Center'
     ],
+    
+    //renderTo: Ext.getCmp('formcom').getEl(),
 
     xtype: 'app-main',
+    
+    id: 'ctlMain',
 
     layout: {
         type: 'border'
     },
+    width: '100%',
+    height: '100%',
 
     items: [{
+    	xtype: 'app-default-north',
+    	region: 'north',
+    	id: 'app_north_container'
+    }, {
     	xtype: 'app-default-center',
     	region: 'center',
-    	id: 'app_container'
+    	id: 'app_center_container'
     }],
-    
+
     initComponent: function(){
     	
-    	Ext.create('WaterBloomDrone.view.center.SelectDate', {renderTo: Ext.getBody()});
-    	Ext.create('WaterBloomDrone.view.center.LayerButtonHeader', {renderTo: Ext.getBody()});
-    	Ext.create('WaterBloomDrone.view.center.LayerButton', {renderTo: Ext.getBody()});
-    	Ext.create('WaterBloomDrone.view.center.PopupManual', {renderTo: Ext.getBody()});
+    	var me = this;
+    	//var chkSession = false;
+    	var bodyId = Ext.getBody().id;
     	
-    	//mapServiceUrl = "http://fireftp.iptime.org:6080/arcgis/rest/services/drone/MapServer";
-    	//console.info(store);
+		// 세션 체크
+		Ext.Ajax.request({
+    		url: 'sessionMng.jsp',    // To Which url you wanna POST.
+    		success : function(response, opts) {
+    			//alert(response.responseText.trim());
+    			if(response.responseText.trim() == "false")
+    				window.location = './index.html';
+    		},
+    		failure: function(form, action) {
+    			chkSession = false;
+    			alert("오류가 발생하였습니다.");
+    			return;
+    		}
+    	});
     	
     	this.callParent();
     }

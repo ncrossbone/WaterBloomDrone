@@ -7,7 +7,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButtonHeader', {
 	xtype: 'layerbutton-header',
 	
 	height: 25,
-	width: 105,
+	width: 100,
 	
 	title: '촬영일자 선택',
 	header: false,
@@ -43,12 +43,6 @@ Ext.define('WaterBloomDrone.view.center.LayerButtonHeader', {
 	            }
 	        }
 	    }
-	}],
-	
-	initComponent: function(){
-		this.x = 0;
-		this.y = -25;
-		this.callParent();
-	}
+	}]
 	
 });
