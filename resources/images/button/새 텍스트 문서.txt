@@ -1,0 +1,2 @@
+backgroung : #ececec
+border : #929292

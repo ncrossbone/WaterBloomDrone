@@ -1,0 +1,145 @@
+[{
+	"layerId": "0",
+	"layerName": "정수장",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "btn4",
+	"defaultImg": "./resources/images/button/images07on.gif",
+	"layerArea" : "",
+	"defaultOn" : true
+}, {
+	"layerId": "1",
+	"layerName": "취수장",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "btn3",
+	"defaultImg": "./resources/images/button/images06on.gif",
+	"layerArea" : "",
+	"defaultOn" : true
+}, {
+	"layerId": "2",
+	"layerName": "대교지점",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "",
+	"layerArea" : "",
+	"defaultOn" : true
+}, {
+	"layerId": "3",
+	"layerName": "측정지점",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "btn2",
+	"defaultImg": "./resources/images/button/images08on.gif",
+	"layerArea" : "",
+	"defaultOn" : true
+}, {
+	"layerId": "4",
+	"layerName": "보대표지점",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "",
+	"layerArea" : "",
+	"defaultOn" : true
+}, {
+	"layerId": "5",
+	"layerName": "행정구역(법정동)",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "",
+	"layerArea" : "",
+	"defaultOn" : false
+}, {
+	"layerId": "6",
+	"layerName": "법정동_시도",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "btn1",
+	"defaultImg": "./resources/images/button/images04off.gif",
+	"layerArea" : "",
+	"defaultOn" : false
+}, {
+	"layerId": "7",
+	"layerName": "법정동_시군구",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "btn1",
+	"defaultImg": "./resources/images/button/images04off.gif",
+	"layerArea" : "",
+	"defaultOn" : false
+}, {
+	"layerId": "8",
+	"layerName": "법정동_읍면동",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "btn1",
+	"defaultImg": "./resources/images/button/images04off.gif",
+	"layerArea" : "",
+	"defaultOn" : false
+}, {
+	"layerId": "9",
+	"layerName": "법정동_동리",
+	"layerType": "일반",
+	"layerDate": "",
+	"layerBtnId": "btn1",
+	"defaultImg": "./resources/images/button/images04off.gif",
+	"layerArea" : "",
+	"defaultOn" : false
+}, {
+	"layerId": "10",
+	"layerName": "항공영상_150623_낙동강",
+	"layerType": "항공",
+	"layerDate": "2015-06-23",
+	"mesureDate": "2015-06 4주차",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "낙동강",
+	"defaultOn" : false
+}, {
+	"layerId": "11",
+	"layerName": "항공영상_150703_북한강",
+	"layerType": "항공",
+	"layerDate": "2015-07-03",
+	"mesureDate": "2015-07 1주차",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "북한강",
+	"defaultOn" : false
+}, {
+	"layerId": "12",
+	"layerName": "항공영상_150704_낙동강",
+	"layerType": "항공",
+	"layerDate": "2015-07-04",
+	"mesureDate": "2015-07 1주차",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "낙동강",
+	"defaultOn" : true
+}, {
+	"layerId": "13",
+	"layerName": "항공영상_150710_북한강",
+	"layerType": "항공",
+	"layerDate": "2015-07-10",
+	"mesureDate": "2015-07 2주차",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "북한강",
+	"defaultOn" : true
+}, {
+	"layerId": "14",
+	"layerName": "초분광영상_TEST_낙동강",
+	"layerType": "초분광",
+	"layerDate": "2015-07-04",
+	"layerBtnId": "btn6",
+	"defaultImg": "./resources/images/button/images10no.gif",
+	"layerArea" : "낙동강",
+	"defaultOn" : false
+}, {
+	"layerId": "15",
+	"layerName": "gdb_info",
+	"layerType": "데이터",
+	"layerDate": "",
+	"layerBtnId": "btnLogin",
+	"layerArea" : "",
+	"defaultOn" : true
+}]
