@@ -45,6 +45,8 @@ Ext.define('WaterBloomDrone.view.map.CoreMapTab1', {
         	//me.map.setLevel(me.level);
         	window.clearInterval(timerId);
         	me.dynamicLayerAdmin = Ext.create('WaterBloomDrone.view.map.DynamicLayerAdmin1', me.map);
+        	me.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin1', me.map);
+        	//me.graphicsLayerAdmin = Ext.create('WaterBloomDrone.view.map.GraphicsLayerAdmin1', me.map);
         	
         	require(["esri/dijit/Scalebar"], function(Scalebar){
         		var scalebar = new Scalebar({
@@ -163,7 +165,7 @@ Ext.define('WaterBloomDrone.view.map.CoreMapTab1', {
       			var newcol = col + (Math.pow(2, level) * 107);
 		    	return "http://xdworld.vworld.kr:8080/2d/Base/201301/" + level + "/" + col + "/" + row + ".png";
 		    }	
-		  });
+		});
 		var baseMap = new CustomMapsLayer();
 		this.map.addLayer(baseMap);
 	}

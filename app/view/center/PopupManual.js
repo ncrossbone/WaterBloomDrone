@@ -15,7 +15,8 @@ Ext.define('WaterBloomDrone.view.center.PopupManual', {
 		align: 'right'
 	},
 	
-	bodyStyle: 'background-color: transparent !important',
+	//bodyStyle: 'background-color: transparent !important',
+	cls: 'khLee-x-popupmanual',
 	
 	items: [{
 		xtype: 'image',

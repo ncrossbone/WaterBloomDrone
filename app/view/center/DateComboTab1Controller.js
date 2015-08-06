@@ -18,6 +18,6 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab1Controller', {
 	
 	onComboChange: function(){
 		
-		LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
+		LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1", "");
 	}
 });

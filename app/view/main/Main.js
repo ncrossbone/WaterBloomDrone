@@ -17,15 +17,17 @@ Ext.define('WaterBloomDrone.view.main.Main', {
     },
     width: '100%',
     height: '100%',
-
+    
     items: [{
     	xtype: 'app-default-north',
     	region: 'north',
-    	id: 'app_north_container'
+    	id: 'app_north_container',
+    	cls: 'khLee-x-panel-body-default',
     }, {
     	xtype: 'app-default-center',
     	region: 'center',
-    	id: 'app_center_container'
+    	id: 'app_center_container',
+    	cls: 'khLee-x-panel-body-default'
     }],
 
     initComponent: function(){
@@ -36,7 +38,7 @@ Ext.define('WaterBloomDrone.view.main.Main', {
     	
 		// 세션 체크
 		Ext.Ajax.request({
-    		url: 'sessionMng.jsp',    // To Which url you wanna POST.
+    		url: './resources/jsp/sessionMng.jsp',    // To Which url you wanna POST.
     		success : function(response, opts) {
     			//alert(response.responseText.trim());
     			if(response.responseText.trim() == "false")

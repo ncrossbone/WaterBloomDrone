@@ -8,39 +8,21 @@ Ext.define('WaterBloomDrone.view.map.DynamicLayerAdmin1', {
         var me = this;
         me.map = map;
         
-        // store에서 맵서비스 URL 가져오기
-        var store = Ext.create('WaterBloomDrone.store.AppVariable');
-    	store.load(function(){
-    		
-    		var visibleLayers = [4];
-    		
-    		this.each(function(record, cnt, totCnt){
-    			//console.info(totCnt);
-    			if(cnt == 0){
-    				//console.info(record.get('MapserviceUrl1'));
-	    			me.layer = new esri.layers.ArcGISDynamicMapServiceLayer(record.get('MapserviceUrl1'));
-	    			me.layer.id = "DynamicLayer1";
-	    			me.layer.visible = true;
-	    			me.map.addLayer(me.layer);
-    			}
-    			else{
-    				var layerDate = record.get('layerDate');
-    				var layerId = record.get('layerId');
-    				var ctlDate = Ext.getCmp('cboDate1').value;
-    				//console.info(layerDate);
-    				if(layerDate == ctlDate)
-    					visibleLayers.push(layerId);
-    			}
-    			
-    			if(totCnt == cnt + 1){
-    				//console.info(visibleLayers);
-	    			me.layer.setVisibility(true);
-    				//me.layer.setVisibility(false);
-	    			me.layer.setVisibleLayers(visibleLayers);
-	    			btn1Visible = true;
-	    			btn4Visible = true;
-    			}
-    		});
-    	});
+        /*
+    	console.info(Ext.mapServiceUrl);
+    	console.info(Ext.visibleLayers);
+    	console.info(Ext.nakdongDroneDate);
+    	console.info(Ext.nakdongDroneLayer);
+    	console.info(Ext.northHanDroneDate);
+		console.info(Ext.northHanDroneLayer);
+		*/
+    	
+    	me.layer = new esri.layers.ArcGISDynamicMapServiceLayer(Ext.mapServiceUrl);
+		me.layer.id = "DynamicLayer1";
+		me.layer.visible = true;
+		me.map.addLayer(me.layer);
+		
+		me.layer.setVisibility(true);
+		me.layer.setVisibleLayers(Ext.visibleLayers);
     }
 });

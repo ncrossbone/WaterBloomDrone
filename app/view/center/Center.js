@@ -54,38 +54,47 @@ Ext.define('WaterBloomDrone.view.center.Center', {
         'tabchange': function() {
         	//console.info(this.activeTab.id);
         	
+        	var positionY = 38;
+        	
         	var ctlDate1 = Ext.getCmp('DateComboPanel1');
     		var ctlDate2 = Ext.getCmp('DateComboPanel2');
+    		var ctlDate1_Measure = Ext.getCmp('DateComboPanel1_Measure');
+    		var ctlDate2_Measure = Ext.getCmp('DateComboPanel2_Measure');
     		
     		if(this.activeTab.id == 'nakdong_map'){
     			ctlDate1.show();
     			ctlDate2.hide();
+    			ctlDate1_Measure.show();
+    			ctlDate2_Measure.hide();
     		}
     		
     		if(this.activeTab.id == 'northhan_map'){
     			ctlDate1.hide();
     			ctlDate2.show();
+    			ctlDate1_Measure.hide();
+    			ctlDate2_Measure.show();
+    			ctlDate2_Measure.setY(positionY);
     		}
     		
     		var ctlLayerToolbar = Ext.getCmp('LayerToolbar');
     		
     		ctlLayerToolbar.setX(0);
-    		ctlLayerToolbar.setY(40);
+    		ctlLayerToolbar.setY(positionY);
     		
     		var ctlBtnHeader = Ext.getCmp('LayerButtonHeader');
     		
     		ctlBtnHeader.setX(0);
-    		ctlBtnHeader.setY(40 + ctlLayerToolbar.height);
+    		ctlBtnHeader.setY(positionY + ctlLayerToolbar.height);
 
     		var ctlBtnBody = Ext.getCmp('LayerButtonPanel');
     		
     		ctlBtnBody.setX(0);
-    		ctlBtnBody.setY(40 + ctlBtnHeader.height + ctlLayerToolbar.height);
+    		ctlBtnBody.setY(positionY + ctlBtnHeader.height + ctlLayerToolbar.height);
     		
     		var ctlPopup = Ext.getCmp('PopupManualPanel');
     		
     		ctlPopup.setX(0);
-    		ctlPopup.setY(40);
+    		ctlPopup.setY(positionY);
     		
     		//ctlDate2.hide();
         }
@@ -94,23 +103,43 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 	initComponent: function(){
 		this.callParent();
 		
-		var positionY = 40;
+		//console.info(Ext.layerIds);
+		
+		var positionY = 38;
 		
 		var ctlDate1 = Ext.create('WaterBloomDrone.view.center.DateComboTab1', {
-			renderTo: Ext.getBody()
+			renderTo: Ext.getBody(),
+			//height: 44
 		});
 		
 		ctlDate1.setX(Ext.getBody().getViewSize().width - ctlDate1.width);
 		ctlDate1.setY(positionY);
 		
-		var ctlDate2 = Ext.create('WaterBloomDrone.view.center.DateComboTab2', {
+		var ctlDate1_Measure = Ext.create('WaterBloomDrone.view.center.DateComboTab1_Measure', {
 			renderTo: Ext.getBody()
+		});
+		
+		ctlDate1_Measure.setX(Ext.getBody().getViewSize().width - ctlDate1.width - ctlDate1_Measure.width - 3);
+		ctlDate1_Measure.setY(positionY);
+		
+		var ctlDate2 = Ext.create('WaterBloomDrone.view.center.DateComboTab2', {
+			renderTo: Ext.getBody(),
+			//height: 22
 		});
 		
 		ctlDate2.setX(Ext.getBody().getViewSize().width - ctlDate2.width);
 		ctlDate2.setY(positionY);
 		
 		ctlDate2.hide();
+		
+		var ctlDate2_Measure = Ext.create('WaterBloomDrone.view.center.DateComboTab2_Measure', {
+			renderTo: Ext.getBody()
+		});
+		
+		ctlDate2_Measure.setX(Ext.getBody().getViewSize().width - ctlDate2.width - ctlDate2_Measure.width - 3);
+		ctlDate2_Measure.setY(positionY);
+		
+		ctlDate2_Measure.hide();
 		
 		var ctlLayerToolbar = Ext.create('WaterBloomDrone.view.center.LayerToolbar', {
 			renderTo: Ext.getBody()

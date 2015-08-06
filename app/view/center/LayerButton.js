@@ -1,115 +1,126 @@
-var btn1Visible = true;
-var btn2Visible = false;
-var btn3Visible = false;
-var btn4Visible = true;
-var btn5Visible = false;
-var btn6Visible = false;
+function SetBtnOnOff(btnId, varBtnOnOff){
+	
+	var btnCtl = Ext.getCmp(btnId);
+	var onIdx = btnCtl.src.indexOf("on.");
+	var imgSrc = "";
+	//console.info(onIdx);
+	if(onIdx == -1){
+		imgSrc = btnCtl.src.replace("off.", "on.");
+		eval(varBtnOnOff + " = 'on'");
+	}
+	else{
+		imgSrc = btnCtl.src.replace("on.", "off.");
+		eval(varBtnOnOff + " = 'off'");
+	}
+	
+	btnCtl.setSrc(imgSrc);
+}
+
+function SetLayerOnOff(varBtnOnOff, layerIds){
+	
+	for(var i = 0; i < layerIds.length; i++){
+		var arrIdx = Ext.visibleLayers.indexOf(layerIds[i]);
+		// 레이어 배열에 값이 있으면 레이어 삭제
+		if(arrIdx != -1){
+			Ext.visibleLayers.splice(arrIdx, 1); // index번째부터 1자리 삭제
+		}
+	}
+	
+	//console.info(varBtnOnOff);
+	//console.info(eval(varBtnOnOff));
+	//console.info(layerIds);
+	
+	if(eval(varBtnOnOff) == "on"){
+		for(var i = 0; i < layerIds.length; i++){
+			Ext.visibleLayers.push(layerIds[i]);
+		}
+	}
+	
+	//console.info(Ext.visibleLayers);
+}
 
 function LayerOnOffBtn(me, tabId){
+	
 	if(me.map == null)
 		return;
 	
-	console.info(me.map);
-	console.info(tabId);
 	var activeLayer = me.map.getLayer(tabId);
 	var layers = [];
 	
-	// 보 대표지점
-	if(btn1Visible == true){
-		Ext.getCmp('btn1').setSrc("./resources/images/button/images02on.gif");
-		layers.push(4);
-	}
-	else{
-		Ext.getCmp('btn1').setSrc("./resources/images/button/images02off.gif");
-	}
+	//if(btnId != ""){
+		// 버튼 이미지 변경
+		//SetBtnOnOff(btnId);
+	//}
 	
-	// 낙동강 대교
-	if(btn2Visible == true){
-		Ext.getCmp('btn2').setSrc("./resources/images/button/images03on.gif");
-		layers.push(2);
-	}
-	else{
-		Ext.getCmp('btn2').setSrc("./resources/images/button/images03off.gif");
-	}
+	// 레이어 On/Off
+	SetLayerOnOff("Ext.btn1OnOff", Ext.btn1LayerIds);
+	SetLayerOnOff("Ext.btn2OnOff", Ext.btn2LayerIds);
+	SetLayerOnOff("Ext.btn3OnOff", Ext.btn3LayerIds);
+	SetLayerOnOff("Ext.btn4OnOff", Ext.btn4LayerIds);
+	SetLayerOnOff("Ext.btn5OnOff", Ext.btn5LayerIds);
+	SetLayerOnOff("Ext.btn6OnOff", Ext.btn6LayerIds);
 	
-	// 행정구역
-	if(btn3Visible == true){
-		Ext.getCmp('btn3').setSrc("./resources/images/button/images04on.gif");
-		//layers.push(4);
-		layers.push(6);
-		layers.push(7);
-		layers.push(8);
-		layers.push(9);
-	}
-	else{
-		Ext.getCmp('btn3').setSrc("./resources/images/button/images04off.gif");
-	}
-	
-	// 취수장
-	if(btn5Visible == true){
-		Ext.getCmp('btn5').setSrc("./resources/images/button/images06on.gif");
-		layers.push(1);
-	}
-	else{
-		Ext.getCmp('btn5').setSrc("./resources/images/button/images06off.gif");
-	}
-	
-	// 정수장
-	if(btn6Visible == true){
-		Ext.getCmp('btn6').setSrc("./resources/images/button/images07on.gif");
-		layers.push(0);
-	}
-	else{
-		Ext.getCmp('btn6').setSrc("./resources/images/button/images07off.gif");
-	}
-	
-	// 녹조영상
-	if(btn4Visible == true){
-		Ext.getCmp('btn4').setSrc("./resources/images/button/images05on.gif");
+	// 낙동강 항공영상 레이어 아이디 셋팅
+	for(var i = 0; i < Ext.nakdongDroneLayerId.length; i++){
+		var arrIdx = Ext.visibleLayers.indexOf(Ext.nakdongDroneLayerId[i]);
 		
-		// store에서 변수 가져오기
-        var store = Ext.create('WaterBloomDrone.store.AppVariable');
-    	store.load(function(){
-    		
-    		this.each(function(record, cnt, totCnt){
-    			//console.info(totCnt);
-    			if(cnt > 0){
-    				var layerDate = record.get('layerDate');
-    				var layerId = record.get('layerId');
-    				
-    				var ctlDate = Ext.getCmp('cboDate1').value;
-    				
-    				if(layerDate == ctlDate){
-    					layers.push(layerId);
-    				}
-    				
-    				ctlDate = Ext.getCmp('cboDate2').value;
-    				
-    				if(layerDate == ctlDate){
-    					layers.push(layerId);
-    				}
-    			}
-    			
-    			if(totCnt == cnt + 1){
-    				if(layers.length > 0)
-    					activeLayer.setVisibility(true);
-    				else
-    					activeLayer.setVisibility(false);
-    				
-    				activeLayer.setVisibleLayers(layers);
-    			}
-    		});
-    	});
-	}
-	else{
-		Ext.getCmp('btn4').setSrc("./resources/images/button/images05off.gif");
+		// 레이어 배열에 값이 있으면 레이어 삭제
+		if(arrIdx != -1){
+			Ext.visibleLayers.splice(arrIdx, 1); // index번째부터 1자리 삭제
+		}
 		
-		if(layers.length > 0)
+		var ctlDate = Ext.getCmp('cboDate1').value;
+		
+		//console.info(eval(Ext.nakdongDroneOnOffVar));
+		if(eval(Ext.nakdongDroneOnOffVar) == "on"){
+			if(ctlDate == Ext.nakdongDroneDate[i])
+				Ext.visibleLayers.push(Ext.nakdongDroneLayerId[i]);
+		}
+	}
+	
+	// 북한강 항공영상 레이어 아이디 셋팅
+	for(var i = 0; i < Ext.northHanDroneLayerId.length; i++){
+		var arrIdx = Ext.visibleLayers.indexOf(Ext.northHanDroneLayerId[i]);
+		
+		// 레이어 배열에 값이 있으면 레이어 삭제
+		if(arrIdx != -1){
+			Ext.visibleLayers.splice(arrIdx, 1); // index번째부터 1자리 삭제
+		}
+		
+		var ctlDate = Ext.getCmp('cboDate2').value;
+		
+		//console.info(eval(Ext.nakdongDroneOnOffVar));
+		if(eval(Ext.northHanDroneOnOffVar) == "on"){
+			if(ctlDate == Ext.northHanDroneDate[i])
+				Ext.visibleLayers.push(Ext.northHanDroneLayerId[i]);
+		}
+	}
+	
+	//console.info(Ext.visibleLayers);
+	
+	if(Ext.visibleLayers.length > 0)
+		activeLayer.setVisibility(true);
+	else
+		activeLayer.setVisibility(false);
+	
+	activeLayer.setVisibleLayers(Ext.visibleLayers);
+	
+	if(tabId == "DynamicLayer1"){
+		// Feature Layer visible
+		activeLayer = me.map.getLayer("FeatureLayer1");
+		if(eval(Ext.featureLayerVar) == "on")
 			activeLayer.setVisibility(true);
 		else
 			activeLayer.setVisibility(false);
-		
-		activeLayer.setVisibleLayers(layers);
+	}
+	
+	if(tabId == "DynamicLayer2"){
+		// Feature Layer visible
+		activeLayer = me.map.getLayer("FeatureLayer2");
+		if(eval(Ext.featureLayerVar) == "on")
+			activeLayer.setVisibility(true);
+		else
+			activeLayer.setVisibility(false);
 	}
 }
 
@@ -119,7 +130,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 	id: 'LayerButtonPanel',
 	xtype: 'layerbutton-panel',
 	
-	height: 148,
+	height: 144,
 	width: 100,
 	
 	title: '촬영일자 선택',
@@ -130,7 +141,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		type: 'vbox'
 	},
 	
-	style: 'border:0px',
+	cls: 'khLee-x-panel-body-default',
 	
 	items: [{
 		xtype: 'panel',
@@ -138,70 +149,17 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		layout: {
 			type: 'hbox'
 		},
-		items: [{
-			xtype: 'image',
-			//text: '보',
-			id: 'btn1',
-			src: './resources/images/button/images02on.gif',
-			style: 'cursor:pointer;border:0px;',
-			listeners: {
-		        el: {
-		            click: function(){
-		            	
-		            	if(btn1Visible == false)
-		            		btn1Visible = true;
-		            	else
-		            		btn1Visible = false;
-		            	
-		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
-		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
-		            }
-		        }
-		    },
-			width: 50,
-			height: 48
-		}, {
-			xtype: 'image',
-			//text: '다리',
-			id: 'btn2',
-			src: './resources/images/button/images03off.gif',
-			style: 'cursor:pointer; border:0px;',
-			listeners: {
-		        el: {
-		        	click: function(){
-		            	if(btn2Visible == false)
-		            		btn2Visible = true;
-		            	else
-		            		btn2Visible = false;
-		            	
-		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
-		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
-		            }
-		        }
-		    },
-			width: 50,
-			height: 48
-		}]
-	}, {
-		xtype: 'panel',
-		header: false,
-		layout: {
-			type: 'hbox'
-		},
+		cls: 'khLee-x-panel-body-default',
 		items: [{
 			xtype: 'image',
 			//text: '행정경계',
-			id: 'btn3',
-			src: './resources/images/button/images04off.gif',
-			style: 'cursor:pointer;border:0px;',
+			id: 'btn1', // LayerMapper의 layerBtnId와 매핑
+			src: Ext.btn1DefaultImg,
+			style: 'cursor:pointer;border:0px !important;',
 			listeners: {
 		        el: {
 		            click: function(){
-		            	if(btn3Visible == false)
-		            		btn3Visible = true;
-		            	else
-		            		btn3Visible = false;
-		            	
+		            	SetBtnOnOff("btn1", "Ext.btn1OnOff");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            }
@@ -211,18 +169,14 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 			height: 48
 		}, {
 			xtype: 'image',
-			//text: '항공사진',
-			id: 'btn4',
-			src: './resources/images/button/images05on.gif',
-			style: 'cursor:pointer;border:0px;',
+			//text: '측정지점',
+			id: 'btn2', // LayerMapper의 layerBtnId와 매핑
+			src: Ext.btn2DefaultImg,
+			style: 'cursor:pointer; border:0px !important;',
 			listeners: {
 		        el: {
 		        	click: function(){
-		            	if(btn4Visible == false)
-		            		btn4Visible = true;
-		            	else
-		            		btn4Visible = false;
-		            	
+		        		SetBtnOnOff("btn2", "Ext.btn2OnOff");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            }
@@ -237,20 +191,17 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		layout: {
 			type: 'hbox'
 		},
+		cls: 'khLee-x-panel-body-default',
 		items: [{
 			xtype: 'image',
 			//text: '취수장',
-			id: 'btn5',
-			src: './resources/images/button/images06off.gif',
-			style: 'cursor:pointer;border:0px;',
+			id: 'btn3', // LayerMapper의 layerBtnId와 매핑
+			src: Ext.btn3DefaultImg,
+			style: 'cursor:pointer;border:0px !important;',
 			listeners: {
 		        el: {
 		            click: function(){
-		            	if(btn5Visible == false)
-		            		btn5Visible = true;
-		            	else
-		            		btn5Visible = false;
-		            	
+		            	SetBtnOnOff("btn3", "Ext.btn3OnOff");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            }
@@ -261,17 +212,55 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		}, {
 			xtype: 'image',
 			//text: '정수장',
-			id: 'btn6',
-			src: './resources/images/button/images07off.gif',
-			style: 'cursor:pointer;border:0px;',
+			id: 'btn4', // LayerMapper의 layerBtnId와 매핑
+			src: Ext.btn4DefaultImg,
+			style: 'cursor:pointer;border:0px !important;',
 			listeners: {
 		        el: {
 		        	click: function(){
-		            	if(btn6Visible == false)
-		            		btn6Visible = true;
-		            	else
-		            		btn6Visible = false;
-		            	
+		        		SetBtnOnOff("btn4", "Ext.btn4OnOff");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
+		            }
+		        }
+		    },
+			width: 50,
+			height: 48
+		}]
+	}, {
+		xtype: 'panel',
+		header: false,
+		layout: {
+			type: 'hbox'
+		},
+		cls: 'khLee-x-panel-body-default',
+		items: [{
+			xtype: 'image',
+			//text: '항공사진',
+			id: 'btn5', // LayerMapper의 layerBtnId와 매핑
+			src: Ext.btn5DefaultImg,
+			style: 'cursor:pointer;border:0px !important;',
+			listeners: {
+		        el: {
+		            click: function(){
+		            	SetBtnOnOff("btn5", "Ext.btn5OnOff");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
+		            }
+		        }
+		    },
+			width: 50,
+			height: 48
+		}, {
+			xtype: 'image',
+			//text: '초분광영상',
+			id: 'btn6', // LayerMapper의 layerBtnId와 매핑
+			src: Ext.btn6DefaultImg,
+			style: 'cursor:pointer;border:0px !important;',
+			listeners: {
+		        el: {
+		        	click: function(){
+		        		SetBtnOnOff("btn6", "Ext.btn6OnOff");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            }

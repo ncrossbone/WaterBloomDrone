@@ -6,7 +6,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButtonHeader', {
 	id: 'LayerButtonHeader',
 	xtype: 'layerbutton-header',
 	
-	height: 25,
+	height: 21,
 	width: 100,
 	
 	title: '촬영일자 선택',
@@ -17,7 +17,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButtonHeader', {
 		align: 'strech'
 	},
 	
-	style: 'border:0px',
+	cls: 'khLee-x-panel-body-default',
 	
 	items: [{
 		xtype: 'image',
