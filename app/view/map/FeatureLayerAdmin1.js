@@ -172,6 +172,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
     	        //console.info(labels.graphics);
     	        // add the label layer to the map
     	        me.map.addLayer(labels);
+    	        console.info(labels);
     	        
     	        for(var lblCnt = 0; lblCnt < labels.graphics.length; lblCnt++){
     	        	if(labels.graphics[lblCnt].symbol.text.indexOf("undefined") > -1){
