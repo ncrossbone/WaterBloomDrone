@@ -32,6 +32,8 @@ Ext.define('WaterBloomDrone.view.main.Main', {
 
     initComponent: function(){
     	
+    	/* 로그인 로직 제거 요청에 의해 주석 */
+    	/*
     	var me = this;
     	//var chkSession = false;
     	var bodyId = Ext.getBody().id;
@@ -50,7 +52,7 @@ Ext.define('WaterBloomDrone.view.main.Main', {
     			return;
     		}
     	});
-    	
+    	*/
     	this.callParent();
     }
 });
