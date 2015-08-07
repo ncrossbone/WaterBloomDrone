@@ -7,7 +7,7 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab1', {
 	height: 44,
 	width: 128,
 	
-	title: '촬영일자 선택',
+	title: '항공영상',
 	header: false,
 	
 	//controller: 'datecombocontroller1',
@@ -26,7 +26,7 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab1', {
 	items: [{
 		xtype: 'label',
 		id: 'lblDate1',
-		text: '촬영일자',
+		text: '항공영상',
 		height: 22
 	}, {
 		xtype: 'combo',

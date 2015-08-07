@@ -28,23 +28,31 @@ Ext.btn5OnOff = "off";
 Ext.btn6OnOff = "off";
 
 // 낙동강 항공영상 관련 전역 변수
-Ext.nakdongDroneDate = ["촬영일자선택"];
+//Ext.nakdongDroneDate = ["촬영일자선택"];
+//Ext.nakdongDroneLayerId = [""];
+Ext.nakdongDroneDate = [];
+Ext.nakdongDroneLayerId = [];
 Ext.nakdongDroneDefaultValue = "";
-Ext.nakdongDroneLayerId = [""];
 Ext.nakdongDroneOnOffVar = "Ext.btn5OnOff"; // 낙동강 항공영상 버튼 On/Off 변수 명
 
 // 북한강 항공영상 관련 전역 변수
-Ext.northHanDroneDate = ["촬영일자선택"];
+//Ext.northHanDroneDate = ["촬영일자선택"];
+//Ext.northHanDroneLayerId = [""];
+Ext.northHanDroneDate = [];
+Ext.northHanDroneLayerId = [];
 Ext.northHanDroneDefaultValue = "";
-Ext.northHanDroneLayerId = [""];
 Ext.northHanDroneOnOffVar = "Ext.btn5OnOff"; // 북한강 항공영상 버튼 On/Off 변수 명
 
 Ext.featureLayerVar = "Ext.btn2OnOff"; // 측정지점 버튼 On/Off 변수 명
 Ext.featureLayerId = "3";
 
-Ext.nakdongWMCYMW = ["측정일자선택"];
+//Ext.nakdongWMCYMW = ["측정일자선택"];
+//Ext.nakdongWMCYMWDefaultValue = "";
+//Ext.northHanWMCYMW = ["측정일자선택"];
+//Ext.northHanWMCYMWDefaultValue = "";
+Ext.nakdongWMCYMW = [];
 Ext.nakdongWMCYMWDefaultValue = "";
-Ext.northHanWMCYMW = ["측정일자선택"];
+Ext.northHanWMCYMW = [];
 Ext.northHanWMCYMWDefaultValue = "";
 
 var responseLayer = Ext.Ajax.request({

@@ -7,7 +7,7 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab2_Measure', {
 	height: 44,
 	width: 128,
 	
-	title: '측정일자 선택',
+	title: '조류측정자료',
 	header: false,
 	
 	// controller: 'datecombocontroller1_measure',
@@ -26,7 +26,7 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab2_Measure', {
 	items: [{
 		xtype: 'label',
 		id: 'lblDate2_Measure',
-		text: '측정일자',
+		text: '조류측정자료',
 		height: 22
 	}, {
 		xtype: 'combo',
