@@ -50,124 +50,126 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 	}]
 	*/
 	
+	setControl: function(){
+		var positionY = 38;
+    	
+    	var ctlDate1 = Ext.getCmp('DateComboPanel1');
+		var ctlDate2 = Ext.getCmp('DateComboPanel2');
+		var ctlDate1_chl = Ext.getCmp('DateComboPanel1_chl');
+		var ctlDate2_chl = Ext.getCmp('DateComboPanel2_chl');
+		var ctlDate1_Measure = Ext.getCmp('DateComboPanel1_Measure');
+		var ctlDate2_Measure = Ext.getCmp('DateComboPanel2_Measure');
+		
+		if(this.activeTab.id == 'nakdong_map'){
+			//alert("1");
+			ctlDate1.show();
+			ctlDate2.hide();
+			ctlDate1_chl.show();
+			ctlDate2_chl.hide();
+			ctlDate1_Measure.show();
+			ctlDate2_Measure.hide();
+		}
+		
+		if(this.activeTab.id == 'northhan_map'){
+			//alert("2");
+			ctlDate1.hide();
+			ctlDate2.show();
+			ctlDate1_chl.hide();
+			ctlDate2_chl.show();
+			ctlDate1_Measure.hide();
+			ctlDate2_Measure.show();
+		}
+		
+		ctlDate1.setX(Ext.getBody().getViewSize().width - ctlDate1.width);
+		ctlDate1.setY(positionY);
+		ctlDate2.setX(Ext.getBody().getViewSize().width - ctlDate2.width);
+		ctlDate2.setY(positionY);
+		ctlDate1_chl.setX(Ext.getBody().getViewSize().width - ctlDate1_chl.width);
+		ctlDate1_chl.setY(positionY + ctlDate1.getHeight());
+		ctlDate2_chl.setX(Ext.getBody().getViewSize().width - ctlDate2_chl.width);
+		ctlDate2_chl.setY(positionY + ctlDate2.getHeight());
+		ctlDate1_Measure.setX(Ext.getBody().getViewSize().width - ctlDate1_Measure.width);
+		ctlDate1_Measure.setY(positionY + ctlDate1.getHeight() + ctlDate1_Measure.getHeight());
+		ctlDate2_Measure.setX(Ext.getBody().getViewSize().width - ctlDate2_Measure.width);
+		ctlDate2_Measure.setY(positionY + ctlDate2.getHeight() + ctlDate2_chl.getHeight());
+		
+		var ctlLayerToolbar = Ext.getCmp('LayerToolbar');
+		
+		ctlLayerToolbar.setX(0);
+		ctlLayerToolbar.setY(positionY);
+		
+		var ctlBtnHeader = Ext.getCmp('LayerButtonHeader');
+		
+		ctlBtnHeader.setX(0);
+		ctlBtnHeader.setY(positionY + ctlLayerToolbar.height);
+
+		var ctlBtnBody = Ext.getCmp('LayerButtonPanel');
+		
+		ctlBtnBody.setX(0);
+		ctlBtnBody.setY(positionY + ctlBtnHeader.height + ctlLayerToolbar.height);
+		
+		var ctlPopup = Ext.getCmp('PopupManualPanel');
+		
+		ctlPopup.setX(0);
+		ctlPopup.setY(positionY);
+	},
+	
 	listeners: {
         'tabchange': function() {
-        	//console.info(this.activeTab.id);
-        	
-        	var positionY = 38;
-        	
-        	var ctlDate1 = Ext.getCmp('DateComboPanel1');
-    		var ctlDate2 = Ext.getCmp('DateComboPanel2');
-    		var ctlDate1_Measure = Ext.getCmp('DateComboPanel1_Measure');
-    		var ctlDate2_Measure = Ext.getCmp('DateComboPanel2_Measure');
-    		
-    		if(this.activeTab.id == 'nakdong_map'){
-    			ctlDate1.show();
-    			ctlDate2.hide();
-    			ctlDate1_Measure.show();
-    			ctlDate2_Measure.hide();
-    		}
-    		
-    		if(this.activeTab.id == 'northhan_map'){
-    			ctlDate1.hide();
-    			ctlDate2.show();
-    			ctlDate1_Measure.hide();
-    			ctlDate2_Measure.show();
-    			ctlDate2_Measure.setY(positionY);
-    		}
-    		
-    		var ctlLayerToolbar = Ext.getCmp('LayerToolbar');
-    		
-    		ctlLayerToolbar.setX(0);
-    		ctlLayerToolbar.setY(positionY);
-    		
-    		var ctlBtnHeader = Ext.getCmp('LayerButtonHeader');
-    		
-    		ctlBtnHeader.setX(0);
-    		ctlBtnHeader.setY(positionY + ctlLayerToolbar.height);
-
-    		var ctlBtnBody = Ext.getCmp('LayerButtonPanel');
-    		
-    		ctlBtnBody.setX(0);
-    		ctlBtnBody.setY(positionY + ctlBtnHeader.height + ctlLayerToolbar.height);
-    		
-    		var ctlPopup = Ext.getCmp('PopupManualPanel');
-    		
-    		ctlPopup.setX(0);
-    		ctlPopup.setY(positionY);
-    		
-    		//ctlDate2.hide();
+        	this.setControl();
         }
     },
 	
 	initComponent: function(){
 		this.callParent();
-		
-		//console.info(Ext.layerIds);
-		
-		var positionY = 38;
-		
+
+		// 낙동강 항공영상 select box
 		var ctlDate1 = Ext.create('WaterBloomDrone.view.center.DateComboTab1', {
-			renderTo: Ext.getBody(),
-			//height: 44
+			renderTo: Ext.getBody()
 		});
 		
-		ctlDate1.setX(Ext.getBody().getViewSize().width - ctlDate1.width);
-		ctlDate1.setY(positionY);
+		// 낙동강 초분광(클로로필a) select box
+		var ctlDate1_chl = Ext.create('WaterBloomDrone.view.center.DateComboTab1_chl', {
+			renderTo: Ext.getBody()
+		});
 		
+		// 낙동강 조류측정자료 select box
 		var ctlDate1_Measure = Ext.create('WaterBloomDrone.view.center.DateComboTab1_Measure', {
 			renderTo: Ext.getBody()
 		});
 		
-		ctlDate1_Measure.setX(Ext.getBody().getViewSize().width - ctlDate1.width - ctlDate1_Measure.width - 3);
-		ctlDate1_Measure.setY(positionY);
-		
+		// 북한강 항공영상 select box
 		var ctlDate2 = Ext.create('WaterBloomDrone.view.center.DateComboTab2', {
-			renderTo: Ext.getBody(),
-			//height: 22
-		});
-		
-		ctlDate2.setX(Ext.getBody().getViewSize().width - ctlDate2.width);
-		ctlDate2.setY(positionY);
-		
-		ctlDate2.hide();
-		
-		var ctlDate2_Measure = Ext.create('WaterBloomDrone.view.center.DateComboTab2_Measure', {
 			renderTo: Ext.getBody()
 		});
 		
-		ctlDate2_Measure.setX(Ext.getBody().getViewSize().width - ctlDate2.width - ctlDate2_Measure.width - 3);
-		ctlDate2_Measure.setY(positionY);
+		// 낙동강 초분광(클로로필a) select box
+		var ctlDate2_chl = Ext.create('WaterBloomDrone.view.center.DateComboTab2_chl', {
+			renderTo: Ext.getBody()
+		});
 		
-		ctlDate2_Measure.hide();
+		// 북한강 조류측정자료 select box
+		var ctlDate2_Measure = Ext.create('WaterBloomDrone.view.center.DateComboTab2_Measure', {
+			renderTo: Ext.getBody()
+		});
 		
 		var ctlLayerToolbar = Ext.create('WaterBloomDrone.view.center.LayerToolbar', {
 			renderTo: Ext.getBody()
 		});
 		
-		ctlLayerToolbar.setX(0);
-		ctlLayerToolbar.setY(positionY);
-		
 		var ctlBtnHeader = Ext.create('WaterBloomDrone.view.center.LayerButtonHeader', {
 			renderTo: Ext.getBody()
 		});
-		
-		ctlBtnHeader.setX(0);
-		ctlBtnHeader.setY(positionY + ctlLayerToolbar.height);
 
 		var ctlBtnBody = Ext.create('WaterBloomDrone.view.center.LayerButton', {
 			renderTo: Ext.getBody()
 		});
 		
-		ctlBtnBody.setX(0);
-		ctlBtnBody.setY(positionY + ctlBtnHeader.height + ctlLayerToolbar.height);
-		
 		var ctlPopup = Ext.create('WaterBloomDrone.view.center.PopupManual', {
 			renderTo: Ext.getBody()
 		});
 		
-		ctlPopup.setX(0);
-		ctlPopup.setY(positionY);
+		this.setControl();
 	}
 });
 

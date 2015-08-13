@@ -55,6 +55,16 @@ Ext.nakdongWMCYMWDefaultValue = "";
 Ext.northHanWMCYMW = [];
 Ext.northHanWMCYMWDefaultValue = "";
 
+Ext.nakdongChlDate = [];
+Ext.nakdongChlLayerId = [];
+Ext.nakdongChlDefaultValue = "";
+Ext.nakdongChlOnOffVar = "Ext.btn6OnOff"; // 낙동강 초분광(클로로필a) 버튼 On/Off 변수 명
+
+Ext.northHanChlDate = [];
+Ext.northHanChlLayerId = [];
+Ext.northHanChlDefaultValue = "";
+Ext.northHanChlOnOffVar = "Ext.btn6OnOff"; // 북한강 초분광(클로로필a) 버튼 On/Off 변수 명
+
 var responseLayer = Ext.Ajax.request({
 	async: false, // 동기화
     url: './resources/data/LayerMapper.json'
@@ -206,6 +216,26 @@ for(var i = 0; i < itemsLayer.length; i++){
     			Ext.northHanWMCYMWDefaultValue = itemsLayer[i].mesureDate;
     		}
     		//Ext.northHanDroneBtnId = itemsLayer[i].layerBtnId;
+		}
+	}
+	
+	// 초분광 영상 전역 변수 셋팅
+	if(itemsLayer[i].layerType == "초분광"){
+		
+		if(itemsLayer[i].layerArea == "낙동강"){
+			Ext.nakdongChlDate.push(itemsLayer[i].layerDate);
+    		Ext.nakdongChlLayerId.push(itemsLayer[i].layerId);
+    		//if(itemsLayer[i].defaultOn == true){
+    			Ext.nakdongChlDefaultValue = itemsLayer[i].layerDate;
+    		//} 
+		}
+		
+		if(itemsLayer[i].layerArea == "북한강"){
+			Ext.northHanChlDate.push(itemsLayer[i].layerDate);
+    		Ext.northHanChlLayerId.push(itemsLayer[i].layerId);
+    		//if(itemsLayer[i].defaultOn == true){
+    			Ext.northHanChlDefaultValue = itemsLayer[i].layerDate;
+    		//}
 		}
 	}
 }
