@@ -43,6 +43,14 @@ Ext.northHanDroneLayerId = [];
 Ext.northHanDroneDefaultValue = "";
 Ext.northHanDroneOnOffVar = "Ext.btn5OnOff"; // 북한강 항공영상 버튼 On/Off 변수 명
 
+//금강 항공영상 관련 전역 변수
+//Ext.geumDroneDate = ["촬영일자선택"];
+//Ext.geumDroneLayerId = [""];
+Ext.geumDroneDate = [];
+Ext.geumDroneLayerId = [];
+Ext.geumDroneDefaultValue = "";
+Ext.geumDroneOnOffVar = "Ext.btn5OnOff"; // 북한강 항공영상 버튼 On/Off 변수 명
+
 Ext.featureLayerVar = "Ext.btn2OnOff"; // 측정지점 버튼 On/Off 변수 명
 Ext.featureLayerId = "3";
 
@@ -54,16 +62,26 @@ Ext.nakdongWMCYMW = [];
 Ext.nakdongWMCYMWDefaultValue = "";
 Ext.northHanWMCYMW = [];
 Ext.northHanWMCYMWDefaultValue = "";
+Ext.geumWMCYMW = [];
+Ext.geumWMCYMWDefaultValue = "";
 
 Ext.nakdongChlDate = [];
 Ext.nakdongChlLayerId = [];
 Ext.nakdongChlDefaultValue = "";
 Ext.nakdongChlOnOffVar = "Ext.btn6OnOff"; // 낙동강 초분광(클로로필a) 버튼 On/Off 변수 명
+Ext.nakdongChlLegendImg = "";
 
 Ext.northHanChlDate = [];
 Ext.northHanChlLayerId = [];
 Ext.northHanChlDefaultValue = "";
 Ext.northHanChlOnOffVar = "Ext.btn6OnOff"; // 북한강 초분광(클로로필a) 버튼 On/Off 변수 명
+Ext.northHanChlLegendImg = "";
+
+Ext.geumChlDate = [];
+Ext.geumChlLayerId = [];
+Ext.geumChlDefaultValue = "";
+Ext.geumChlOnOffVar = "Ext.btn6OnOff"; // 금강 초분광(클로로필a) 버튼 On/Off 변수 명
+Ext.geumChlLegendImg = "";
 
 var responseLayer = Ext.Ajax.request({
 	async: false, // 동기화
@@ -71,14 +89,11 @@ var responseLayer = Ext.Ajax.request({
 });
 
 var itemsLayer = Ext.decode(responseLayer.responseText);
-//console.info(itemsLayer);
 
 for(var i = 0; i < itemsLayer.length; i++){
-	//console.info(items[i].defaultOn);
 	if(itemsLayer[i].layerBtnId == "btn1"){
 		// 레이어 아이디 전역변수
 		Ext.btn1LayerIds.push(itemsLayer[i].layerId);
-		//console.info(Ext.btn1LayerIds);
 		
 		// 레이어 On/Off 여부
 		if(itemsLayer[i].defaultOn == true || itemsLayer[i].defaultOn == "true"){
@@ -156,7 +171,7 @@ for(var i = 0; i < itemsLayer.length; i++){
 		// 레이어 On/Off 여부
 		if(itemsLayer[i].defaultOn == true || itemsLayer[i].defaultOn == "true"){
 			Ext.btn5OnOff = "on";
-			Ext.visibleLayers.push(itemsLayer[i].layerId);
+			//Ext.visibleLayers.push(itemsLayer[i].layerId);
 		}
 		else
 			Ext.btn5OnOff = "off";
@@ -174,7 +189,7 @@ for(var i = 0; i < itemsLayer.length; i++){
 		// 레이어 On/Off 여부
 		if(itemsLayer[i].defaultOn == true || itemsLayer[i].defaultOn == "true"){
 			Ext.btn6OnOff = "on";
-			Ext.visibleLayers.push(itemsLayer[i].layerId);
+			//Ext.visibleLayers.push(itemsLayer[i].layerId);
 		}
 		else
 			Ext.btn6OnOff = "off";
@@ -217,6 +232,17 @@ for(var i = 0; i < itemsLayer.length; i++){
     		}
     		//Ext.northHanDroneBtnId = itemsLayer[i].layerBtnId;
 		}
+		
+		if(itemsLayer[i].layerArea == "금강"){
+			Ext.geumDroneDate.push(itemsLayer[i].layerDate);
+			Ext.geumWMCYMW.push(itemsLayer[i].mesureDate);
+    		Ext.geumDroneLayerId.push(itemsLayer[i].layerId);
+    		if(itemsLayer[i].defaultOn == true){
+    			Ext.geumDroneDefaultValue = itemsLayer[i].layerDate;
+    			Ext.geumWMCYMWDefaultValue = itemsLayer[i].mesureDate;
+    		}
+    		//Ext.geumDroneBtnId = itemsLayer[i].layerBtnId;
+		}
 	}
 	
 	// 초분광 영상 전역 변수 셋팅
@@ -227,7 +253,8 @@ for(var i = 0; i < itemsLayer.length; i++){
     		Ext.nakdongChlLayerId.push(itemsLayer[i].layerId);
     		//if(itemsLayer[i].defaultOn == true){
     			Ext.nakdongChlDefaultValue = itemsLayer[i].layerDate;
-    		//} 
+    		//}
+    		Ext.nakdongChlLegendImg = itemsLayer[i].legendImg;
 		}
 		
 		if(itemsLayer[i].layerArea == "북한강"){
@@ -236,6 +263,16 @@ for(var i = 0; i < itemsLayer.length; i++){
     		//if(itemsLayer[i].defaultOn == true){
     			Ext.northHanChlDefaultValue = itemsLayer[i].layerDate;
     		//}
+    			Ext.northHanChlLegendImg = itemsLayer[i].legendImg;
+		}
+		
+		if(itemsLayer[i].layerArea == "금강"){
+			Ext.geumChlDate.push(itemsLayer[i].layerDate);
+    		Ext.geumChlLayerId.push(itemsLayer[i].layerId);
+    		//if(itemsLayer[i].defaultOn == true){
+    			Ext.geumChlDefaultValue = itemsLayer[i].layerDate;
+    		//}
+    			Ext.geumChlLegendImg = itemsLayer[i].legendImg;
 		}
 	}
 }
@@ -354,6 +391,14 @@ Ext.application({
     	    	me.level = 9;
     	    }
     	    
+    	    if(mapDivId == "_mapDiv_3"){
+    	    	varXmin = 13971160.027994398;
+    	    	varYmin = 4264345.372502677;
+    	    	varXmax = 14558196.405224271;
+    	    	varYmax = 4459412.668686353;
+    	    	me.level = 9;
+    	    }
+    	    
     	    var s = "";
     		s = "XMin: "+ varXmin + " "
     		   +"YMin: " + varYmin + " "
@@ -397,9 +442,39 @@ Ext.application({
 				me.map.setLevel(me.level);
 			});
     	}
+    	
+    	Ext.setFeatureLayer = function(){
+    		var mapCtl = Ext.getCmp('_mapDiv_1');
+    		if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
+	        	var layer = mapCtl.map.getLayer("FeatureLayer1");
+	        	mapCtl.map.removeLayer(layer);
+	        	var layer = mapCtl.map.getLayer("labels");
+	        	mapCtl.map.removeLayer(layer);
+	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin1', mapCtl.map);
+    		}
+        	
+        	var mapCtl = Ext.getCmp('_mapDiv_2')
+        	if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
+	        	var layer = mapCtl.map.getLayer("FeatureLayer2");
+	        	mapCtl.map.removeLayer(layer);
+	        	var layer = mapCtl.map.getLayer("labels");
+	        	mapCtl.map.removeLayer(layer);
+	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin2', mapCtl.map);
+        	}
+        	
+        	var mapCtl = Ext.getCmp('_mapDiv_3')
+        	if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
+	        	var layer = mapCtl.map.getLayer("FeatureLayer3");
+	        	mapCtl.map.removeLayer(layer);
+	        	var layer = mapCtl.map.getLayer("labels");
+	        	mapCtl.map.removeLayer(layer);
+	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin3', mapCtl.map);
+        	}
+    	}
 
     	// khLee Extent 조회
     	Ext.setExtent = function (extent) {
+    		Ext.setFeatureLayer();
     		//extent.xmin.toFixed(2)
     		var s = "";
     		s = "XMin: "+ extent.xmin + " "
@@ -408,6 +483,7 @@ Ext.application({
     		   +"YMax: " + extent.ymax;
     		
     		//console.info(s);
+    		//console.info(extent.getCenter());
     		//console.info(Ext.getCmp('app_center_container').activeTab.id)
     		//alert(s);
     		//return;
@@ -432,6 +508,15 @@ Ext.application({
         		var stdCenterXmax = 14344478.474139143;
         		var stdCenterYmin = 4470725.348872494;
         		var stdCenterYmax = 4606783.259220161;
+    		}
+    		if(tabId == "geum_map"){
+    			me = Ext.getCmp('_mapDiv_3');
+    			layerId = "DynamicLayer3";
+    			// level 9 일때 Center 범위
+        		var stdCenterXmin = 14035672.879867056;
+        		var stdCenterXmax = 14439566.137325734;
+        		var stdCenterYmin = 4295837.428156155;
+        		var stdCenterYmax = 4422111.398883205;
     		}
     		
     		if(me.map.getLevel() < me.level){
@@ -463,8 +548,6 @@ Ext.application({
     		*/
     			alert("영역을 벗어났습니다.");
     			me.map.centerAt(me.preExtent.getCenter());
-    			//me.map.setLevel(me.level);
-    			//me.map.centerAt(me.initialExtent.getCenter());
     		}
     		else{
     			me.preExtent.xmin = extent.xmin;

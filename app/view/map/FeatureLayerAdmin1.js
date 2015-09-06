@@ -7,7 +7,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
 	constructor: function(map) {
         var me = this;
         me.map = map;
-        
+        //console.info(Ext.visibleLayers);
         var queryTask = new esri.tasks.QueryTask(Ext.mapServiceUrl + "/" + Ext.featureLayerId); // 레이어 URL
 		var query = new esri.tasks.Query();
 		query.returnGeometry = true;
@@ -77,6 +77,12 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
 			
 			measureDate = Ext.getCmp("cboDate1_Measure").value;
 			layerDate = Ext.getCmp("cboDate1").value;
+			
+			// 7월 2주차일때 표시되는 항공영상 일자와 다르게..
+			// 표시되는 항공영상 일자 : 2015-07-04
+			if(measureDate == "2015-07-2주"){
+				layerDate = "2015-07-06";
+			}
 			//console.info(measureDate);
 			//console.info(layerDate);
 			
@@ -88,6 +94,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
         		async: false, // 비동기 = async: true, 동기 = async: false
         		success : function(response, opts) {
         			//console.info(response.responseText);
+        			//return;
         			if(response.responseText.trim() == 'error'){
         				alert("오류가 발생하였습니다. 관리자에게 문의하세요.");
         				return;
@@ -98,7 +105,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
         			//alert(jsonData.data[0].ITEM_SURFACE_CLOA);
         		},
         		failure: function(form, action) {
-        			alert(form.responseText);
+        			//alert(form.responseText);
         			alert("오류가 발생하였습니다.");
         		}
         	});
@@ -111,6 +118,11 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
 							if(jsonData.data[jsonCnt].PT_NO == featureSet.featureSet.features[featureCnt].attributes.측정소코드){
 								// 측정일자
 								featureSet.featureSet.features[featureCnt].attributes.WMCYMD = jsonData.data[jsonCnt].WMCYMD;
+								// 데이터 없음 표시 문자
+								if(jsonData.data[jsonCnt].WMCYMD == "-")
+									featureSet.featureSet.features[featureCnt].attributes.emptyMsg = "데이터가 존재하지 않습니다.";
+								else
+									featureSet.featureSet.features[featureCnt].attributes.emptyMsg = "";
 								//console.info(jsonData.data[jsonCnt].ITEM_SURFACE_CLOA);
 								if(jsonData.data[jsonCnt].ITEM_SURFACE_CLOA == undefined || jsonData.data[jsonCnt].ITEM_SURFACE_CLOA == "undefined"){
     								// 클로로필 a
@@ -153,7 +165,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
 			
 			/* Feature Layer 심볼 설정 */
 			var selectionSymbol = new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_SQUARE,
-			    10,
+			    30,
 			    new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new esri.Color([255, 255, 255, 0]), 2), // 투명도 0
 			    new esri.Color([255, 255, 0, 0]) // 투명도 0
 		    );
@@ -168,22 +180,36 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
 			me.map.addLayer(me.layer);
 			
 			// Feature Layer에 필드를 추가해야 라벨에서 사용 가능...
+			me.layer.fields.push({name: "emptyMsg", alias: "emptyMsg", type: "esriFieldTypeString"});
 			me.layer.fields.push({name: "WMCYMD", alias: "WMCYMD", type: "esriFieldTypeString"});
 			me.layer.fields.push({name: "ITEM_SURFACE_CLOA", alias: "ITEM_SURFACE_CLOA", type: "esriFieldTypeString"});
 			me.layer.fields.push({name: "ITEM_TEMP_SURF", alias: "ITEM_TEMP_SURF", type: "esriFieldTypeString"});
 			me.layer.fields.push({name: "ITEM_BLUE_GREEN_ALGAE", alias: "ITEM_BLUE_GREEN_ALGAE", type: "esriFieldTypeString"});
 			
 			/* 라벨설정 */
-			require(["esri/Color", "esri/symbols/TextSymbol", "esri/renderers/SimpleRenderer",  "esri/layers/LabelLayer", "esri/symbols/Font"], function(Color, TextSymbol, SimpleRenderer, LabelLayer, Font){
+			require(["esri/Color",
+			         "esri/symbols/TextSymbol",
+			         "esri/renderers/SimpleRenderer",
+			         "esri/layers/LabelLayer",
+			         "esri/symbols/Font",
+			         "dojo/on",
+			         "dojo/dom-construct"],
+			         function(Color,
+			        		 TextSymbol,
+			        		 SimpleRenderer,
+			        		 LabelLayer,
+			        		 Font,
+			        		 on,
+			        		 domConstruct){
     			//var statesColor = new Color("#666");
 				var statesColor = new Color("black");
     			// create a text symbol to define the style of labels
     	        var statesLabel = new TextSymbol().setColor(statesColor);
-    	        statesLabel.font.setSize("12pt").setWeight(Font.WEIGHT_BOLD); // WEIGHT_BOLD, WEIGHT_BOLDER, WEIGHT_LIGHTER, WEIGHT_NORMAL
+    	        statesLabel.font.setSize("11pt").setWeight(Font.WEIGHT_BOLD); // WEIGHT_BOLD, WEIGHT_BOLDER, WEIGHT_LIGHTER, WEIGHT_NORMAL
     	        statesLabel.font.setFamily("굴림").setDecoration("none"); // "underline" | "line-through" | "none"
     	        //statesLabel.font.setVariant(Font.VARIANT_SMALLCAPS);
-    	        statesLabel.xoffset = -10;
-    	        statesLabel.yoffset = -22;
+    	        statesLabel.xoffset = 0;
+    	        statesLabel.yoffset = -40;
     	        var statesLabelRenderer = new SimpleRenderer(statesLabel);
     	        var labels = new LabelLayer({ 
     	        	id: "labels"
@@ -193,44 +219,44 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
     	        // using the field named "STATE_NAME"
     	        //console.info(labels.addFeatureLayer(me.layer, statesLabelRenderer, "{측정소명} chl-a:{ITEM_SURFACE_CLOA}"));
     	        //labels.addFeatureLayer(me.layer, statesLabelRenderer, "{측정소명} chl-a:{ITEM_SURFACE_CLOA}");
-    	        labels.addFeatureLayer(me.layer, statesLabelRenderer, "chl-a : {ITEM_SURFACE_CLOA}");
-    	        
-    	        require(["dojo/on", "dojo/dom-construct"], function(on, domConstruct){
-    	        	on(labels, 'graphic-node-add', function (graphic) {
-    	        		//console.info(graphic.node);
-    	        		//graphic.node.setAttribute("fill", "white");
-    	        		//graphic.node.setAttribute("stroke", "black");
-    	        		//graphic.node.setAttribute("stroke-width", 0.3);
-    	        		//graphic.node.setAttribute("stroke-opacity", 1);
-    	        		
-    	        		var SVGRect = graphic.node.getBBox();
-    	        		console.info(rect);
-    	                var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    	                rect.setAttribute("x", SVGRect.x-10);
-    	                rect.setAttribute("y", SVGRect.y+22);
-    	                rect.setAttribute("width", SVGRect.width);
-    	                rect.setAttribute("height", SVGRect.height);
-    	                rect.setAttribute("fill", "white");
-    	                rect.setAttribute("fill-opacity", 0.5);
-    	                console.info(rect);
-    	                domConstruct.place(rect, graphic.node, "before");
-    	                
-                    });
-    	        });
+    	        labels.addFeatureLayer(me.layer, statesLabelRenderer, "{측정소명} chl-a : {ITEM_SURFACE_CLOA}");
+    	        //console.info(labels);
+    	        on(labels, 'graphic-node-add', function (graphic) {
+    	        	
+	        		//graphic.node.setAttribute("fill", "black");
+	        		//graphic.node.setAttribute("stroke", "white");
+	        		//graphic.node.setAttribute("stroke-width", 2.5);
+	        		//graphic.node.setAttribute("stroke-opacity", 0.5);
+	        	
+	        		var SVGRect = graphic.node.getBBox();
+	        		//console.info(rect);
+	                var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+	                rect.setAttribute("x", SVGRect.x);
+	                rect.setAttribute("y", SVGRect.y + 40);
+	                rect.setAttribute("width", SVGRect.width);
+	                rect.setAttribute("height", SVGRect.height);
+	                rect.setAttribute("fill", "white");
+	                rect.setAttribute("fill-opacity", 0.7);
+	                //console.info(rect);
+	                domConstruct.place(rect, graphic.node, "before");
+	                
+                });
     	        
     	        //console.info(labels.graphics);
     	        // add the label layer to the map
     	        me.map.addLayer(labels);
     	        //console.info(labels);
     	        
-    	        /*
     	        for(var lblCnt = 0; lblCnt < labels.graphics.length; lblCnt++){
     	        	if(labels.graphics[lblCnt].symbol.text.indexOf("undefined") > -1){
-    	        		labels.remove(labels.graphics[lblCnt]);
-	    	        	lblCnt--;
+    	        		//console.info(lblCnt);
+    	        		//labels.graphics[lblCnt].visible = false;
+    	        		//labels.graphics[lblCnt].symbol.text = labels.graphics[lblCnt].symbol.text.replace("undefined", "-");
+    	        		//labels.remove(labels.graphics[lblCnt]);
+	    	        	//lblCnt--;
+    	        		//labels.graphics[lblCnt].symbol.text = "";
     	        	}
     	        }
-    	        */
 			});
 			/* 라벨설정 끝 */
 			
@@ -270,9 +296,12 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
 			me.layer.on("mouse-over", function(evt){
 				//evt.layer.enableMouseEvents();
 		          var t = "<table class=\"view_form\">" +
+					          "<tr>" +
+			     			   "<td class=\"no_Data\" colspan=\"4\"><span class=\"site_name\">측정소명 : ${측정소명}</span> <span class=\"info_txt\">${emptyMsg}</span></td>" +
+			     			 "</tr>" +
     	    		          "<tr>" +
 		          			   "<th>측정일자</th>" +
-		          			   "<th>chl-a<br>(㎡)</th>" +
+		          			   "<th>chl-a<br>(㎎/㎥)</th>" +
 		          			   "<th>수온<br>(℃)</th>" +
 		          			   "<th>남조류세포수<br>(cells/㎖)</th>" +
 		          			 "</tr>" +
@@ -303,7 +332,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
 		          dialog.setContent(content);
 
 		          require(["dojo/dom-style", "dijit/popup"], function(domStyle, dijitPopup){
-		        	  domStyle.set(dialog.domNode, "opacity", 0.85);
+		        	  domStyle.set(dialog.domNode, "opacity", 1);
     		          dijitPopup.open({
     		            popup: dialog, 
     		            x: evt.pageX,

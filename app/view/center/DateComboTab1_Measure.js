@@ -45,12 +45,7 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab1_Measure', {
 	        	var layerCombo = Ext.getCmp("cboDate1");
 	        	layerCombo.setValue(Ext.nakdongDroneDate[comboIdx]);
 	        	
-	        	var mapCtl = Ext.getCmp('_mapDiv_1');
-	        	var layer = mapCtl.map.getLayer("FeatureLayer1");
-	        	mapCtl.map.removeLayer(layer);
-	        	var layer = mapCtl.map.getLayer("labels");
-	        	mapCtl.map.removeLayer(layer);
-	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin1', mapCtl.map);
+	        	Ext.setFeatureLayer();
 	        },
 	        scope: this
 	    }

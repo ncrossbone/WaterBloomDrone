@@ -7,15 +7,6 @@ Ext.define('WaterBloomDrone.view.map.DynamicLayerAdmin1', {
 	constructor: function(map) {
         var me = this;
         me.map = map;
-        
-        /*
-    	console.info(Ext.mapServiceUrl);
-    	console.info(Ext.visibleLayers);
-    	console.info(Ext.nakdongDroneDate);
-    	console.info(Ext.nakdongDroneLayer);
-    	console.info(Ext.northHanDroneDate);
-		console.info(Ext.northHanDroneLayer);
-		*/
     	
     	me.layer = new esri.layers.ArcGISDynamicMapServiceLayer(Ext.mapServiceUrl);
 		me.layer.id = "DynamicLayer1";
@@ -23,6 +14,23 @@ Ext.define('WaterBloomDrone.view.map.DynamicLayerAdmin1', {
 		me.map.addLayer(me.layer);
 		
 		me.layer.setVisibility(true);
-		me.layer.setVisibleLayers(Ext.visibleLayers);
+		//console.info(Ext.visibleLayers);
+		
+		var visibleLayerIds = [];
+		
+		for(var i = 0; i < Ext.visibleLayers.length; i++){
+			visibleLayerIds.push(Ext.visibleLayers[i]);
+		}
+		
+		//var visibleLayerIds = Ext.visibleLayers;
+		if(Ext.nakdongDroneLayerId != undefined && Ext.nakdongDroneLayerId.length > 0){
+			for(var i = 0; i < Ext.nakdongDroneLayerId.length; i++){
+				var nakdongDroneDate = Ext.getCmp("cboDate1").value;
+				if(nakdongDroneDate == Ext.nakdongDroneDate[i])
+					visibleLayerIds.push(Ext.nakdongDroneLayerId[i]);
+			}
+		}
+		//console.info(Ext.visibleLayers);
+		me.layer.setVisibleLayers(visibleLayerIds);
     }
 });

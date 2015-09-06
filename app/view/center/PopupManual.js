@@ -15,7 +15,6 @@ Ext.define('WaterBloomDrone.view.center.PopupManual', {
 		align: 'right'
 	},
 	
-	//bodyStyle: 'background-color: transparent !important',
 	cls: 'khLee-x-popupmanual',
 	
 	items: [{
@@ -23,7 +22,7 @@ Ext.define('WaterBloomDrone.view.center.PopupManual', {
 		id: 'img',
 		src: './resources/images/button/Untitled-4.png',
 		style: 'border:0px;',
-		height: 549,
+		height: 479,
 		width: 285,
 		listeners: {
 	        el: {
@@ -36,7 +35,8 @@ Ext.define('WaterBloomDrone.view.center.PopupManual', {
 	}, {
 		xtype: 'image',
 		src: './resources/images/button/close.png',
-		x: 247,
+		x: 240,
+		y: 8,
 		width: 25,
 		height: 25,
 		style: 'cursor:pointer;border:0px;',

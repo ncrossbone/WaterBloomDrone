@@ -9,7 +9,9 @@ String DB_PASSWORD = "WATER";
 
 Connection con = null;
 Statement stmt = null;
+Statement stmtNew = null;
 ResultSet rs = null;
+ResultSet rsNew = null;
 String sql=null;
 
 try
