@@ -40,13 +40,20 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab2_chl', {
 		width: 128,
 		listeners: {
 	        change: function (field, newValue, oldValue) {
-	        	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
-	        	/*
-	        	comboIdx = Ext.nakdongDroneDate.indexOf(newValue);
-	        	//console.info(Ext.nakdongWMCYMW[comboIdx]);
-	        	var measureCombo = Ext.getCmp("cboDate1_Measure");
-	        	measureCombo.setValue(Ext.nakdongWMCYMW[comboIdx]);
-	        	*/
+	        	comboIdx = Ext.northHanChlDate.indexOf(newValue);
+
+	        	var measureCombo = Ext.getCmp("cboDate2_Measure");
+	        	var layerCombo = Ext.getCmp("cboDate2");
+	        	
+	        	if(newValue == "선택하세요."){
+	        		measureCombo.setValue(Ext.northHanWMCYMWDefaultValue);
+	        		layerCombo.setValue(Ext.northHanDroneDefaultValue);
+	        	}
+	        	else{
+	        		measureCombo.setValue(Ext.northHanWMCYMW[comboIdx]);
+	        		layerCombo.setValue(Ext.northHanDroneDate[comboIdx]);
+	        		LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
+	        	}
 	        },
 	        scope: this
 	    }

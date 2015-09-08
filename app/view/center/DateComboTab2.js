@@ -41,12 +41,21 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab2', {
 		width: 128,
 		listeners: {
 	        change: function (field, newValue, oldValue) {
-	        	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
-	        	
 	        	comboIdx = Ext.northHanDroneDate.indexOf(newValue);
-	        	//console.info(Ext.nakdongWMCYMW[comboIdx]);
+	        	
 	        	var measureCombo = Ext.getCmp("cboDate2_Measure");
-	        	measureCombo.setValue(Ext.northHanWMCYMW[comboIdx]);
+	        	if(Ext.northHanWMCYMW[comboIdx] == "")
+	        		measureCombo.setValue(Ext.northHanWMCYMWDefaultValue);
+	        	else
+	        		measureCombo.setValue(Ext.northHanWMCYMW[comboIdx]);
+	        	
+	        	var chlCombo = Ext.getCmp("cboDate2_chl");
+	        	if(Ext.northHanChlDate[comboIdx] == "")
+	        		chlCombo.setValue(Ext.northHanChlDefaultValue);
+	        	else
+	        		chlCombo.setValue(Ext.northHanChlDate[comboIdx]);
+	        	
+	        	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 	        },
 	        scope: this
 	    }

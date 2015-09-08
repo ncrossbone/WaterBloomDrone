@@ -30,24 +30,24 @@ Ext.btn6OnOff = "off";
 // 낙동강 항공영상 관련 전역 변수
 //Ext.nakdongDroneDate = ["촬영일자선택"];
 //Ext.nakdongDroneLayerId = [""];
-Ext.nakdongDroneDate = [];
-Ext.nakdongDroneLayerId = [];
+Ext.nakdongDroneDate = [""];
+Ext.nakdongDroneLayerId = [""];
 Ext.nakdongDroneDefaultValue = "";
 Ext.nakdongDroneOnOffVar = "Ext.btn5OnOff"; // 낙동강 항공영상 버튼 On/Off 변수 명
 
 // 북한강 항공영상 관련 전역 변수
 //Ext.northHanDroneDate = ["촬영일자선택"];
 //Ext.northHanDroneLayerId = [""];
-Ext.northHanDroneDate = [];
-Ext.northHanDroneLayerId = [];
+Ext.northHanDroneDate = [""];
+Ext.northHanDroneLayerId = [""];
 Ext.northHanDroneDefaultValue = "";
 Ext.northHanDroneOnOffVar = "Ext.btn5OnOff"; // 북한강 항공영상 버튼 On/Off 변수 명
 
 //금강 항공영상 관련 전역 변수
 //Ext.geumDroneDate = ["촬영일자선택"];
 //Ext.geumDroneLayerId = [""];
-Ext.geumDroneDate = [];
-Ext.geumDroneLayerId = [];
+Ext.geumDroneDate = [""];
+Ext.geumDroneLayerId = [""];
 Ext.geumDroneDefaultValue = "";
 Ext.geumDroneOnOffVar = "Ext.btn5OnOff"; // 북한강 항공영상 버튼 On/Off 변수 명
 
@@ -58,28 +58,28 @@ Ext.featureLayerId = "3";
 //Ext.nakdongWMCYMWDefaultValue = "";
 //Ext.northHanWMCYMW = ["측정일자선택"];
 //Ext.northHanWMCYMWDefaultValue = "";
-Ext.nakdongWMCYMW = [];
+Ext.nakdongWMCYMW = [""];
 Ext.nakdongWMCYMWDefaultValue = "";
-Ext.northHanWMCYMW = [];
+Ext.northHanWMCYMW = [""];
 Ext.northHanWMCYMWDefaultValue = "";
-Ext.geumWMCYMW = [];
+Ext.geumWMCYMW = [""];
 Ext.geumWMCYMWDefaultValue = "";
 
-Ext.nakdongChlDate = [];
-Ext.nakdongChlLayerId = [];
-Ext.nakdongChlDefaultValue = "";
+Ext.nakdongChlDate = ["선택하세요."];
+Ext.nakdongChlLayerId = [""];
+Ext.nakdongChlDefaultValue = "선택하세요.";
 Ext.nakdongChlOnOffVar = "Ext.btn6OnOff"; // 낙동강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.nakdongChlLegendImg = "";
 
-Ext.northHanChlDate = [];
-Ext.northHanChlLayerId = [];
-Ext.northHanChlDefaultValue = "";
+Ext.northHanChlDate = ["No-Data"];
+Ext.northHanChlLayerId = [""];
+Ext.northHanChlDefaultValue = "No-Data";
 Ext.northHanChlOnOffVar = "Ext.btn6OnOff"; // 북한강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.northHanChlLegendImg = "";
 
-Ext.geumChlDate = [];
-Ext.geumChlLayerId = [];
-Ext.geumChlDefaultValue = "";
+Ext.geumChlDate = ["No-Data"];
+Ext.geumChlLayerId = [""];
+Ext.geumChlDefaultValue = "No-Data";
 Ext.geumChlOnOffVar = "Ext.btn6OnOff"; // 금강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.geumChlLegendImg = "";
 
@@ -212,34 +212,127 @@ for(var i = 0; i < itemsLayer.length; i++){
 	if(itemsLayer[i].layerType == "항공"){
 		
 		if(itemsLayer[i].layerArea == "낙동강"){
-			Ext.nakdongDroneDate.push(itemsLayer[i].layerDate);
-			Ext.nakdongWMCYMW.push(itemsLayer[i].mesureDate);
-    		Ext.nakdongDroneLayerId.push(itemsLayer[i].layerId);
+			
+			Ext.nakdongDroneLayerId.push(itemsLayer[i].layerId); // 항공영상 레이어 아이디
+			
+			// 항공영상 날짜
+			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
+				Ext.nakdongDroneDate.push(itemsLayer[i].layerDate);
+			else
+				Ext.nakdongDroneDate.push("");
+			
+			// 조류측정자료 날짜
+			if(itemsLayer[i].mesureDate != undefined && itemsLayer[i].mesureDate != "")
+				Ext.nakdongWMCYMW.push(itemsLayer[i].mesureDate);
+			else
+				Ext.nakdongWMCYMW.push("");
+			
+			// 클로로필a 레이어 아이디
+			if(itemsLayer[i].chlLayerId != undefined && itemsLayer[i].chlLayerId != "")
+				Ext.nakdongChlLayerId.push(itemsLayer[i].chlLayerId);
+			else
+				Ext.nakdongChlLayerId.push("");
+			
+			// 클로로필a 날짜
+			if(itemsLayer[i].chlDate != undefined && itemsLayer[i].chlDate != "")
+				Ext.nakdongChlDate.push(itemsLayer[i].chlDate);
+			else
+				Ext.nakdongChlDate.push("");
+    		
     		if(itemsLayer[i].defaultOn == true){
-    			Ext.nakdongDroneDefaultValue = itemsLayer[i].layerDate;
-    			Ext.nakdongWMCYMWDefaultValue = itemsLayer[i].mesureDate;
+    			// 항공영상 날짜 기본값
+    			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
+    				Ext.nakdongDroneDefaultValue = itemsLayer[i].layerDate;
+    			// 조류측정자료 날짜 기본값
+    			if(itemsLayer[i].mesureDate != undefined && itemsLayer[i].mesureDate != "")
+    				Ext.nakdongWMCYMWDefaultValue = itemsLayer[i].mesureDate;
+    			// 클로로필a 날짜 기본값
+    			if(itemsLayer[i].chlDate != undefined && itemsLayer[i].chlDate != "")
+    				Ext.nakdongChlDefaultValue = itemsLayer[i].chlDate;
     		}
     		//Ext.nakdongDroneBtnId = itemsLayer[i].layerBtnId;
 		}
 		
 		if(itemsLayer[i].layerArea == "북한강"){
-			Ext.northHanDroneDate.push(itemsLayer[i].layerDate);
-			Ext.northHanWMCYMW.push(itemsLayer[i].mesureDate);
-    		Ext.northHanDroneLayerId.push(itemsLayer[i].layerId);
+			
+			Ext.northHanDroneLayerId.push(itemsLayer[i].layerId); // 항공영상 레이어 아이디
+			
+			// 항공영상 날짜
+			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
+				Ext.northHanDroneDate.push(itemsLayer[i].layerDate);
+			else
+				Ext.northHanDroneDate.push("");
+			
+			// 조류측정자료 날짜
+			if(itemsLayer[i].mesureDate != undefined && itemsLayer[i].mesureDate != "")
+				Ext.northHanWMCYMW.push(itemsLayer[i].mesureDate);
+			else
+				Ext.northHanWMCYMW.push("");
+			
+			// 클로로필a 레이어 아이디
+			if(itemsLayer[i].chlLayerId != undefined && itemsLayer[i].chlLayerId != "")
+				Ext.northHanChlLayerId.push(itemsLayer[i].chlLayerId);
+			else
+				Ext.northHanChlLayerId.push("");
+			
+			// 클로로필a 날짜
+			if(itemsLayer[i].chlDate != undefined && itemsLayer[i].chlDate != "")
+				Ext.northHanChlDate.push(itemsLayer[i].chlDate);
+			else
+				Ext.northHanChlDate.push("");
+    		
     		if(itemsLayer[i].defaultOn == true){
-    			Ext.northHanDroneDefaultValue = itemsLayer[i].layerDate;
-    			Ext.northHanWMCYMWDefaultValue = itemsLayer[i].mesureDate;
+    			// 항공영상 날짜 기본값
+    			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
+    				Ext.northHanDroneDefaultValue = itemsLayer[i].layerDate;
+    			// 조류측정자료 날짜 기본값
+    			if(itemsLayer[i].mesureDate != undefined && itemsLayer[i].mesureDate != "")
+    				Ext.northHanWMCYMWDefaultValue = itemsLayer[i].mesureDate;
+    			// 클로로필a 날짜 기본값
+    			if(itemsLayer[i].chlDate != undefined && itemsLayer[i].chlDate != "")
+    				Ext.northHanChlDefaultValue = itemsLayer[i].chlDate;
     		}
     		//Ext.northHanDroneBtnId = itemsLayer[i].layerBtnId;
 		}
 		
 		if(itemsLayer[i].layerArea == "금강"){
-			Ext.geumDroneDate.push(itemsLayer[i].layerDate);
-			Ext.geumWMCYMW.push(itemsLayer[i].mesureDate);
-    		Ext.geumDroneLayerId.push(itemsLayer[i].layerId);
+			
+			Ext.geumDroneLayerId.push(itemsLayer[i].layerId); // 항공영상 레이어 아이디
+			
+			// 항공영상 날짜
+			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
+				Ext.geumDroneDate.push(itemsLayer[i].layerDate);
+			else
+				Ext.geumDroneDate.push("");
+			
+			// 조류측정자료 날짜
+			if(itemsLayer[i].mesureDate != undefined && itemsLayer[i].mesureDate != "")
+				Ext.geumWMCYMW.push(itemsLayer[i].mesureDate);
+			else
+				Ext.geumWMCYMW.push("");
+			
+			// 클로로필a 레이어 아이디
+			if(itemsLayer[i].chlLayerId != undefined && itemsLayer[i].chlLayerId != "")
+				Ext.geumChlLayerId.push(itemsLayer[i].chlLayerId);
+			else
+				Ext.geumChlLayerId.push("");
+			
+			// 클로로필a 날짜
+			if(itemsLayer[i].chlDate != undefined && itemsLayer[i].chlDate != "")
+				Ext.geumChlDate.push(itemsLayer[i].chlDate);
+			else
+				Ext.geumChlDate.push("");
+    		
     		if(itemsLayer[i].defaultOn == true){
-    			Ext.geumDroneDefaultValue = itemsLayer[i].layerDate;
-    			Ext.geumWMCYMWDefaultValue = itemsLayer[i].mesureDate;
+    			// 항공영상 날짜 기본값
+    			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
+    				Ext.geumDroneDefaultValue = itemsLayer[i].layerDate;
+    			// 조류측정자료 날짜 기본값
+    			if(itemsLayer[i].mesureDate != undefined && itemsLayer[i].mesureDate != "")
+    				Ext.geumWMCYMWDefaultValue = itemsLayer[i].mesureDate;
+    			// 클로로필a 날짜 기본값
+    			if(itemsLayer[i].chlDate != undefined && itemsLayer[i].chlDate != "")
+    				Ext.geumChlDefaultValue = itemsLayer[i].chlDate;
     		}
     		//Ext.geumDroneBtnId = itemsLayer[i].layerBtnId;
 		}
@@ -249,33 +342,41 @@ for(var i = 0; i < itemsLayer.length; i++){
 	if(itemsLayer[i].layerType == "초분광"){
 		
 		if(itemsLayer[i].layerArea == "낙동강"){
-			Ext.nakdongChlDate.push(itemsLayer[i].layerDate);
-    		Ext.nakdongChlLayerId.push(itemsLayer[i].layerId);
-    		//if(itemsLayer[i].defaultOn == true){
-    			Ext.nakdongChlDefaultValue = itemsLayer[i].layerDate;
+			//Ext.nakdongChlDate.push(itemsLayer[i].layerDate);
+    		//Ext.nakdongChlLayerId.push(itemsLayer[i].layerId);
+    		//if(Ext.nakdongChlDefaultValue == undefined || Ext.nakdongChlDefaultValue == ""){
+    			//Ext.nakdongChlDefaultValue = itemsLayer[i].layerDate;
     		//}
-    		Ext.nakdongChlLegendImg = itemsLayer[i].legendImg;
+			if(itemsLayer[i].legendImg != undefined && itemsLayer[i].legendImg != ""){
+				Ext.nakdongChlLegendImg = itemsLayer[i].legendImg;
+			}
 		}
 		
 		if(itemsLayer[i].layerArea == "북한강"){
-			Ext.northHanChlDate.push(itemsLayer[i].layerDate);
-    		Ext.northHanChlLayerId.push(itemsLayer[i].layerId);
-    		//if(itemsLayer[i].defaultOn == true){
-    			Ext.northHanChlDefaultValue = itemsLayer[i].layerDate;
+			//Ext.northHanChlDate.push(itemsLayer[i].layerDate);
+    		//Ext.northHanChlLayerId.push(itemsLayer[i].layerId);
+    		//if(Ext.northHanChlDefaultValue == undefined || Ext.northHanChlDefaultValue == ""){
+    			//Ext.northHanChlDefaultValue = itemsLayer[i].layerDate;
     		//}
+    		if(itemsLayer[i].legendImg != undefined && itemsLayer[i].legendImg != ""){
     			Ext.northHanChlLegendImg = itemsLayer[i].legendImg;
+    		}
 		}
 		
 		if(itemsLayer[i].layerArea == "금강"){
-			Ext.geumChlDate.push(itemsLayer[i].layerDate);
-    		Ext.geumChlLayerId.push(itemsLayer[i].layerId);
-    		//if(itemsLayer[i].defaultOn == true){
-    			Ext.geumChlDefaultValue = itemsLayer[i].layerDate;
+			//Ext.geumChlDate.push(itemsLayer[i].layerDate);
+    		//Ext.geumChlLayerId.push(itemsLayer[i].layerId);
+    		//if(Ext.geumChlDefaultValue == undefined || Ext.geumChlDefaultValue == ""){
+    			//Ext.geumChlDefaultValue = itemsLayer[i].layerDate;
     		//}
+    		if(itemsLayer[i].legendImg != undefined && itemsLayer[i].legendImg != ""){
     			Ext.geumChlLegendImg = itemsLayer[i].legendImg;
+    		}
 		}
 	}
 }
+
+//console.info(Ext.nakdongChlDate);
 //console.info(Ext.nakdongDroneDate);
 /******* 레이어 정보 가져오기 끝 *******/
 
@@ -380,7 +481,7 @@ Ext.application({
     	    	varYmin = 4199373.898460308;
     	    	varXmax = 14375359.033566216;
     	    	varYmax = 4354999.688048853;
-    	    	me.level = 9;
+    	    	me.level = 10;
     	    }
     	    
     	    if(mapDivId == "_mapDiv_2"){
@@ -388,15 +489,15 @@ Ext.application({
     	    	varYmin = 4463616.70524203;
     	    	varXmax = 14256423.01755454;
     	    	varYmax = 4619242.494830575;
-    	    	me.level = 9;
+    	    	me.level = 10;
     	    }
     	    
     	    if(mapDivId == "_mapDiv_3"){
-    	    	varXmin = 13971160.027994398;
-    	    	varYmin = 4264345.372502677;
-    	    	varXmax = 14558196.405224271;
-    	    	varYmax = 4459412.668686353;
-    	    	me.level = 9;
+    	    	varXmin = 13877601.105373379;
+    	    	varYmin = 4247223.4781668065;
+    	    	varXmax = 14464637.482603252;
+    	    	varYmax = 4454520.698876104;
+    	    	me.level = 10;
     	    }
     	    
     	    var s = "";
@@ -447,27 +548,39 @@ Ext.application({
     		var mapCtl = Ext.getCmp('_mapDiv_1');
     		if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
 	        	var layer = mapCtl.map.getLayer("FeatureLayer1");
-	        	mapCtl.map.removeLayer(layer);
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        	}
 	        	var layer = mapCtl.map.getLayer("labels");
-	        	mapCtl.map.removeLayer(layer);
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        	}
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin1', mapCtl.map);
     		}
         	
         	var mapCtl = Ext.getCmp('_mapDiv_2')
         	if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
 	        	var layer = mapCtl.map.getLayer("FeatureLayer2");
-	        	mapCtl.map.removeLayer(layer);
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        	}
 	        	var layer = mapCtl.map.getLayer("labels");
-	        	mapCtl.map.removeLayer(layer);
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        	}
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin2', mapCtl.map);
         	}
         	
         	var mapCtl = Ext.getCmp('_mapDiv_3')
         	if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
 	        	var layer = mapCtl.map.getLayer("FeatureLayer3");
-	        	mapCtl.map.removeLayer(layer);
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        	}
 	        	var layer = mapCtl.map.getLayer("labels");
-	        	mapCtl.map.removeLayer(layer);
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        	}
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin3', mapCtl.map);
         	}
     	}
@@ -546,8 +659,8 @@ Ext.application({
     		   extent.getCenter().y < me.initialExtent.ymin ||
     		   extent.getCenter().y > me.initialExtent.ymax){
     		*/
-    			alert("영역을 벗어났습니다.");
-    			me.map.centerAt(me.preExtent.getCenter());
+    			//alert("영역을 벗어났습니다.");
+    			//me.map.centerAt(me.preExtent.getCenter());
     		}
     		else{
     			me.preExtent.xmin = extent.xmin;

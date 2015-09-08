@@ -41,8 +41,18 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab2_Measure', {
 	        change: function (field, newValue, oldValue) {
 	        	
 	        	comboIdx = Ext.northHanWMCYMW.indexOf(newValue);
+	        	
 	        	var layerCombo = Ext.getCmp("cboDate2");
-	        	layerCombo.setValue(Ext.northHanDroneDate[comboIdx]);
+	        	if(Ext.northHanDroneDate[comboIdx] == "")
+	        		layerCombo.setValue(Ext.northHanDroneDefaultValue);
+	        	else
+	        		layerCombo.setValue(Ext.northHanDroneDate[comboIdx]);
+	        	
+	        	var chlCombo = Ext.getCmp("cboDate2_chl");
+	        	if(Ext.northHanChlDate[comboIdx] == "")
+	        		chlCombo.setValue(Ext.northHanChlDefaultValue);
+	        	else
+	        		chlCombo.setValue(Ext.northHanChlDate[comboIdx]);
 	        	
 	        	Ext.setFeatureLayer();
 	        },

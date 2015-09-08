@@ -37,7 +37,7 @@ function LegendShow(legendId, imgSrc, width, height, x, y){
 	var chlLegend = Ext.getCmp(legendId); // 범례 이미지 컨트롤
 	var x = Ext.getBody().getViewSize().width - 232;
 	var y = Ext.getBody().getViewSize().height - 390;
-	
+	console.info(chlLegend);
 	if(chlLegend == undefined){
 		Ext.create("Ext.container.Container", {
 			renderTo: Ext.getBody(),
@@ -82,12 +82,12 @@ function LayerOnOffBtn(me, tabId){
 	SetLayerOnOff("Ext.btn2OnOff", Ext.btn2LayerIds);
 	SetLayerOnOff("Ext.btn3OnOff", Ext.btn3LayerIds);
 	SetLayerOnOff("Ext.btn4OnOff", Ext.btn4LayerIds);
-	SetLayerOnOff("Ext.btn5OnOff", Ext.btn5LayerIds);
-	SetLayerOnOff("Ext.btn6OnOff", Ext.btn6LayerIds);
+	//SetLayerOnOff("Ext.btn5OnOff", Ext.btn5LayerIds);
+	//SetLayerOnOff("Ext.btn6OnOff", Ext.btn6LayerIds);
 	
 	var tabCtl = Ext.getCmp('app_center_container');
 	
-	//console.info(tabCtl.getActiveTab());
+	//console.info(tabCtl.getActiveTab().id);
 	
 	// 낙동강 항공영상 레이어 아이디 셋팅
 	for(var i = 0; i < Ext.nakdongDroneLayerId.length; i++){
@@ -165,10 +165,10 @@ function LayerOnOffBtn(me, tabId){
 		//console.info(eval(Ext.nakdongDroneOnOffVar));
 		if(eval(Ext.nakdongChlOnOffVar) == "on"){
 			if(ctlDate != "" && ctlDate == Ext.nakdongChlDate[i]){
-				Ext.visibleLayers.push(Ext.nakdongChlLayerId[i]);
-				
-				if(Ext.nakdongChlLegendImg != undefined && Ext.nakdongChlLegendImg != "")
+				if(tabCtl.getActiveTab().id == "nakdong_map"){
+					Ext.visibleLayers.push(Ext.nakdongChlLayerId[i]);
 					LegendShow("chlLegend", Ext.nakdongChlLegendImg, 232, 54);
+				}
 			}
 			else{
 				if(Ext.nakdongChlLegendImg != undefined && Ext.nakdongChlLegendImg != "")
@@ -195,14 +195,10 @@ function LayerOnOffBtn(me, tabId){
 		//console.info(eval(Ext.nakdongDroneOnOffVar));
 		if(eval(Ext.northHanChlOnOffVar) == "on"){
 			if(ctlDate != "" && ctlDate == Ext.northHanChlDate[i]){
-				Ext.visibleLayers.push(Ext.northHanChlLayerId[i]);
-				var x = Ext.getBody().getViewSize().width - 232;
-				var y = Ext.getBody().getViewSize().height - 390;
-				//console.info(Ext.getBody().getViewSize().height);
-				//console.info(Ext.northHanChlLegendImg);
-				
-				if(Ext.northHanChlLegendImg != undefined && Ext.northHanChlLegendImg != "")
+				if(tabCtl.getActiveTab().id == "northhan_map"){
+					Ext.visibleLayers.push(Ext.northHanChlLayerId[i]);
 					LegendShow("chlLegend", Ext.northHanChlLegendImg, 232, 54);
+				}
 			}
 			else{
 				if(Ext.northHanChlLegendImg != undefined && Ext.northHanChlLegendImg != "")
@@ -228,12 +224,10 @@ function LayerOnOffBtn(me, tabId){
 		
 		if(eval(Ext.geumChlOnOffVar) == "on"){
 			if(ctlDate != "" && ctlDate == Ext.geumChlDate[i]){
-				Ext.visibleLayers.push(Ext.geumChlLayerId[i]);
-				var x = Ext.getBody().getViewSize().width - 232;
-				var y = Ext.getBody().getViewSize().height - 390;
-				
-				if(Ext.geumChlLegendImg != undefined && Ext.geumChlLegendImg != "")
+				if(tabCtl.getActiveTab().id == "geum_map"){
+					Ext.visibleLayers.push(Ext.geumChlLayerId[i]);
 					LegendShow("chlLegend", Ext.geumChlLegendImg, 232, 54);
+				}
 			}
 			else{
 				if(Ext.geumChlLegendImg != undefined && Ext.geumChlLegendImg != "")
@@ -246,8 +240,6 @@ function LayerOnOffBtn(me, tabId){
 		}
 	}
 	
-	//console.info(Ext.visibleLayers);
-	
 	if(Ext.visibleLayers.length > 0)
 		activeLayer.setVisibility(true);
 	else
@@ -258,28 +250,37 @@ function LayerOnOffBtn(me, tabId){
 	if(tabId == "DynamicLayer1"){
 		// Feature Layer visible
 		activeLayer = me.map.getLayer("FeatureLayer1");
-		if(eval(Ext.featureLayerVar) == "on")
-			activeLayer.setVisibility(true);
-		else
-			activeLayer.setVisibility(false);
+		//console.info(activeLayer);
+		if(activeLayer != undefined){
+			if(eval(Ext.featureLayerVar) == "on")
+				activeLayer.setVisibility(true);
+			else
+				activeLayer.setVisibility(false);
+		}
 	}
 	
 	if(tabId == "DynamicLayer2"){
 		// Feature Layer visible
 		activeLayer = me.map.getLayer("FeatureLayer2");
-		if(eval(Ext.featureLayerVar) == "on")
-			activeLayer.setVisibility(true);
-		else
-			activeLayer.setVisibility(false);
+		if(activeLayer != undefined){
+			if(eval(Ext.featureLayerVar) == "on")
+				activeLayer.setVisibility(true);
+			else
+				activeLayer.setVisibility(false);
+		}
 	}
 	
 	if(tabId == "DynamicLayer3"){
 		activeLayer = me.map.getLayer("FeatureLayer3");
-		if(eval(Ext.featureLayerVar) == "on")
-			activeLayer.setVisibility(true);
-		else
-			activeLayer.setVisibility(false);
+		if(activeLayer != undefined){
+			if(eval(Ext.featureLayerVar) == "on")
+				activeLayer.setVisibility(true);
+			else
+				activeLayer.setVisibility(false);
+		}
 	}
+	
+	//console.info("dd");
 }
 
 Ext.define('WaterBloomDrone.view.center.LayerButton', {

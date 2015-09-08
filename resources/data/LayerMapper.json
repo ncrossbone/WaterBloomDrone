@@ -121,6 +121,8 @@
 	"layerType": "항공",
 	"layerDate": "2015-07-04",
 	"mesureDate": "2015-07-2주",
+	"chlDate": "2015-07-04",
+	"chlLayerId": "10", //클로로필a(초분광) 레이어 아이디 매핑
 	"layerBtnId": "btn5",
 	"defaultImg": "./resources/images/button/images09on.gif",
 	"layerArea" : "낙동강",
