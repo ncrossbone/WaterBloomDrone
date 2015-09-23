@@ -51,6 +51,14 @@ Ext.geumDroneLayerId = [""];
 Ext.geumDroneDefaultValue = "";
 Ext.geumDroneOnOffVar = "Ext.btn5OnOff"; // 북한강 항공영상 버튼 On/Off 변수 명
 
+//한강 항공영상 관련 전역 변수
+//Ext.northHanDroneDate = ["촬영일자선택"];
+//Ext.northHanDroneLayerId = [""];
+Ext.hangangDroneDate = [""];
+Ext.hangangDroneLayerId = [""];
+Ext.hangangDroneDefaultValue = "";
+Ext.hangangDroneOnOffVar = "Ext.btn5OnOff"; // 한강 항공영상 버튼 On/Off 변수 명
+
 Ext.featureLayerVar = "Ext.btn2OnOff"; // 측정지점 버튼 On/Off 변수 명
 Ext.featureLayerId = "3";
 
@@ -64,6 +72,8 @@ Ext.northHanWMCYMW = [""];
 Ext.northHanWMCYMWDefaultValue = "";
 Ext.geumWMCYMW = [""];
 Ext.geumWMCYMWDefaultValue = "";
+Ext.hangangWMCYMW = [""];
+Ext.hangangWMCYMWDefaultValue = "";
 
 Ext.nakdongChlDate = ["선택하세요."];
 Ext.nakdongChlLayerId = [""];
@@ -82,6 +92,12 @@ Ext.geumChlLayerId = [""];
 Ext.geumChlDefaultValue = "No-Data";
 Ext.geumChlOnOffVar = "Ext.btn6OnOff"; // 금강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.geumChlLegendImg = "";
+
+Ext.hangangChlDate = ["No-Data"];
+Ext.hangangChlLayerId = [""];
+Ext.hangangChlDefaultValue = "No-Data";
+Ext.hangangChlOnOffVar = "Ext.btn6OnOff"; // 금강 초분광(클로로필a) 버튼 On/Off 변수 명
+Ext.hangangChlLegendImg = "";
 
 var responseLayer = Ext.Ajax.request({
 	async: false, // 동기화
@@ -336,6 +352,48 @@ for(var i = 0; i < itemsLayer.length; i++){
     		}
     		//Ext.geumDroneBtnId = itemsLayer[i].layerBtnId;
 		}
+		
+		if(itemsLayer[i].layerArea == "한강"){
+			
+			Ext.hangangDroneLayerId.push(itemsLayer[i].layerId); // 항공영상 레이어 아이디
+			
+			// 항공영상 날짜
+			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
+				Ext.hangangDroneDate.push(itemsLayer[i].layerDate);
+			else
+				Ext.hangangDroneDate.push("");
+			
+			// 조류측정자료 날짜
+			if(itemsLayer[i].mesureDate != undefined && itemsLayer[i].mesureDate != "")
+				Ext.hangangWMCYMW.push(itemsLayer[i].mesureDate);
+			else
+				Ext.hangangWMCYMW.push("");
+			
+			// 클로로필a 레이어 아이디
+			if(itemsLayer[i].chlLayerId != undefined && itemsLayer[i].chlLayerId != "")
+				Ext.hangangChlLayerId.push(itemsLayer[i].chlLayerId);
+			else
+				Ext.hangangChlLayerId.push("");
+			
+			// 클로로필a 날짜
+			if(itemsLayer[i].chlDate != undefined && itemsLayer[i].chlDate != "")
+				Ext.hangangChlDate.push(itemsLayer[i].chlDate);
+			else
+				Ext.hangangChlDate.push("");
+    		
+    		if(itemsLayer[i].defaultOn == true){
+    			// 항공영상 날짜 기본값
+    			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
+    				Ext.hangangDroneDefaultValue = itemsLayer[i].layerDate;
+    			// 조류측정자료 날짜 기본값
+    			if(itemsLayer[i].mesureDate != undefined && itemsLayer[i].mesureDate != "")
+    				Ext.hangangWMCYMWDefaultValue = itemsLayer[i].mesureDate;
+    			// 클로로필a 날짜 기본값
+    			if(itemsLayer[i].chlDate != undefined && itemsLayer[i].chlDate != "")
+    				Ext.hangangChlDefaultValue = itemsLayer[i].chlDate;
+    		}
+    		//Ext.geumDroneBtnId = itemsLayer[i].layerBtnId;
+		}
 	}
 	
 	// 초분광 영상 전역 변수 셋팅
@@ -371,6 +429,12 @@ for(var i = 0; i < itemsLayer.length; i++){
     		//}
     		if(itemsLayer[i].legendImg != undefined && itemsLayer[i].legendImg != ""){
     			Ext.geumChlLegendImg = itemsLayer[i].legendImg;
+    		}
+		}
+		
+		if(itemsLayer[i].layerArea == "한강"){
+    		if(itemsLayer[i].legendImg != undefined && itemsLayer[i].legendImg != ""){
+    			Ext.hangangChlLegendImg = itemsLayer[i].legendImg;
     		}
 		}
 	}
@@ -500,6 +564,14 @@ Ext.application({
     	    	me.level = 10;
     	    }
     	    
+    	    if(mapDivId == "_mapDiv_4"){
+    	    	varXmin = 14064413.20250227;
+    	    	varYmin = 4463616.70524203;
+    	    	varXmax = 14256423.01755454;
+    	    	varYmax = 4619242.494830575;
+    	    	me.level = 10;
+    	    }
+    	    
     	    var s = "";
     		s = "XMin: "+ varXmin + " "
     		   +"YMin: " + varYmin + " "
@@ -583,6 +655,19 @@ Ext.application({
 	        	}
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin3', mapCtl.map);
         	}
+        	
+        	var mapCtl = Ext.getCmp('_mapDiv_4')
+        	if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
+	        	var layer = mapCtl.map.getLayer("FeatureLayer4");
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        	}
+	        	var layer = mapCtl.map.getLayer("labels");
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        	}
+	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin4', mapCtl.map);
+        	}
     	}
 
     	// khLee Extent 조회
@@ -630,6 +715,15 @@ Ext.application({
         		var stdCenterXmax = 14439566.137325734;
         		var stdCenterYmin = 4295837.428156155;
         		var stdCenterYmax = 4422111.398883205;
+    		}
+    		if(tabId == "hangang_map"){
+    			me = Ext.getCmp('_mapDiv_4');
+    			layerId = "DynamicLayer4";
+    			// level 9 일때 Center 범위
+        		var stdCenterXmin = 14051266.033637095;
+        		var stdCenterXmax = 14344478.474139143;
+        		var stdCenterYmin = 4470725.348872494;
+        		var stdCenterYmax = 4606783.259220161;
     		}
     		
     		if(me.map.getLevel() < me.level){

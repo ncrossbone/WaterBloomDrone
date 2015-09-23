@@ -151,6 +151,27 @@ function LayerOnOffBtn(me, tabId){
 		}
 	}
 	
+	// 한강 항공영상 레이어 아이디 셋팅
+	for(var i = 0; i < Ext.hangangDroneLayerId.length; i++){
+		var arrIdx = Ext.visibleLayers.indexOf(Ext.hangangDroneLayerId[i]);
+		
+		// 레이어 배열에 값이 있으면 레이어 삭제
+		if(arrIdx != -1){
+			Ext.visibleLayers.splice(arrIdx, 1); // index번째부터 1자리 삭제
+		}
+		
+		var ctlDate = Ext.getCmp('cboDate4').value;
+		
+		//console.info(eval(Ext.nakdongDroneOnOffVar));
+		if(eval(Ext.hangangDroneOnOffVar) == "on"){
+			if(ctlDate == Ext.hangangDroneDate[i]){
+				if(tabCtl.getActiveTab().id == "hangang_map"){
+					Ext.visibleLayers.push(Ext.hangangDroneLayerId[i]);
+				}
+			}
+		}
+	}
+	
 	// 낙동강 초분광(클로로필a)영상 레이어 아이디 셋팅
 	for(var i = 0; i < Ext.nakdongChlLayerId.length; i++){
 		var arrIdx = Ext.visibleLayers.indexOf(Ext.nakdongChlLayerId[i]);
@@ -240,6 +261,36 @@ function LayerOnOffBtn(me, tabId){
 		}
 	}
 	
+	// 한강 초분광(클로로필a)영상 레이어 아이디 셋팅
+	for(var i = 0; i < Ext.hangangChlLayerId.length; i++){
+		var arrIdx = Ext.visibleLayers.indexOf(Ext.hangangChlLayerId[i]);
+		
+		// 레이어 배열에 값이 있으면 레이어 삭제
+		if(arrIdx != -1){
+			Ext.visibleLayers.splice(arrIdx, 1); // index번째부터 1자리 삭제
+		}
+		
+		var ctlDate = Ext.getCmp('cboDate4_chl').value;
+		
+		//console.info(eval(Ext.nakdongDroneOnOffVar));
+		if(eval(Ext.hangangChlOnOffVar) == "on"){
+			if(ctlDate != "" && ctlDate == Ext.hangangChlDate[i]){
+				if(tabCtl.getActiveTab().id == "hangang_map"){
+					Ext.visibleLayers.push(Ext.hangangChlLayerId[i]);
+					LegendShow("chlLegend", Ext.hangangChlLegendImg, 232, 54);
+				}
+			}
+			else{
+				if(Ext.hangangChlLegendImg != undefined && Ext.hangangChlLegendImg != "")
+					LegendHide("chlLegend");
+			}
+		}
+		else{
+			if(Ext.hangangChlLegendImg != undefined && Ext.hangangChlLegendImg != "")
+				LegendHide("chlLegend");
+		}
+	}
+	
 	if(Ext.visibleLayers.length > 0)
 		activeLayer.setVisibility(true);
 	else
@@ -272,6 +323,16 @@ function LayerOnOffBtn(me, tabId){
 	
 	if(tabId == "DynamicLayer3"){
 		activeLayer = me.map.getLayer("FeatureLayer3");
+		if(activeLayer != undefined){
+			if(eval(Ext.featureLayerVar) == "on")
+				activeLayer.setVisibility(true);
+			else
+				activeLayer.setVisibility(false);
+		}
+	}
+	
+	if(tabId == "DynamicLayer4"){
+		activeLayer = me.map.getLayer("FeatureLayer4");
 		if(activeLayer != undefined){
 			if(eval(Ext.featureLayerVar) == "on")
 				activeLayer.setVisibility(true);
@@ -322,6 +383,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 		            }
 		        }
 		    },
@@ -340,6 +402,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 		            }
 		        }
 		    },
@@ -366,6 +429,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 		            }
 		        }
 		    },
@@ -384,6 +448,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 		            }
 		        }
 		    },
@@ -410,6 +475,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 		            }
 		        }
 		    },
@@ -428,6 +494,7 @@ Ext.define('WaterBloomDrone.view.center.LayerButton', {
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+		            	LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 		            }
 		        }
 		    },

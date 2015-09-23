@@ -8,12 +8,15 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 	    'WaterBloomDrone.view.map.CoreMapTab1',
 	    'WaterBloomDrone.view.map.CoreMapTab2',
 	    'WaterBloomDrone.view.map.CoreMapTab3',
+	    'WaterBloomDrone.view.map.CoreMapTab4',
 	    'WaterBloomDrone.view.center.DateComboTab1',
 	    'WaterBloomDrone.view.center.DateComboTab2',
 	    'WaterBloomDrone.view.center.DateComboTab3',
+	    'WaterBloomDrone.view.center.DateComboTab4',
 	    'WaterBloomDrone.view.center.DateComboTab1Controller',
 	    'WaterBloomDrone.view.center.DateComboTab2Controller',
 	    'WaterBloomDrone.view.center.DateComboTab3Controller',
+	    'WaterBloomDrone.view.center.DateComboTab4Controller',
 	    'WaterBloomDrone.view.center.PopupManual'
 	],
 	
@@ -44,6 +47,15 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			height: '100%'
 		}]
 	}, {
+		//title: '한강',
+		//header: false,
+		id: 'hangang_map',
+		items: [{
+			xtype: 'app-map-coreMap-tab4',
+			width: '100%',
+			height: '100%'
+		}]
+	}, {
 		//title: '금강',
 		//header: false,
 		id: 'geum_map',
@@ -60,24 +72,30 @@ Ext.define('WaterBloomDrone.view.center.Center', {
     	var ctlDate1 = Ext.getCmp('DateComboPanel1');
 		var ctlDate2 = Ext.getCmp('DateComboPanel2');
 		var ctlDate3 = Ext.getCmp('DateComboPanel3');
+		var ctlDate4 = Ext.getCmp('DateComboPanel4');
 		var ctlDate1_chl = Ext.getCmp('DateComboPanel1_chl');
 		var ctlDate2_chl = Ext.getCmp('DateComboPanel2_chl');
 		var ctlDate3_chl = Ext.getCmp('DateComboPanel3_chl');
+		var ctlDate4_chl = Ext.getCmp('DateComboPanel4_chl');
 		var ctlDate1_Measure = Ext.getCmp('DateComboPanel1_Measure');
 		var ctlDate2_Measure = Ext.getCmp('DateComboPanel2_Measure');
 		var ctlDate3_Measure = Ext.getCmp('DateComboPanel3_Measure');
+		var ctlDate4_Measure = Ext.getCmp('DateComboPanel4_Measure');
 		
 		if(this.activeTab.id == 'nakdong_map'){
 			//alert("1");
 			ctlDate1.show();
 			ctlDate2.hide();
 			ctlDate3.hide();
+			ctlDate4.hide();
 			ctlDate1_chl.show();
 			ctlDate2_chl.hide();
 			ctlDate3_chl.hide();
+			ctlDate4_chl.hide();
 			ctlDate1_Measure.show();
 			ctlDate2_Measure.hide();
 			ctlDate3_Measure.hide();
+			ctlDate4_Measure.hide();
 			
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		}
@@ -87,12 +105,15 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate1.hide();
 			ctlDate2.show();
 			ctlDate3.hide();
+			ctlDate4.hide();
 			ctlDate1_chl.hide();
 			ctlDate2_chl.show();
 			ctlDate3_chl.hide();
+			ctlDate4_chl.hide();
 			ctlDate1_Measure.hide();
 			ctlDate2_Measure.show();
 			ctlDate3_Measure.hide();
+			ctlDate4_Measure.hide();
 			
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		}
@@ -102,14 +123,35 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate1.hide();
 			ctlDate2.hide();
 			ctlDate3.show();
+			ctlDate4.hide();
 			ctlDate1_chl.hide();
 			ctlDate2_chl.hide();
 			ctlDate3_chl.show();
+			ctlDate4_chl.hide();
 			ctlDate1_Measure.hide();
 			ctlDate2_Measure.hide();
 			ctlDate3_Measure.show();
+			ctlDate4_Measure.hide();
 			
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+		}
+		
+		if(this.activeTab.id == 'hangang_map'){
+			//alert("2");
+			ctlDate1.hide();
+			ctlDate2.hide();
+			ctlDate3.hide();
+			ctlDate4.show();
+			ctlDate1_chl.hide();
+			ctlDate2_chl.hide();
+			ctlDate3_chl.hide();
+			ctlDate4_chl.show();
+			ctlDate1_Measure.hide();
+			ctlDate2_Measure.hide();
+			ctlDate3_Measure.hide();
+			ctlDate4_Measure.show();
+			
+			LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 		}
 		
 		ctlDate1.setX(Ext.getBody().getViewSize().width - ctlDate1.width);
@@ -118,6 +160,8 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		ctlDate2.setY(positionY);
 		ctlDate3.setX(Ext.getBody().getViewSize().width - ctlDate3.width);
 		ctlDate3.setY(positionY);
+		ctlDate4.setX(Ext.getBody().getViewSize().width - ctlDate4.width);
+		ctlDate4.setY(positionY);
 		
 		ctlDate1_chl.setX(Ext.getBody().getViewSize().width - ctlDate1_chl.width);
 		ctlDate1_chl.setY(positionY + ctlDate1.getHeight());
@@ -125,6 +169,8 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		ctlDate2_chl.setY(positionY + ctlDate2.getHeight());
 		ctlDate3_chl.setX(Ext.getBody().getViewSize().width - ctlDate3_chl.width);
 		ctlDate3_chl.setY(positionY + ctlDate3.getHeight());
+		ctlDate4_chl.setX(Ext.getBody().getViewSize().width - ctlDate4_chl.width);
+		ctlDate4_chl.setY(positionY + ctlDate4.getHeight());
 		
 		ctlDate1_Measure.setX(Ext.getBody().getViewSize().width - ctlDate1_Measure.width);
 		ctlDate1_Measure.setY(positionY + ctlDate1.getHeight() + ctlDate1_Measure.getHeight());
@@ -132,6 +178,8 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		ctlDate2_Measure.setY(positionY + ctlDate2.getHeight() + ctlDate2_chl.getHeight());
 		ctlDate3_Measure.setX(Ext.getBody().getViewSize().width - ctlDate3_Measure.width);
 		ctlDate3_Measure.setY(positionY + ctlDate3.getHeight() + ctlDate3_chl.getHeight());
+		ctlDate4_Measure.setX(Ext.getBody().getViewSize().width - ctlDate4_Measure.width);
+		ctlDate4_Measure.setY(positionY + ctlDate4.getHeight() + ctlDate4_chl.getHeight());
 		
 		var ctlLayerToolbar = Ext.getCmp('LayerToolbar');
 		
@@ -208,6 +256,21 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			renderTo: Ext.getBody()
 		});
 		
+		// 한강 항공영상 select box
+		var ctlDate4 = Ext.create('WaterBloomDrone.view.center.DateComboTab4', {
+			renderTo: Ext.getBody()
+		});
+		
+		// 한강 초분광(클로로필a) select box
+		var ctlDate4_chl = Ext.create('WaterBloomDrone.view.center.DateComboTab4_chl', {
+			renderTo: Ext.getBody()
+		});
+		
+		// 한강 조류측정자료 select box
+		var ctlDate4_Measure = Ext.create('WaterBloomDrone.view.center.DateComboTab4_Measure', {
+			renderTo: Ext.getBody()
+		});
+		
 		var ctlLayerToolbar = Ext.create('WaterBloomDrone.view.center.LayerToolbar', {
 			renderTo: Ext.getBody()
 		});
@@ -232,33 +295,39 @@ Ext.on('resize', function(){
 	var ctl1 = Ext.getCmp('DateComboPanel1');
 	var ctl2 = Ext.getCmp('DateComboPanel2');
 	var ctl3 = Ext.getCmp('DateComboPanel3');
+	var ctl4 = Ext.getCmp('DateComboPanel4');
     
-    if(ctl1 == undefined || ctl2 == undefined  || ctl3 == undefined)
+    if(ctl1 == undefined || ctl2 == undefined  || ctl3 == undefined  || ctl4 == undefined)
     	return;
 
     ctl1.setX(Ext.getBody().getViewSize().width - ctl1.width, false);
     ctl2.setX(Ext.getBody().getViewSize().width - ctl2.width, false);
     ctl3.setX(Ext.getBody().getViewSize().width - ctl3.width, false);
+    ctl4.setX(Ext.getBody().getViewSize().width - ctl4.width, false);
     
     var ctl_chl1 = Ext.getCmp('DateComboTab1_chl');
 	var ctl_chl2 = Ext.getCmp('DateComboTab2_chl');
 	var ctl_chl3 = Ext.getCmp('DateComboTab3_chl');
+	var ctl_chl4 = Ext.getCmp('DateComboTab4_chl');
     
-    if(ctl_chl1 == undefined || ctl_chl2 == undefined  || ctl_chl3 == undefined)
+    if(ctl_chl1 == undefined || ctl_chl2 == undefined || ctl_chl3 == undefined || ctl_chl4 == undefined)
     	return;
 
     ctl_chl1.setX(Ext.getBody().getViewSize().width - ctl_chl1.width, false);
     ctl_chl2.setX(Ext.getBody().getViewSize().width - ctl_chl2.width, false);
     ctl_chl3.setX(Ext.getBody().getViewSize().width - ctl_chl3.width, false);
+    ctl_chl4.setX(Ext.getBody().getViewSize().width - ctl_chl4.width, false);
     
     var ctl_measure1 = Ext.getCmp('DateComboTab1_Measure');
 	var ctl_measure2 = Ext.getCmp('DateComboTab2_Measure');
 	var ctl_measure3 = Ext.getCmp('DateComboTab3_Measure');
+	var ctl_measure4 = Ext.getCmp('DateComboTab4_Measure');
     
-    if(ctl_measure1 == undefined || ctl_measure2 == undefined  || ctl_measure3 == undefined)
+    if(ctl_measure1 == undefined || ctl_measure2 == undefined || ctl_measure3 == undefined || ctl_measure4 == undefined)
     	return;
 
     ctl_measure1.setX(Ext.getBody().getViewSize().width - ctl_measure1.width, false);
     ctl_measure2.setX(Ext.getBody().getViewSize().width - ctl_measure2.width, false);
     ctl_measure3.setX(Ext.getBody().getViewSize().width - ctl_measure3.width, false);
+    ctl_measure4.setX(Ext.getBody().getViewSize().width - ctl_measure4.width, false);
 });

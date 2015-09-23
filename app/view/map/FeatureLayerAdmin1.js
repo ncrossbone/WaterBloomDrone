@@ -11,10 +11,11 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
         var queryTask = new esri.tasks.QueryTask(Ext.mapServiceUrl + "/" + Ext.featureLayerId); // 레이어 URL
 		var query = new esri.tasks.Query();
 		query.returnGeometry = true;
-		query.where = "수계코드 = '20'";
+		query.where = "수계코드 = 20";
 		query.outFields = ["*"];
-		
+		//console.info(Ext.mapServiceUrl + "/" + Ext.featureLayerId);
 		queryTask.execute(query,  function(results){
+			//console.info(Ext.mapServiceUrl + "/" + Ext.featureLayerId);
 			//console.info(results);
 		});
 		
@@ -95,10 +96,10 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
         		success : function(response, opts) {
         			//console.info(response.responseText);
         			//return;
-        			//if(response.responseText.trim() == 'error'){
-        				//alert("오류가 발생하였습니다. 관리자에게 문의하세요.");
-        				//return;
-        			//}
+        			if(response.responseText.trim() == 'error'){
+        				alert("오류가 발생하였습니다. 관리자에게 문의하세요.");
+        				return;
+        			}
         			//alert(response.responseText);
         			// JSON Object로 변경
         			jsonData = Ext.util.JSON.decode( response.responseText );

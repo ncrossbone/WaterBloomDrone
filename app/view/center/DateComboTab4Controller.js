@@ -1,13 +1,13 @@
 /**
 * North Controller
 */
-Ext.define('WaterBloomDrone.view.center.DateComboTab3Controller', {
+Ext.define('WaterBloomDrone.view.center.DateComboTab4Controller', {
 	extend: 'Ext.app.ViewController',
 
-	alias: 'controller.datecombocontroller3',
+	alias: 'controller.datecombocontroller4',
 	
 	onClickFullExtent: function() {
-		var me = Ext.getCmp('_mapDiv_3');
+		var me = Ext.getCmp('_mapDiv_4');
 		
 		var deferred = me.map.setExtent(me.initialExtent, true);
 		deferred.then(function(value){
@@ -17,7 +17,6 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab3Controller', {
 	},
 	
 	onComboChange: function(){
-		console.info("ddd");
-		LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3", "");
+		LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4", "");
 	}
 });

@@ -1,4 +1,4 @@
-Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin2', {
+Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin4', {
 	map:null, 
 	layer:null,
 	dynamicLayer1:null,
@@ -81,8 +81,8 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin2', {
     					
     					//alert(siteCodes);
     					
-    					measureDate = Ext.getCmp("cboDate2_Measure").value;
-    					layerDate = Ext.getCmp("cboDate2").value;
+    					measureDate = Ext.getCmp("cboDate4_Measure").value;
+    					layerDate = Ext.getCmp("cboDate4").value;
     					//console.info(measureDate);
     					
     					var jsonData;
@@ -155,7 +155,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin2', {
     					//me.layer.setSelectionSymbol(selectionSymbol);
     					/* Feature Layer 심볼 설정 끝 */
 
-    	    			me.layer.id = "FeatureLayer2";
+    	    			me.layer.id = "FeatureLayer4";
     	    			//me.layer.visible = true;
     	    			me.map.addLayer(me.layer);
     	    			

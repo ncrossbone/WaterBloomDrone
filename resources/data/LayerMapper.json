@@ -142,33 +142,107 @@
 	"layerName": "항공영상_150811_북한강",
 	"layerType": "항공",
 	"layerDate": "2015-08-11",
-	"mesureDate": "2015-08-3주",
+	"mesureDate": "2015-08-2주",
 	"layerBtnId": "btn5",
 	"defaultImg": "./resources/images/button/images09on.gif",
 	"layerArea" : "북한강",
-	"defaultOn" : true
+	"defaultOn" : false
 }, {
 	"layerId": "18",
 	"layerName": "항공영상_150813_금강",
 	"layerType": "항공",
 	"layerDate": "2015-08-13",
-	"mesureDate": "2015-08-3주",
+	"mesureDate": "2015-08-2주",
 	"layerBtnId": "btn5",
 	"defaultImg": "./resources/images/button/images09on.gif",
 	"layerArea" : "금강",
-	"defaultOn" : true
+	"defaultOn" : false
 }, {
 	"layerId": "19",
-	"layerName": "항공영상_150811_낙동강",
+	"layerName": "항공영상_150814_낙동강",
 	"layerType": "항공",
 	"layerDate": "2015-08-14",
 	"mesureDate": "2015-08-3주",
 	"layerBtnId": "btn5",
 	"defaultImg": "./resources/images/button/images09on.gif",
 	"layerArea" : "낙동강",
-	"defaultOn" : true
+	"defaultOn" : false
 },{
 	"layerId": "20",
+	"layerName": "항공영상_150818_금강",
+	"layerType": "항공",
+	"layerDate": "2015-08-18",
+	"mesureDate": "2015-08-3주",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "금강",
+	"defaultOn" : false
+},{
+	"layerId": "21",
+	"layerName": "항공영상_150817_북한강",
+	"layerType": "항공",
+	"layerDate": "2015-08-17",
+	"mesureDate": "2015-08-3주",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "북한강",
+	"defaultOn" : false	
+},{
+	"layerId": "22",
+	"layerName": "항공영상_150824_북한강",
+	"layerType": "항공",
+	"layerDate": "2015-08-24",
+	"mesureDate": "2015-08-4주",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "북한강",
+	"defaultOn" : false		
+},{
+	"layerId": "23",
+	"layerName": "항공영상_150901_북한강",
+	"layerType": "항공",
+	"layerDate": "2015-09-01",
+	"mesureDate": "2015-09-1주",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "북한강",
+	"defaultOn" : true	
+
+},{
+	"layerId": "24",
+	"layerName": "항공영상_150904_한강",
+	"layerType": "항공",
+	"layerDate": "2015-09-04",
+	"mesureDate": "2015-09-1주",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "한강",
+	"defaultOn" : true	
+
+},{
+	"layerId": "25",
+	"layerName": "항공영상_150908_낙동강",
+	"layerType": "항공",
+	"layerDate": "2015-09-08",
+	"mesureDate": "2015-09-2주",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "낙동강",
+	"defaultOn" : true	
+
+},{
+	"layerId": "26",
+	"layerName": "항공영상_150909_금강",
+	"layerType": "항공",
+	"layerDate": "2015-09-09",
+	"mesureDate": "2015-09-2주",
+	"layerBtnId": "btn5",
+	"defaultImg": "./resources/images/button/images09on.gif",
+	"layerArea" : "금강",
+	"defaultOn" : true	
+
+},{
+	"layerId": "27",
 	"layerName": "gdb_info",
 	"layerType": "데이터",
 	"layerDate": "",
