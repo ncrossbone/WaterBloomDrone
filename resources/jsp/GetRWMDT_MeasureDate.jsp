@@ -21,9 +21,9 @@ try{
 				     "AND A.WMWK  = B.WMWK " +
 			  ") " +
 		"ORDER BY WMCYM || ' ' || WEEK || 'ÁÖÂ÷'";
-   
-   stmt = con.createStatement();   
-   rs = stmt.executeQuery(sql);
+	//out.print(sql);
+	stmt = con.createStatement();   
+	rs = stmt.executeQuery(sql);
    
 	JSONObject jsonObj  = new JSONObject();
 	JSONArray jsonArr = new JSONArray();
