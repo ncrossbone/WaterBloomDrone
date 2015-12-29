@@ -1,21 +1,8 @@
 [{
-	"MapserviceUrl1" : "http://112.217.167.123:6080/arcgis/rest/services/drone/MapServer",
-	"MapserviceUrl2" : "http://cetech.iptime.org:6080/arcgis/rest/services/drone/MapServer",
-	"MapserviceUrl3" : "http://fireftp.iptime.org:6080/arcgis/rest/services/drone/MapServer",
-	"MapserviceUrl3" : "http://112.217.167.123:6080/arcgis/rest/services/drone/MapServer"
-}, {
-	"layerId" : "10",
-	"layerArea": "낙동강",
-	"layerName" : "항공영상_150623_낙동강",
-	"layerDate" : "2015-06-23"
-}, {
-	"layerId" : "11",
-	"layerArea": "북한강",
-	"layerName" : "항공영상_150703_북한강",
-	"layerDate" : "2015-07-03"
-}, {
-	"layerId" : "12",
-	"layerArea": "낙동강",
-	"layerName" : "항공영상_150704_낙동강",
-	"layerDate" : "2015-07-04"
+	"MapserviceUrl1" : "http://112.218.1.243:20002/arcgis/rest/services/drone_dev/MapServer",
+	"MapserviceUrl2" : "http://112.218.1.242:20002/arcgis/rest/services/drone_dev/MapServer",
+	"MapserviceUrl3" : "http://112.217.167.123:6080/arcgis/rest/services/drone_dev/MapServer",
+	"MapserviceUrl4" : "http://cetech.iptime.org:6080/arcgis/rest/services/drone/MapServer",
+	"MapserviceUrl5" : "http://fireftp.iptime.org:6080/arcgis/rest/services/drone/MapServer",
+	"MapserviceUrl6" : "http://112.217.167.123:6080/arcgis/rest/services/drone/MapServer"
 }]

@@ -82,6 +82,14 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		var ctlDate3_Measure = Ext.getCmp('DateComboPanel3_Measure');
 		var ctlDate4_Measure = Ext.getCmp('DateComboPanel4_Measure');
 		
+		//var ctlBoList = Ext.getCmp('BoList');
+		
+		var bolist = bolist = Ext.getCmp("BoList");
+		var boListPanel = Ext.getCmp("BoListTest");
+		
+		//var boList = Ext.getCmp('BoList');
+		
+		console.info(this.activeTab.id);
 		if(this.activeTab.id == 'nakdong_map'){
 			//alert("1");
 			ctlDate1.show();
@@ -96,6 +104,15 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate2_Measure.hide();
 			ctlDate3_Measure.hide();
 			ctlDate4_Measure.hide();
+			
+			bolist.show();
+			
+			
+			var boListstore = Ext.create('WaterBloomDrone.store.FeatureStoreLayerAdmin1');
+			//boListstore.siteCD = "####";
+			boListstore.load();
+			boListPanel.setStore(boListstore);
+			
 			
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
 		}
@@ -115,6 +132,24 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate3_Measure.hide();
 			ctlDate4_Measure.hide();
 			
+			
+			
+			
+			if(bolist == undefined){
+				bolist = Ext.create('WaterBloomDrone.view.center.BoList');
+			}
+			
+			bolist.show();
+			
+			
+			
+			
+			var boListstore = Ext.create('WaterBloomDrone.store.FeatureStoreLayerAdmin2');
+			//boListstore.siteCD = "####";
+			boListstore.load();
+			boListPanel.setStore(boListstore);
+			
+			
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
 		}
 		
@@ -133,6 +168,13 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate3_Measure.show();
 			ctlDate4_Measure.hide();
 			
+			bolist.show();
+			
+			var boListstore = Ext.create('WaterBloomDrone.store.FeatureStoreLayerAdmin3');
+			//boListstore.siteCD = "####";
+			boListstore.load();
+			boListPanel.setStore(boListstore);
+			
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
 		}
 		
@@ -150,6 +192,13 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate2_Measure.hide();
 			ctlDate3_Measure.hide();
 			ctlDate4_Measure.show();
+			
+			bolist.show();
+			
+			var boListstore = Ext.create('WaterBloomDrone.store.FeatureStoreLayerAdmin4');
+			//boListstore.siteCD = "####";
+			boListstore.load();
+			boListPanel.setStore(boListstore);
 			
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 		}
@@ -284,6 +333,10 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		});
 		
 		var ctlPopup = Ext.create('WaterBloomDrone.view.center.PopupManual', {
+			renderTo: Ext.getBody()
+		});
+		
+		var ctlBoList = Ext.create('WaterBloomDrone.view.center.BoList', {
 			renderTo: Ext.getBody()
 		});
 		

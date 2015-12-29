@@ -22,7 +22,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin2', {
     				query.outFields = ["*"];
     				
     				queryTask.execute(query,  function(results){
-    					//console.info(results);
+    					console.info(results);
     				});
     				
     				queryTask.on("complete", function(featureSet) {
