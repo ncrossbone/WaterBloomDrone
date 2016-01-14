@@ -628,8 +628,7 @@ Ext.application({
     		}
     		
     		
-    		var point = new esri.geometry.Point({ "x": tmX, "y": tmY, " spatialReference": { " wkid": 102100} });  
-    		
+    		var point = new esri.geometry.Point({ "x": tmX, "y": tmY, " spatialReference": { " wkid": 102100} });
     		mapCtl.map.centerAndZoom(point, 15);
     		
     	}
