@@ -81,21 +81,21 @@ Ext.nakdongChlDefaultValue = "선택하세요.";
 Ext.nakdongChlOnOffVar = "Ext.btn6OnOff"; // 낙동강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.nakdongChlLegendImg = "";
 
-Ext.northHanChlDate = ["No-Data"];
+Ext.northHanChlDate = ["선택하세요"];
 Ext.northHanChlLayerId = [""];
-Ext.northHanChlDefaultValue = "No-Data";
+Ext.northHanChlDefaultValue = "선택하세요";
 Ext.northHanChlOnOffVar = "Ext.btn6OnOff"; // 북한강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.northHanChlLegendImg = "";
 
-Ext.geumChlDate = ["No-Data"];
+Ext.geumChlDate = ["선택하세요"];
 Ext.geumChlLayerId = [""];
-Ext.geumChlDefaultValue = "No-Data";
+Ext.geumChlDefaultValue = "선택하세요";
 Ext.geumChlOnOffVar = "Ext.btn6OnOff"; // 금강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.geumChlLegendImg = "";
 
-Ext.hangangChlDate = ["No-Data"];
+Ext.hangangChlDate = ["선택하세요"];
 Ext.hangangChlLayerId = [""];
-Ext.hangangChlDefaultValue = "No-Data";
+Ext.hangangChlDefaultValue = "선택하세요";
 Ext.hangangChlOnOffVar = "Ext.btn6OnOff"; // 금강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.hangangChlLegendImg = "";
 
@@ -616,23 +616,6 @@ Ext.application({
 			});
     	}
     	
-    	Ext.setCenter = function(tmX,tmY,waterName){
-    		if(waterName == 20){				//낙동강수계
-    			var mapCtl = Ext.getCmp('_mapDiv_1');
-    		}else if(waterName == 30){			//금강수계
-    			var mapCtl = Ext.getCmp('_mapDiv_3');
-    		}else if(waterName == 10){			//북한강 수계
-    			var mapCtl = Ext.getCmp('_mapDiv_2');
-    		}else if(waterName == 40){			//한강하류
-    			var mapCtl = Ext.getCmp('_mapDiv_4');
-    		}
-    		
-    		
-    		var point = new esri.geometry.Point({ "x": tmX, "y": tmY, " spatialReference": { " wkid": 102100} });
-    		mapCtl.map.centerAndZoom(point, 15);
-    		
-    	}
-    	
     	Ext.setFeatureLayer = function(){
     		var mapCtl = Ext.getCmp('_mapDiv_1');
     		if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
@@ -657,7 +640,6 @@ Ext.application({
 	        	if(layer != undefined){
 	        		mapCtl.map.removeLayer(layer);
 	        	}
-	        	console.info("re");
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin2', mapCtl.map);
         	}
         	
