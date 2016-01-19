@@ -616,6 +616,23 @@ Ext.application({
 			});
     	}
     	
+    	Ext.setCenter = function(tmX,tmY,waterName){
+    		if(waterName == 20){				//낙동강수계
+    			var mapCtl = Ext.getCmp('_mapDiv_1');
+    		}else if(waterName == 30){			//금강수계
+    			var mapCtl = Ext.getCmp('_mapDiv_3');
+    		}else if(waterName == 10){			//북한강 수계
+    			var mapCtl = Ext.getCmp('_mapDiv_2');
+    		}else if(waterName == 40){			//한강하류
+    			var mapCtl = Ext.getCmp('_mapDiv_4');
+    		}
+    		 
+    		
+    		var point = new esri.geometry.Point({ "x": tmX, "y": tmY, " spatialReference": { " wkid": 102100} });
+    		mapCtl.map.centerAndZoom(point, 15);
+    		
+    	}
+    	
     	Ext.setFeatureLayer = function(){
     		var mapCtl = Ext.getCmp('_mapDiv_1');
     		if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
