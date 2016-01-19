@@ -626,7 +626,7 @@ Ext.application({
     		}else if(waterName == 40){			//한강하류
     			var mapCtl = Ext.getCmp('_mapDiv_4');
     		}
-    		
+    		 
     		
     		var point = new esri.geometry.Point({ "x": tmX, "y": tmY, " spatialReference": { " wkid": 102100} });
     		mapCtl.map.centerAndZoom(point, 15);

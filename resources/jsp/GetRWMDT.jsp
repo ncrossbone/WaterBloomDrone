@@ -8,7 +8,7 @@
 	Json 형태로 출력하는 jsp페이지는 어떠한 html 요소도 사용하지 않아야 한다.
 	<!DOCTYPE, <html 등등
 */
-try{
+try{ 
 	String siteCodes = request.getParameter("siteCodes");
 	String measureDate = request.getParameter("measureDate");
 	String layerDate = request.getParameter("layerDate");
