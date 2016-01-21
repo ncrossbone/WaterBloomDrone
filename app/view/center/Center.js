@@ -66,7 +66,7 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		}]
 	}],
 	
-	setControl: function(){
+	setControlXY: function(){
 		var positionY = 38;
     	
     	var ctlDate1 = Ext.getCmp('DateComboPanel1');
@@ -86,10 +86,8 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		
 		var bolist = bolist = Ext.getCmp("BoList");
 		var boListPanel = Ext.getCmp("BoListTest");
+		var boStoreName = ""; 
 		
-		//var boList = Ext.getCmp('BoList');
-		
-		console.info(this.activeTab.id);
 		if(this.activeTab.id == 'nakdong_map'){
 			//alert("1");
 			ctlDate1.show();
@@ -105,16 +103,9 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate3_Measure.hide();
 			ctlDate4_Measure.hide();
 			
-			bolist.show();
-			
-			
-			var boListstore = Ext.create('WaterBloomDrone.store.FeatureStoreLayerAdmin1');
-			//boListstore.siteCD = "####";
-			boListstore.load();
-			boListPanel.setStore(boListstore);
-			
-			
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
+			
+			boStoreName = "WaterBloomDrone.store.FeatureStoreLayerAdmin1";
 		}
 		
 		if(this.activeTab.id == 'northhan_map'){
@@ -131,26 +122,10 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate2_Measure.show();
 			ctlDate3_Measure.hide();
 			ctlDate4_Measure.hide();
-			
-			
-			
-			
-			if(bolist == undefined){
-				bolist = Ext.create('WaterBloomDrone.view.center.BoList');
-			}
-			
-			bolist.show();
-			
-			
-			
-			
-			var boListstore = Ext.create('WaterBloomDrone.store.FeatureStoreLayerAdmin2');
-			//boListstore.siteCD = "####";
-			boListstore.load();
-			boListPanel.setStore(boListstore);
-			
-			
+
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
+			
+			boStoreName = "WaterBloomDrone.store.FeatureStoreLayerAdmin2";
 		}
 		
 		if(this.activeTab.id == 'geum_map'){
@@ -167,15 +142,10 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate2_Measure.hide();
 			ctlDate3_Measure.show();
 			ctlDate4_Measure.hide();
-			
-			bolist.show();
-			
-			var boListstore = Ext.create('WaterBloomDrone.store.FeatureStoreLayerAdmin3');
-			//boListstore.siteCD = "####";
-			boListstore.load();
-			boListPanel.setStore(boListstore);
-			
+
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+			
+			boStoreName = "WaterBloomDrone.store.FeatureStoreLayerAdmin3";
 		}
 		
 		if(this.activeTab.id == 'hangang_map'){
@@ -192,15 +162,10 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 			ctlDate2_Measure.hide();
 			ctlDate3_Measure.hide();
 			ctlDate4_Measure.show();
-			
-			bolist.show();
-			
-			var boListstore = Ext.create('WaterBloomDrone.store.FeatureStoreLayerAdmin4');
-			//boListstore.siteCD = "####";
-			boListstore.load();
-			boListPanel.setStore(boListstore);
-			
+
 			LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
+			
+			boStoreName = "WaterBloomDrone.store.FeatureStoreLayerAdmin4";
 		}
 		
 		ctlDate1.setX(Ext.getBody().getViewSize().width - ctlDate1.width);
@@ -230,6 +195,14 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		ctlDate4_Measure.setX(Ext.getBody().getViewSize().width - ctlDate4_Measure.width);
 		ctlDate4_Measure.setY(positionY + ctlDate4.getHeight() + ctlDate4_chl.getHeight());
 		
+		// 지점목록 창 띄움
+		bolist.show();
+		var boListstore = Ext.create(boStoreName);
+		boListstore.load();
+		boListPanel.setStore(boListstore);
+		bolist.setX(Ext.getBody().getViewSize().width - bolist.getWidth());
+		bolist.setY(positionY + ctlDate1.height + ctlDate1_chl.height + ctlDate1_Measure.height);
+		
 		var ctlLayerToolbar = Ext.getCmp('LayerToolbar');
 		
 		ctlLayerToolbar.setX(0);
@@ -253,7 +226,7 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 	
 	listeners: {
         'tabchange': function() {
-        	this.setControl();
+        	this.setControlXY();
         }
     },
 	
@@ -339,48 +312,12 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		var ctlBoList = Ext.create('WaterBloomDrone.view.center.BoList', {
 			renderTo: Ext.getBody()
 		});
-		
-		this.setControl();
+		this.setControlXY();
 	}
 });
 
 Ext.on('resize', function(){
-	var ctl1 = Ext.getCmp('DateComboPanel1');
-	var ctl2 = Ext.getCmp('DateComboPanel2');
-	var ctl3 = Ext.getCmp('DateComboPanel3');
-	var ctl4 = Ext.getCmp('DateComboPanel4');
-    
-    if(ctl1 == undefined || ctl2 == undefined  || ctl3 == undefined  || ctl4 == undefined)
-    	return;
-
-    ctl1.setX(Ext.getBody().getViewSize().width - ctl1.width, false);
-    ctl2.setX(Ext.getBody().getViewSize().width - ctl2.width, false);
-    ctl3.setX(Ext.getBody().getViewSize().width - ctl3.width, false);
-    ctl4.setX(Ext.getBody().getViewSize().width - ctl4.width, false);
-    
-    var ctl_chl1 = Ext.getCmp('DateComboTab1_chl');
-	var ctl_chl2 = Ext.getCmp('DateComboTab2_chl');
-	var ctl_chl3 = Ext.getCmp('DateComboTab3_chl');
-	var ctl_chl4 = Ext.getCmp('DateComboTab4_chl');
-    
-    if(ctl_chl1 == undefined || ctl_chl2 == undefined || ctl_chl3 == undefined || ctl_chl4 == undefined)
-    	return;
-
-    ctl_chl1.setX(Ext.getBody().getViewSize().width - ctl_chl1.width, false);
-    ctl_chl2.setX(Ext.getBody().getViewSize().width - ctl_chl2.width, false);
-    ctl_chl3.setX(Ext.getBody().getViewSize().width - ctl_chl3.width, false);
-    ctl_chl4.setX(Ext.getBody().getViewSize().width - ctl_chl4.width, false);
-    
-    var ctl_measure1 = Ext.getCmp('DateComboTab1_Measure');
-	var ctl_measure2 = Ext.getCmp('DateComboTab2_Measure');
-	var ctl_measure3 = Ext.getCmp('DateComboTab3_Measure');
-	var ctl_measure4 = Ext.getCmp('DateComboTab4_Measure');
-    
-    if(ctl_measure1 == undefined || ctl_measure2 == undefined || ctl_measure3 == undefined || ctl_measure4 == undefined)
-    	return;
-
-    ctl_measure1.setX(Ext.getBody().getViewSize().width - ctl_measure1.width, false);
-    ctl_measure2.setX(Ext.getBody().getViewSize().width - ctl_measure2.width, false);
-    ctl_measure3.setX(Ext.getBody().getViewSize().width - ctl_measure3.width, false);
-    ctl_measure4.setX(Ext.getBody().getViewSize().width - ctl_measure4.width, false);
+	
+	var centerContainer = Ext.getCmp("app_center_container");
+	centerContainer.setControlXY();
 });

@@ -689,7 +689,7 @@ Ext.application({
 
     	// khLee Extent 조회
     	Ext.setExtent = function (extent) {
-    		Ext.setFeatureLayer();
+    		//Ext.setFeatureLayer();
     		//extent.xmin.toFixed(2)
     		var s = "";
     		s = "XMin: "+ extent.xmin + " "
@@ -743,20 +743,26 @@ Ext.application({
         		var stdCenterYmax = 4606783.259220161;
     		}
     		
-    		if(me.map.getLevel() < me.level){
+    		if(me.map.getLevel() < 10){
+    			
+    			me.map.setLevel(10);
+    			me.map.centerAt(me.initialExtent.getCenter());
+    			
     			//alert("더 이상 축소 할 수 없습니다.");
     			
-    			var activeLayer = me.map.getLayer(layerId);
-    			activeLayer.setVisibility(false);
+    			//var activeLayer = me.map.getLayer(layerId);
+    			//activeLayer.setVisibility(false);
     			
+    			/*
     			var deferred = me.map.setExtent(me.initialExtent, true);
     			deferred.then(function(value){
     				me.map.centerAt(me.initialExtent.getCenter());
     				me.map.setLevel(me.level);
     			});
+    			*/
     			
-    			activeLayer.setVisibility(true);
-    			
+    			//activeLayer.setVisibility(true);
+    			//alert(me.level);
     			return;
     		}
     		
