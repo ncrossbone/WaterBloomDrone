@@ -25,11 +25,17 @@ Ext.define('WaterBloomDrone.view.center.LayerToolbarController', {
 			//ctlTab.setActiveTab(2);
 		}
 		
-		var deferred = me.map.setExtent(me.initialExtent, true);
-		deferred.then(function(value){
-			me.map.centerAt(me.initialExtent.getCenter());
-			me.map.setLevel(me.level);
-		});
+		if(ctlTab.activeTab.id == "hangang_map"){
+			me = Ext.getCmp('_mapDiv_4');
+		}
+		
+		if(me.map != null && me.map != undefined){
+			var deferred = me.map.setExtent(me.initialExtent, true);
+			deferred.then(function(value){
+				me.map.centerAt(me.initialExtent.getCenter());
+				me.map.setLevel(me.level);
+			});
+		}
 	},
 	
 	onClickPopup: function() {

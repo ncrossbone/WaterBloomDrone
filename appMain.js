@@ -634,6 +634,7 @@ Ext.application({
     	}
     	
     	Ext.setFeatureLayer = function(){
+    		
     		var mapCtl = Ext.getCmp('_mapDiv_1');
     		if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
 	        	var layer = mapCtl.map.getLayer("FeatureLayer1");
@@ -647,7 +648,7 @@ Ext.application({
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin1', mapCtl.map);
     		}
         	
-        	var mapCtl = Ext.getCmp('_mapDiv_2')
+        	var mapCtl = Ext.getCmp('_mapDiv_2');
         	if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
 	        	var layer = mapCtl.map.getLayer("FeatureLayer2");
 	        	if(layer != undefined){
@@ -660,7 +661,7 @@ Ext.application({
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin2', mapCtl.map);
         	}
         	
-        	var mapCtl = Ext.getCmp('_mapDiv_3')
+        	var mapCtl = Ext.getCmp('_mapDiv_3');
         	if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
 	        	var layer = mapCtl.map.getLayer("FeatureLayer3");
 	        	if(layer != undefined){
@@ -673,7 +674,7 @@ Ext.application({
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin3', mapCtl.map);
         	}
         	
-        	var mapCtl = Ext.getCmp('_mapDiv_4')
+        	var mapCtl = Ext.getCmp('_mapDiv_4');
         	if(mapCtl != undefined && mapCtl.map != undefined && mapCtl.map != null){
 	        	var layer = mapCtl.map.getLayer("FeatureLayer4");
 	        	if(layer != undefined){
@@ -686,9 +687,49 @@ Ext.application({
 	        	mapCtl.featureLayerAdmin = Ext.create('WaterBloomDrone.view.map.FeatureLayerAdmin4', mapCtl.map);
         	}
     	}
+    	
+    	Ext.setLabelLayer = function(){
+    		
+    		var mapCtl = Ext.getCmp('_mapDiv_1');
+    		if(mapCtl.map != null && mapCtl.map != undefined){
+	    		var layer = mapCtl.map.getLayer("labels");
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        		mapCtl.map.addLayer(layer);
+	        	}
+    		}
+        	
+        	var mapCtl = Ext.getCmp('_mapDiv_2');
+        	if(mapCtl.map != null && mapCtl.map != undefined){
+	    		var layer = mapCtl.map.getLayer("labels");
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        		mapCtl.map.addLayer(layer);
+	        	}
+        	}
+        	
+        	var mapCtl = Ext.getCmp('_mapDiv_3');
+        	if(mapCtl.map != null && mapCtl.map != undefined){
+	    		var layer = mapCtl.map.getLayer("labels");
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        		mapCtl.map.addLayer(layer);
+	        	}
+        	}
+        	
+        	var mapCtl = Ext.getCmp('_mapDiv_4');
+        	if(mapCtl.map != null && mapCtl.map != undefined){
+	    		var layer = mapCtl.map.getLayer("labels");
+	        	if(layer != undefined){
+	        		mapCtl.map.removeLayer(layer);
+	        		mapCtl.map.addLayer(layer);
+	        	}
+        	}
+    	}
 
     	// khLee Extent 조회
     	Ext.setExtent = function (extent) {
+    		
     		//Ext.setFeatureLayer();
     		//extent.xmin.toFixed(2)
     		var s = "";
@@ -743,26 +784,34 @@ Ext.application({
         		var stdCenterYmax = 4606783.259220161;
     		}
     		
-    		if(me.map.getLevel() < 10){
-    			
-    			me.map.setLevel(10);
-    			me.map.centerAt(me.initialExtent.getCenter());
-    			
+    		if(me.preExtent != extent){
+    			me.preExtent = extent;
+    		}
+    		else{
+    			return;
+    		}
+    		
+    		Ext.setLabelLayer();
+    		
+    		if(me.map.getLevel() < me.level){
     			//alert("더 이상 축소 할 수 없습니다.");
     			
-    			//var activeLayer = me.map.getLayer(layerId);
-    			//activeLayer.setVisibility(false);
-    			
     			/*
+    			var activeLayer = me.map.getLayer(layerId);
+    			activeLayer.setVisibility(false);
+    			
     			var deferred = me.map.setExtent(me.initialExtent, true);
     			deferred.then(function(value){
     				me.map.centerAt(me.initialExtent.getCenter());
     				me.map.setLevel(me.level);
     			});
+    			
+    			activeLayer.setVisibility(true);
     			*/
     			
-    			//activeLayer.setVisibility(true);
-    			//alert(me.level);
+    			//me.map.centerAt(me.preExtent.getCenter());
+    			me.map.setLevel(me.level);
+    			
     			return;
     		}
     		

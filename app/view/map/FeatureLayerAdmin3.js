@@ -26,7 +26,6 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin3', {
     				});
     				
     				queryTask.on("complete", function(featureSet) {
-    					//console.info(featureSet);
     					
     					var layerDefinition = {  
     					          "displayFieldName": "호소명",  
@@ -222,7 +221,6 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin3', {
     		    	        
     		    	        // add the label layer to the map
     		    	        me.map.addLayer(labels);
-    		    	        //console.info(labels);
     		    	        
     		    	        for(var lblCnt = 0; lblCnt < labels.graphics.length; lblCnt++){
     		    	        	if(labels.graphics[lblCnt].symbol.text.indexOf("undefined") > -1){

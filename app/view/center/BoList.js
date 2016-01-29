@@ -24,17 +24,29 @@ Ext.define('WaterBloomDrone.view.center.BoList', {
 	
 	//header: false,
 	header: {
+		style: "cursor: default;",
 		listeners: {
 			click: function(){
-				alert("dd");
+				var winCtl = this.up("window");
+				//alert(item.collapsed);
+				if(winCtl.collapsed == false){
+					winCtl.collapse();
+					winCtl.removeCls("khLee-window-panel-header-expand");
+					winCtl.addCls("khLee-window-panel-header-collapse");
+				}
+				else{
+					winCtl.expand();
+					winCtl.removeCls("khLee-window-panel-header-collapse");
+					winCtl.addCls("khLee-window-panel-header-expand");
+				}
 			}
 		}
 	},
 	shadow: false,
 	closable: false,
-	movable: false,
+	collapsable: true,
 	plain: true,
-	cls: 'khLee-window-panel-header',
+	cls: 'khLee-window-panel-header-expand',
 	//style: 'border-style: none !important; background: transparent none !important;',
 	style: 'border-width: 1px !important; background: #fff !important;',
 

@@ -62,7 +62,7 @@ Ext.define('WaterBloomDrone.view.map.CoreMapTab4', {
         	});
         	
         	// 전역 변수 설정 WaterBloomDrone.getApplication().coreMap
-        	WaterBloomDrone.getApplication().coreMap3 = me;
+        	WaterBloomDrone.getApplication().coreMap4 = me;
         	
 		}, 1);
     },

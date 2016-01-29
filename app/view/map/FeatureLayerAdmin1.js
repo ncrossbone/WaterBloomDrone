@@ -332,17 +332,12 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin1', {
 		          
 		          dialog.setContent(content);
 		          require(["dojo/dom-style", "dijit/popup"], function(domStyle, dijitPopup){
-		        	  console.info(domStyle);
-	 		         	 console.info(dijitPopup);
 		        	  domStyle.set(dialog.domNode, "opacity", 1);
     		          dijitPopup.open({
     		            popup: dialog, 
     		            x: evt.pageX,
     		            y: evt.pageY
     		          });
-    		          console.info(evt.pageX);
- 		         	 console.info(evt.pageY);
- 		         	 console.info(dialog);
 		          });
 		          
 		     });
