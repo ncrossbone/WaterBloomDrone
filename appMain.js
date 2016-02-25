@@ -617,6 +617,7 @@ Ext.application({
     	}
     	
     	Ext.setCenter = function(tmX,tmY,waterName){
+    		
     		if(waterName == 20){				//낙동강수계
     			var mapCtl = Ext.getCmp('_mapDiv_1');
     		}else if(waterName == 30){			//금강수계
@@ -630,6 +631,8 @@ Ext.application({
     		
     		var point = new esri.geometry.Point({ "x": tmX, "y": tmY, " spatialReference": { " wkid": 102100} });
     		mapCtl.map.centerAndZoom(point, 15);
+    		
+    		Ext.setLabelLayer();
     		
     	}
     	

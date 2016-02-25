@@ -29,7 +29,7 @@ Ext.define('WaterBloomDrone.store.FeatureStoreLayerAdmin4', {
 				var query = new esri.tasks.Query();
 				query.returnGeometry = true;
 				
-				query.where = "수계코드 = 10";
+				query.where = "수계코드 = 10 AND 측정소코드 LIKE '1018%'";
 				query.outFields = ["*"];
 				
 				queryTask.execute(query,  function(results){

@@ -18,7 +18,7 @@ Ext.define('WaterBloomDrone.view.map.FeatureLayerAdmin4', {
     				var queryTask = new esri.tasks.QueryTask(record.get('MapserviceUrl1') + "/" + Ext.featureLayerId); // 레이어 URL
     				var query = new esri.tasks.Query();
     				query.returnGeometry = true;
-    				query.where = "수계코드 = 10";
+    				query.where = "수계코드 = 10 AND 측정소코드 LIKE '1018%'";
     				query.outFields = ["*"];
     				
     				queryTask.execute(query,  function(results){
