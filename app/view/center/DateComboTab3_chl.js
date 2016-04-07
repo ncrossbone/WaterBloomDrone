@@ -44,7 +44,7 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab3_chl', {
 
 	        	var measureCombo = Ext.getCmp("cboDate3_Measure");
 	        	var layerCombo = Ext.getCmp("cboDate3");
-	        	
+	        	//alert(newValue);
 	        	if(newValue == "선택하세요."){
 	        		measureCombo.setValue(Ext.geumWMCYMWDefaultValue);
 	        		layerCombo.setValue(Ext.geumDroneDefaultValue);
@@ -52,8 +52,9 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab3_chl', {
 	        	else{
 	        		measureCombo.setValue(Ext.geumWMCYMW[comboIdx]);
 	        		layerCombo.setValue(Ext.geumDroneDate[comboIdx]);
-	        		LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
 	        	}
+	        	
+	        	LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
 	        },
 	        scope: this
 	    }

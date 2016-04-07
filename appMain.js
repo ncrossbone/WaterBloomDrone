@@ -81,21 +81,21 @@ Ext.nakdongChlDefaultValue = "선택하세요.";
 Ext.nakdongChlOnOffVar = "Ext.btn6OnOff"; // 낙동강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.nakdongChlLegendImg = "";
 
-Ext.northHanChlDate = ["선택하세요"];
+Ext.northHanChlDate = ["선택하세요."];
 Ext.northHanChlLayerId = [""];
-Ext.northHanChlDefaultValue = "선택하세요";
+Ext.northHanChlDefaultValue = "선택하세요.";
 Ext.northHanChlOnOffVar = "Ext.btn6OnOff"; // 북한강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.northHanChlLegendImg = "";
 
-Ext.geumChlDate = ["선택하세요"];
+Ext.geumChlDate = ["선택하세요."];
 Ext.geumChlLayerId = [""];
-Ext.geumChlDefaultValue = "선택하세요";
+Ext.geumChlDefaultValue = "선택하세요.";
 Ext.geumChlOnOffVar = "Ext.btn6OnOff"; // 금강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.geumChlLegendImg = "";
 
-Ext.hangangChlDate = ["선택하세요"];
+Ext.hangangChlDate = ["선택하세요."];
 Ext.hangangChlLayerId = [""];
-Ext.hangangChlDefaultValue = "선택하세요";
+Ext.hangangChlDefaultValue = "선택하세요.";
 Ext.hangangChlOnOffVar = "Ext.btn6OnOff"; // 금강 초분광(클로로필a) 버튼 On/Off 변수 명
 Ext.hangangChlLegendImg = "";
 
@@ -254,7 +254,7 @@ for(var i = 0; i < itemsLayer.length; i++){
 				Ext.nakdongChlDate.push(itemsLayer[i].chlDate);
 			else
 				Ext.nakdongChlDate.push("");
-    		
+    		//console.info(Ext.nakdongChlDate);
     		if(itemsLayer[i].defaultOn == true){
     			// 항공영상 날짜 기본값
     			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")
@@ -296,7 +296,7 @@ for(var i = 0; i < itemsLayer.length; i++){
 				Ext.northHanChlDate.push(itemsLayer[i].chlDate);
 			else
 				Ext.northHanChlDate.push("");
-    		
+			//console.info(Ext.northHanChlDate);
     		if(itemsLayer[i].defaultOn == true){
     			// 항공영상 날짜 기본값
     			if(itemsLayer[i].layerDate != undefined && itemsLayer[i].layerDate != "")

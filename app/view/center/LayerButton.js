@@ -33,41 +33,14 @@ function SetLayerOnOff(varBtnOnOff, layerIds){
 	}
 }
 
-function LegendShow(legendId, imgSrc, width, height, x, y){
-	var chlLegend = Ext.getCmp(legendId); // 범례 이미지 컨트롤
-	var x = Ext.getBody().getViewSize().width - 232;
-	var y = Ext.getBody().getViewSize().height - 390;
-	console.info(chlLegend);
-	if(chlLegend == undefined){
-		Ext.create("Ext.container.Container", {
-			renderTo: Ext.getBody(),
-			id: legendId,
-			items: [{
-				xtype: "image",
-				src: imgSrc,
-				width: width,
-				height: height
-			}],
-			x: x,
-			y: y
-		});
-	}
-	else{
-		chlLegend.show();
-	}
-}
-
-function LegendHide(legendId){
-	var chlLegend = Ext.getCmp(legendId); // 범례 이미지 컨트롤
-	
-	if(chlLegend != undefined)
-		chlLegend.hide();
-}
-
 function LayerOnOffBtn(me, tabId){
-	
-	if(me.map == null)
+	//console.info(me);
+	if(me.map == null){
+//		Ext.defer(function(){
+//			LayerOnOffBtn(me, tabId);
+//		}, 1, this);
 		return;
+	}
 	
 	var activeLayer = me.map.getLayer(tabId);
 	var layers = [];
@@ -188,17 +161,8 @@ function LayerOnOffBtn(me, tabId){
 			if(ctlDate != "" && ctlDate == Ext.nakdongChlDate[i]){
 				if(tabCtl.getActiveTab().id == "nakdong_map"){
 					Ext.visibleLayers.push(Ext.nakdongChlLayerId[i]);
-					LegendShow("chlLegend", Ext.nakdongChlLegendImg, 232, 54);
 				}
 			}
-			else{
-				if(Ext.nakdongChlLegendImg != undefined && Ext.nakdongChlLegendImg != "")
-					LegendHide("chlLegend");
-			}
-		}
-		else{
-			if(Ext.nakdongChlLegendImg != undefined && Ext.nakdongChlLegendImg != "")
-				LegendHide("chlLegend");
 		}
 	}
 	
@@ -218,17 +182,8 @@ function LayerOnOffBtn(me, tabId){
 			if(ctlDate != "" && ctlDate == Ext.northHanChlDate[i]){
 				if(tabCtl.getActiveTab().id == "northhan_map"){
 					Ext.visibleLayers.push(Ext.northHanChlLayerId[i]);
-					LegendShow("chlLegend", Ext.northHanChlLegendImg, 232, 54);
 				}
 			}
-			else{
-				if(Ext.northHanChlLegendImg != undefined && Ext.northHanChlLegendImg != "")
-					LegendHide("chlLegend");
-			}
-		}
-		else{
-			if(Ext.northHanChlLegendImg != undefined && Ext.northHanChlLegendImg != "")
-				LegendHide("chlLegend");
 		}
 	}
 	
@@ -247,17 +202,8 @@ function LayerOnOffBtn(me, tabId){
 			if(ctlDate != "" && ctlDate == Ext.geumChlDate[i]){
 				if(tabCtl.getActiveTab().id == "geum_map"){
 					Ext.visibleLayers.push(Ext.geumChlLayerId[i]);
-					LegendShow("chlLegend", Ext.geumChlLegendImg, 232, 54);
 				}
 			}
-			else{
-				if(Ext.geumChlLegendImg != undefined && Ext.geumChlLegendImg != "")
-					LegendHide("chlLegend");
-			}
-		}
-		else{
-			if(Ext.geumChlLegendImg != undefined && Ext.geumChlLegendImg != "")
-				LegendHide("chlLegend");
 		}
 	}
 	
@@ -277,17 +223,8 @@ function LayerOnOffBtn(me, tabId){
 			if(ctlDate != "" && ctlDate == Ext.hangangChlDate[i]){
 				if(tabCtl.getActiveTab().id == "hangang_map"){
 					Ext.visibleLayers.push(Ext.hangangChlLayerId[i]);
-					LegendShow("chlLegend", Ext.hangangChlLegendImg, 232, 54);
 				}
 			}
-			else{
-				if(Ext.hangangChlLegendImg != undefined && Ext.hangangChlLegendImg != "")
-					LegendHide("chlLegend");
-			}
-		}
-		else{
-			if(Ext.hangangChlLegendImg != undefined && Ext.hangangChlLegendImg != "")
-				LegendHide("chlLegend");
 		}
 	}
 	
@@ -295,7 +232,7 @@ function LayerOnOffBtn(me, tabId){
 		activeLayer.setVisibility(true);
 	else
 		activeLayer.setVisibility(false);
-	
+	//console.info(Ext.visibleLayers);
 	activeLayer.setVisibleLayers(Ext.visibleLayers);
 	
 	if(tabId == "DynamicLayer1"){
@@ -342,6 +279,70 @@ function LayerOnOffBtn(me, tabId){
 	}
 	
 	//console.info("dd");
+	LegendShowHide(tabCtl.getActiveTab().id);
+}
+
+function LegendShowHide(activeTabId){
+	//alert(activeTabId)
+	var isShowLegend = false;
+	var tabCtl = Ext.getCmp('app_center_container');
+	
+	if(activeTabId == "nakdong_map"){
+		var ctlDate = Ext.getCmp('cboDate1_chl').value;
+		if(eval(Ext.nakdongChlOnOffVar + " == 'on'")){
+			if(ctlDate != "선택하세요."){
+				isShowLegend = true;
+			}
+		}
+	}
+	
+	if(activeTabId == "northhan_map"){
+		var ctlDate = Ext.getCmp('cboDate2_chl').value;
+		if(eval(Ext.northHanChlOnOffVar + " == 'on'")){
+			if(ctlDate != "선택하세요."){
+				isShowLegend = true;
+			}
+		}
+	}
+	
+	if(activeTabId == "geum_map"){
+		var ctlDate = Ext.getCmp('cboDate3_chl').value;
+		if(eval(Ext.geumChlOnOffVar + " == 'on'")){
+			if(ctlDate != "선택하세요."){
+				isShowLegend = true;
+			}
+		}
+	}
+	
+	if(activeTabId == "hangang_map"){
+		var ctlDate = Ext.getCmp('cboDate4_chl').value;
+		if(eval(Ext.hangangChlOnOffVar + " == 'on'")){
+			if(ctlDate != "선택하세요."){
+				isShowLegend = true;
+			}
+		}
+	}
+	
+	if(isShowLegend == true){
+		LegendShow();
+	}
+	else{
+		LegendHide();
+	}
+	
+	//alert(isShowLegend);
+}
+
+function LegendShow(){
+	
+	var chlLegend = Ext.getCmp("chlLegend"); // 범례 이미지 컨트롤
+	chlLegend.show();
+}
+
+function LegendHide(){
+	
+	var chlLegend = Ext.getCmp("chlLegend"); // 범례 이미지 컨트롤
+	chlLegend.hide();
 }
 
 Ext.define('WaterBloomDrone.view.center.LayerButton', {

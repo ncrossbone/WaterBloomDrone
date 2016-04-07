@@ -312,6 +312,11 @@ Ext.define('WaterBloomDrone.view.center.Center', {
 		var ctlBoList = Ext.create('WaterBloomDrone.view.center.BoList', {
 			renderTo: Ext.getBody()
 		});
+		
+		var chlLegend = Ext.create("WaterBloomDrone.view.center.LegendChl", {
+			renderTo: Ext.getBody()
+		});
+		
 		this.setControlXY();
 	}
 });

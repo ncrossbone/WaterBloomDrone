@@ -34,6 +34,10 @@ Ext.define('WaterBloomDrone.view.north.North', {
 	            	var tabCtl = Ext.getCmp('app_center_container');
 	            	//console.info(tabCtl);
 	            	tabCtl.setActiveTab(0);
+	            	
+	            	Ext.defer(function(){
+	            		LayerOnOffBtn(Ext.getCmp('_mapDiv_1'), "DynamicLayer1");
+	            	}, 10, this);
 	            }
 	        }
 	    },
@@ -59,6 +63,11 @@ Ext.define('WaterBloomDrone.view.north.North', {
 	            	
 	            	var tabCtl = Ext.getCmp('app_center_container');
 	            	tabCtl.setActiveTab(1);
+	            	
+	            	//LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
+	            	Ext.defer(function(){
+	            		LayerOnOffBtn(Ext.getCmp('_mapDiv_2'), "DynamicLayer2");
+	            	}, 10, this);
 	            }
 	        }
 	    },
@@ -84,6 +93,11 @@ Ext.define('WaterBloomDrone.view.north.North', {
 	            	
 	            	var tabCtl = Ext.getCmp('app_center_container');
 	            	tabCtl.setActiveTab(2);
+	            	
+	            	//LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
+	            	Ext.defer(function(){
+	            		LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
+	            	}, 10, this);
 	            }
 	        }
 	    },
@@ -109,6 +123,11 @@ Ext.define('WaterBloomDrone.view.north.North', {
 	            	
 	            	var tabCtl = Ext.getCmp('app_center_container');
 	            	tabCtl.setActiveTab(3);
+	            	
+	            	//LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+	            	Ext.defer(function(){
+	            		LayerOnOffBtn(Ext.getCmp('_mapDiv_3'), "DynamicLayer3");
+	            	}, 10, this);
 	            }
 	        }
 	    },

@@ -1,8 +1,3 @@
 [{
-	"MapserviceUrl1" : "http://112.218.1.243:20002/arcgis/rest/services/drone_dev/MapServer",
-	"MapserviceUrl2" : "http://112.218.1.242:20002/arcgis/rest/services/drone_dev/MapServer",
-	"MapserviceUrl3" : "http://112.217.167.123:6080/arcgis/rest/services/drone_dev/MapServer",
-	"MapserviceUrl4" : "http://cetech.iptime.org:6080/arcgis/rest/services/drone/MapServer",
-	"MapserviceUrl5" : "http://fireftp.iptime.org:6080/arcgis/rest/services/drone/MapServer",
-	"MapserviceUrl6" : "http://112.217.167.123:6080/arcgis/rest/services/drone/MapServer"
+	"MapserviceUrl1" : "http://112.217.167.122:20002/arcgis/rest/services/drone_dev/MapServer"
 }]

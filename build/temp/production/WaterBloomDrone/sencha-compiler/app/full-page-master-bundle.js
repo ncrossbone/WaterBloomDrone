@@ -1,2 +1,2 @@
 // @tag full-page
-// @require D:\_0010_Cetech_Workspace\_010_2015_Workspace\000_Git\WaterBloomDrone\app.js
+// @require D:\_0010_Cetech_Workspace\_000_Git\WaterBloomDrone\app.js

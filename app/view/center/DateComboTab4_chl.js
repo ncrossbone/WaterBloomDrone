@@ -52,8 +52,9 @@ Ext.define('WaterBloomDrone.view.center.DateComboTab4_chl', {
 	        	else{
 	        		measureCombo.setValue(Ext.hangangWMCYMW[comboIdx]);
 	        		layerCombo.setValue(Ext.hangangDroneDate[comboIdx]);
-	        		LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 	        	}
+	        	
+	        	LayerOnOffBtn(Ext.getCmp('_mapDiv_4'), "DynamicLayer4");
 	        },
 	        scope: this
 	    }
